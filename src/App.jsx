@@ -22,7 +22,6 @@ const MainPage = () => (
         <Icon size="big" name="linkedin" />linkedIn
       </a>
     </Grid>
-    <Segment>
     <p>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
       ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et
@@ -51,7 +50,6 @@ const MainPage = () => (
       viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
       Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
     </p>
-    </Segment>
   </Container>
 );
 
