@@ -1,56 +1,39 @@
-import React from "react";
-import { Grid,Image, Container, Icon,Segment } from "semantic-ui-react";
+import React, { Component } from "react";
+import { Menu } from 'semantic-ui-react'
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
+import Home from "./Home";
+import Blog from "./Blog";
+import Contact from "./Contact";
 
-const containerStyle = {
-  paddingTop: "2em"
-};
+export default class App extends Component {
+  render() {
+    return (
+      <HashRouter>
+        <div>
+          <Menu pointing secondary size="large">
+            <Menu.Item
+              name='Home' exact  as={NavLink} to="/"
 
-const MainPage = () => (
-  <Container text style={containerStyle}>
-    <Image
-      src="https://avatars2.githubusercontent.com/u/7285926?s=460&v=4"
-      centered
-      size="small"
-      circular
-    />
+            />
+            <Menu.Item
+              name='Blog' as={NavLink} to="/blog"
 
-    <Grid centered style={{paddingTop: "1em",paddingBottom: "1em"}}>
-      <a style={{ color: "inherit" }} href="https://google.com">
-        <Icon size="big" name="github" />Github
-      </a>
-      <a style={{ color: "inherit" }} href="https://google.com">
-        <Icon size="big" name="linkedin" />linkedIn
-      </a>
-    </Grid>
-    <p>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-      ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et
-      magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-      ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-      quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-      arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-      Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras
-      dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-      Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
-      Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
-      viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
-      Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricpies nisi.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-      ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et
-      magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-      ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-      quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-      arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-      Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras
-      dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-      Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
-      Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
-      viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
-      Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
-    </p>
-  </Container>
-);
-
-export default MainPage;
+            />
+            <Menu.Item
+              name='Contact' as={NavLink} to="/contact"
+            />
+          </Menu>
+          <div className="content">
+            <Route exact path="/" component={Home} />
+            <Route path="/blog" component={Blog} />
+            <Route path="/contact" component={Contact} />
+          </div>
+        </div>
+      </HashRouter>
+    )
+  }
+}
