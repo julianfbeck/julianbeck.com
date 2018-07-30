@@ -4,7 +4,7 @@ export default class Contact extends Component {
   render() {
     return (
       <div className="contact">
-        { this.props.children }
+      waaaa
       </div>
     )
   }

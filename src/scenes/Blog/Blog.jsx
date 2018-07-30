@@ -1,19 +1,14 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
+import List from "./components/List";
+import { Link } from "react-router-dom";
 
 export default class Blog extends Component {
   render() {
+    const { match } = this.props
     return (
       <div>
-        <h2>STUFF</h2>
-        <p>Mauris sem velit, vehicula eget sodales vitae,
-      rhoncus eget sapien:</p>
-        <ol>
-          <li>Nulla pulvinar diam</li>
-          <li>Facilisis bibendum</li>
-          <li>Vestibulum vulputate</li>
-          <li>Eget erat</li>
-          <li>Id porttitor</li>
-        </ol>
+        <List />
+
       </div>
     )
   }

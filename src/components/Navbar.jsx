@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu } from 'semantic-ui-react'
+import { Menu,Container } from 'semantic-ui-react'
 import {
   Route,
   NavLink,
@@ -8,6 +8,7 @@ import {
 import Home from "../scenes/Home/Home";
 import Blog from "../scenes/Blog/Blog";
 import Contact from "../scenes/Contact/Contact";
+import Entries from "../scenes/Entries/Entries";
 
 export default class App extends Component {
   render() {
@@ -27,11 +28,12 @@ export default class App extends Component {
               name='Contact' as={NavLink} to="/contact"
             />
           </Menu>
-          <div className="content">
+          <Container>
             <Route exact path="/" component={Home} />
-            <Route path="/blog" component={Blog} />
+            <Route exact path="/blog" component={Blog} />
+            <Route exact path="/blog/:id" component={Entries} />
             <Route path="/contact" component={Contact} />
-          </div>
+          </Container>
         </div>
       </HashRouter>
     )

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Image, Container, Icon } from "semantic-ui-react";
+import { Grid, Image, Icon } from "semantic-ui-react";
 
 const containerStyle = {
   paddingTop: "2em"
@@ -8,7 +8,7 @@ const containerStyle = {
 export default class Home extends Component {
   render() {
     return (
-      <Container text style={containerStyle}>
+      <div style={containerStyle}>
         <Image
           src="https://avatars2.githubusercontent.com/u/7285926?s=460&v=4"
           centered
@@ -52,7 +52,7 @@ export default class Home extends Component {
           viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
           Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
       </p>
-      </Container>
+      </div>
     )
   }
 }
