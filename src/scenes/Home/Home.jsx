@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Grid, Image, Container, Icon } from "semantic-ui-react";
 
 const containerStyle = {

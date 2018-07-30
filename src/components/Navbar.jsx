@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Menu } from 'semantic-ui-react'
-import { BrowserRouter as Router, Route, NavLink, HashRouter} from "react-router-dom";
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
 import Home from "../scenes/Home/Home";
 import Blog from "../scenes/Blog/Blog";
 import Contact from "../scenes/Contact/Contact";
@@ -8,7 +12,7 @@ import Contact from "../scenes/Contact/Contact";
 export default class App extends Component {
   render() {
     return (
-      <Router>
+      <HashRouter>
         <div>
           <Menu pointing secondary size="large">
             <Menu.Item
@@ -29,7 +33,7 @@ export default class App extends Component {
             <Route path="/contact" component={Contact} />
           </div>
         </div>
-      </Router>
+      </HashRouter>
     )
   }
 }
