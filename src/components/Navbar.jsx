@@ -9,6 +9,16 @@ import Home from "../scenes/Home/Home";
 import Blog from "../scenes/Blog/Blog";
 import Contact from "../scenes/Contact/Contact";
 import Entries from "../scenes/Entries/Entries";
+import ReactGA from "react-ga";
+ReactGA.initialize('UA-123121612-1');
+
+export function fireTracking(nextState) {
+
+  const { pathname } = nextState.location // this gives you the next URL
+
+   ReactGA.pageview(pathname)
+
+ }
 
 export default class App extends Component {
   render() {
@@ -29,7 +39,7 @@ export default class App extends Component {
             />
           </Menu>
           <Container>
-            <Route exact path="/" component={Home} />
+            <Route onEnter={ fireTracking } exact path="/" component={Home} />
             <Route exact path="/blog" component={Blog} />
             <Route exact path="/blog/:id" component={Entries} />
             <Route path="/contact" component={Contact} />
