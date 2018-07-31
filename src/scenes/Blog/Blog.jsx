@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import List from "./components/List";
-import { Link } from "react-router-dom";
-
+import data from "../../store";
 export default class Blog extends Component {
   render() {
-    const { match } = this.props
     return (
       <div>
-        <List />
-
+        <List entries={data} />
       </div>
     )
   }
