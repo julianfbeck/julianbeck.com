@@ -1,0 +1,60 @@
+<ion-view view-title="Caffeine Calculator">
+<ion-content>
+<label class="item item-input item-select">
+  <div class="input-label">
+   Select Drink
+ </div>
+ <select ng-model="selectedCoffee" ng-change="selectCoffee();calculate()">
+  <option ng-repeat="coffee in coffees"> {{coffee.name}}</option>
+</select>
+</label>
+
+<div ng-init="formData.currency=1">
+  <ion-radio name="currency" value="0" ng-change="calculate()" ng-model="formData.currency">
+  fluid ounce (oz)
+</ion-radio>
+<ion-radio name="currency" value="1" ng-change="calculate()" ng-model="formData.currency">
+milliliters (ml)
+</ion-radio>
+</div>
+
+
+<label class="item item-input" ng-init="selectedCups=1" >
+  Count of cups:
+  <input type="text" placeholder="count of cups" ng-change="calculate()" ng-model="selectedCups">
+</label>
+
+
+<div class="item">Cup size: {{cupSize}}{{currency}}
+<div class="range range-positive">
+  <i class="icon ion-soup-can-outline"></i>
+  <input type="range" name="volume" min="1" max="20" step="1" ng-init="cubRange.value=standard" ng-model="cubRange.value" ng-change="calculate()">
+  <i class="icon ion-soup-can"></i>
+</div>
+</div>
+
+
+
+
+
+<div  ng-show="showCalculation">  
+  <ion-item class="animated fadeInUp"> 
+  <div class ="row responsive-sm">
+    <div class="col"><p id="coffee">{{selectedCoffee}}:</p></div>
+    <div class="col"> 
+      <p id="cups">
+        {{cups}} {{plural}} (size: {{cupSize}}{{currency}})
+      </p><br>
+      <p id="cmg">
+        total of {{coffeeMg | number:2}}mg of caffeine
+      </p><br>
+      <p ng-show="cups!=1" id="cmg" class="animated fadeInUp">
+        ({{mgpercub | number:2}}mg caffeine per cub)
+      </p><br>
+    </div>
+  </div>
+</ion-item>
+</div>
+
+</ion-content>
+</ion-view>

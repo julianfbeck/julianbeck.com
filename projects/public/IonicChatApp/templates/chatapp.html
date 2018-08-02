@@ -1,0 +1,25 @@
+<ion-view view-title="Chat">
+
+  <ion-nav-buttons side="right">
+ <button class="button button-icon icon ion-android-arrow-dropdown-circle" ng-click="scroll()"></button>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <reverse-geocode lat="lat1" lng="lng1"/>
+
+    <div class="message" ng-repeat="message in messages">
+      <span>
+        <span class="city">{{message.city}}</span><br>{{message.text }}</span>
+    </div>
+
+  </ion-content>
+  <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+    <label class="item-input-wrapper">
+      <input type="text" placeholder="Type your message" on-return="send(); closeKeyboard()" ng-model="data.message" on-focus="inputUp()" on-blur="inputDown()"/>
+    </label>
+    <button class="button button-clear" ng-click="send()">
+      Send
+    </button>
+
+  </ion-footer-bar>
+</ion-view>

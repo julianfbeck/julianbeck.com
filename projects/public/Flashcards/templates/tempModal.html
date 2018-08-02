@@ -1,0 +1,27 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-royal">
+    <h1 class="title">bulk add words</h1>
+    <button class="button button-icon icon ion-android-close" ng-click="closeModal()"></button>
+  </ion-header-bar>
+  <ion-content>
+    <div class="card">
+      <div class="item item-text-wrap">
+        Quickly add lots of words. to start a new card use "
+        <strong>/</strong>" to switch to a new side use "
+        <strong>:</strong>" spaces/Breaks dont matter. Example:<br>
+        <strong>Frontside1:Backside1/</strong>
+        <strong><br>Frontside2:Backside2/</strong>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label class="item item-input text">
+          <textarea placeholder="Enter text" rows="18" ng-model="cardtext"></textarea>
+        </label>
+      </div>
+    </div>
+    <button class="button button-full button-royal" ng-click="bulkAdd()">bulk add</button>
+
+  </ion-content>
+</ion-modal-view>

@@ -1,0 +1,14 @@
+<ion-view view-title="create new deck">
+  <ion-content>
+    <ion-list>
+    <label class="item item-input item-floating-label">
+    <span class="input-label">deck name</span>
+    <input type="text" placeholder="Deck Name" ng-change="alreadyInfunc()"  ng-model="DeckName">
+  </label>
+ <a class="button button-full button-energized" href="#/app/createDeck/{{DeckName}}" ng-show="DeckName" ng-hide="alreadyIn" ng-click="onSaveDeck()">
+  create {{DeckName}} deck
+</a>
+
+    </ion-list>
+  </ion-content>
+</ion-view>

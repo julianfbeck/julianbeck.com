@@ -1,9 +1,8 @@
-const items = [
+const blogs = [
     {
       title: 'Project Report - April',
       description: 'Leverage agile frameworks to provide a robust synopsis for high level overviews.',
       date: 'ROI: 30%',
-      to:"blog/Test"
   
     },
     {
@@ -19,4 +18,4 @@ const items = [
       date: 'ROI: 27%',
     },
   ]
-  export default items;
+  export default blogs;

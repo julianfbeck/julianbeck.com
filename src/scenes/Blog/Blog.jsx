@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import List from "./components/List";
-import data from "../../store";
+import blogs from "../../data/blogs";
+import ionic from "../../data/ionic";
+
 export default class Blog extends Component {
   render() {
     return (
       <div>
-        <List entries={data} />
+        <List blogs={blogs} ionic={ionic} />        
       </div>
     )
   }

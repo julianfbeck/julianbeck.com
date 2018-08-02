@@ -1,0 +1,41 @@
+<ion-view view-title="{{deck.name}}">
+
+  <ion-content class="has-footer">
+
+    <div class="list">
+      <ion-item >
+        <button class="button button-royal button-block" ng-click="openPopover($event)">
+
+          <i class="icon ion-university"></i>
+          Start Learning!
+        </button>
+
+      </ion-item>
+
+      <ion-item class="item-icon-left" ng-repeat="word in deck.words" href="#/app/courses/{{deck.name}}/{{deck.name}}/{{word.frontside}}">
+        <i class="icon {{getIcon(word.know)}}"></i>
+        <h2>{{word.frontside}}</h2>
+        <p>{{word.backside}}</p>
+
+      </ion-item>
+
+    </div>
+
+  </ion-content>
+  <div class="bar bar-footer">
+    <div class="tabs tabs-icon-left">
+      <a class="tab-item" href="#/app/createDeck/{{deck.name}}">
+        <i class="icon ion-android-add"></i>
+        add cards
+      </a>
+      <a class="tab-item" ng-click="refreshDeck()">
+        <i class="icon ion-android-refresh"></i>
+        reset 
+      </a>
+      <a class="tab-item" ng-click="showConfirm()">
+        <i class="icon ion-trash-b assertive"></i>
+        delete Deck
+      </a>
+    </div>
+  </div>
+</ion-view>

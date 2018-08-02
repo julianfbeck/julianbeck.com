@@ -1,0 +1,19 @@
+/* Empty. Add your own CSS if you like */
+
+.message {
+  margin-left: 5px;
+  display: inline-block;
+  display:table;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  background: #008fff;
+  padding: 5px;
+  word-break: break-all;
+  color: white;
+}
+
+.city{
+  color:#636363;
+  font-size: 9px;
+}

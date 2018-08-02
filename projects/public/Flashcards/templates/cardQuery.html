@@ -1,0 +1,31 @@
+<ion-view view-title="{{deck.name}} {{index+1}}/{{currentSelectedWords.length}}">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-android-sync" ng-click="switchCards()"></button>
+    <button class="button button-icon icon icon ion-shuffle" ng-click="shuffleCards()"></button>
+  </ion-nav-buttons>
+  <ion-content class="padding has-footer">
+    <ion-slide-box show-pager="true" class="padding" on-slide-changed="slideChanged(index)" ng-click="showBack()">
+      <ion-slide ng-repeat="word in currentSelectedWords">
+        <div style="padding-top: 4%" ></div>
+       <div class="card">
+          <div class="item item-text-wrap">
+            {{cardTop}}
+          </div>
+        </div>
+        <div style="padding-top: 7%" ></div>
+        <div class="card card-bottom animated fadeIn" ng-hide="showBothSides">
+          <div class="item item-text-wrap ">
+            {{cardBottom}}
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+  <div class="bar bar-footer">
+    <footer class="button-bar">
+      <a class="button button-energized icon ion-android-done" href="#/app/courses/{{names}}">
+        CLOSE</a>
+      <a class="button {{getKnowColor()}} icon ion-android-done" ng-click="changeKnow()">
+        RIGHT</a>
+    </div>
+  </ion-view>

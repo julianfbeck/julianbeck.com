@@ -1,0 +1,12 @@
+<ion-view view-title="decks">
+  <ion-content>
+    <ion-list>
+    	<ion-item ng-repeat="deck in decks" href="#/app/courses/{{deck.name}}">
+    	{{deck.name}}<span class="item-note"> {{DeckService.getLearnedCount(deck.name)}}/{{deck.words.length}}</span>
+
+  		</ion-item>
+    </ion-list>
+  <a class="button button-full button-energized" href="#/app/createDeck">
+  	<i class="icon ion-android-add"></i> create new deck</a>
+  </ion-content>
+</ion-view>

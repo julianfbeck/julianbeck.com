@@ -1,0 +1,20 @@
+<ion-view view-title="add cards to {{deckName}}">
+  <ion-content>
+    <ion-list>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">card frontside</span>
+        <input type="text" placeholder="card frontside" ng-model="frontside.text">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">card backside</span>
+        <input type="text" placeholder="card backside" ng-enter="addCard($event)" ng-model="backside.text">
+      </label>
+
+      <button class="button button-full button-energized" ng-click="addCard()">
+        add card</button>
+      <button class="button button-full button-energized" ng-click="openModal()">bulk add</button>
+      <button class="button button-full button-energized" ng-click="closeDeck()">close and save deck</button>
+
+    </ion-list>
+  </ion-content>
+</ion-view>

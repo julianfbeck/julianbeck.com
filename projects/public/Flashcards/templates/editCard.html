@@ -1,0 +1,19 @@
+<ion-view view-title="edit card">
+  <ion-content>
+    <ion-list>
+      <label class="item item-input">
+        <input type="text" ng-change="save()" ng-model="frontside">
+      </label>
+      <label class="item item-input">
+        <input type="text" ng-change="save()" ng-model="backside">
+      </label>
+      <ion-toggle ng-model="word.know" ng-checked="word.know">
+        Learned:
+      </ion-toggle>
+    </label>
+    <a class="button button-full button-assertive" ng-click="showConfirm()">
+      <i class="ion-android-delete"></i>
+      Delete Card</a>
+  </ion-list>
+</ion-content>
+</ion-view>
