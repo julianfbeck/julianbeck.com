@@ -6,7 +6,7 @@ export default class Contact extends Component {
     return (
       <div style={{ paddingTop: "4em" }} className="contact" >
         <Header size="huge">Contact me</Header>
-        <Form className="contact" method="POST" netlify>
+        <Form method="POST" action="https://formspree.io/Kickbeck@googlemail.com">
           <Form.Field>
             <label>Email</label>
             <input required type="email" name="email" placeholder="Your email" />
