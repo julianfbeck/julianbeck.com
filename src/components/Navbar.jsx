@@ -38,11 +38,12 @@ export default class App extends Component {
             />
           </Menu>
         </Container>
-          <Container text>
+          <Container text>         
             <Route onEnter={fireTracking} exact path="/" component={Home} />
             <Route exact path="/blog" component={Blog} />
             <Route exact path="/blog/:id" component={Entries} />
             <Route path="/contact" component={Contact} />
+            
           </Container>
         </div>
       </HashRouter>
