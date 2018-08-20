@@ -10,8 +10,8 @@ const ionic = [
     {
         title: 'Flashcards',
         description: "Flashcard app build in Ionic, that helps you studying",
-        link: 'http://localhost:3001/Flashcards/',
-        store: "https://julianbeckionic.netlify.com/flashcards/#/app/courses",
+        link: 'https://julianbeckionic.netlify.com/flashcards/#/app/courses',
+        store: "https://play.google.com/store/apps/details?id=com.ionicframework.flashcards228577&hl=de",
         code: "https://github.com/jufabeck2202/IonicFlashcards"
 
     },
