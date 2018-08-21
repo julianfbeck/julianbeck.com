@@ -12,15 +12,15 @@ import Entries from "../scenes/Entries/Entries";
 import ReactGA from "react-ga";
 
 ReactGA.initialize('UA-123121612-1');
-
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 export default class App extends Component {
   render() {
     return (
       <HashRouter>
         <div>
-          <Container>
-            <Menu pointing secondary size="large" >
+          <div style={{ maxWidth: "70%", alignContent: "center"  ,marginLeft: "auto",marginRight: "auto"}}>
+            <Menu stackable pointing secondary size="large" >
               <Menu.Item
                 name='Home' exact as={NavLink} to="/"
               />
@@ -31,7 +31,7 @@ export default class App extends Component {
                 name='Contact' as={NavLink} to="/contact"
               />
             </Menu>
-          </Container>
+          </div>
           <Container text>
             <Route exact path="/" component={Home} />
             <Route exact path="/blog" component={Blog} />

@@ -5,6 +5,6 @@ import Nav from './components/Navbar';
 import { BrowserRouter } from 'react-router-dom'
 ReactDOM.render((
   <BrowserRouter>
-    <Nav />
+      <Nav />
   </BrowserRouter>
 ), document.getElementById('root'))
