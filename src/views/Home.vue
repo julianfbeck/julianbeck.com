@@ -1,7 +1,10 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="center">
+      <figure class="image is-128x128 center">
+        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+      </figure>
+    </div>
   </div>
 </template>
 
@@ -16,3 +19,10 @@ export default {
   }
 };
 </script>
+<style>
+.center {
+    margin: auto;
+    width: 50%;
+}
+</style>
+
