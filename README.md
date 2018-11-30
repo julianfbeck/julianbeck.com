@@ -1,5 +1,7 @@
-# persite
+# Personal Website
+Repository of my Personal [website](https://www.julianbeck.com)
 
+Written in Vue.js using Vue CLI 3
 ## Project setup
 ```
 yarn install
