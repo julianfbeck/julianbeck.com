@@ -16,10 +16,13 @@
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
           <router-link class="navbar-item" to="/">Home</router-link>
-          <router-link class="navbar-item" to="/about">
+          <router-link class="navbar-item" to="/projects">
             Project
           </router-link>
-
+          <router-link class="navbar-item" to="/contact">
+            Contact me
+          </router-link>
+        <!-- comment out dropdown
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               More
@@ -41,6 +44,7 @@
               </a>
             </div>
           </div>
+          -->
         </div>
       </div>
     </nav>
