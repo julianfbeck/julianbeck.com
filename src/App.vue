@@ -22,7 +22,7 @@
           <router-link class="navbar-item" to="/contact">
             Contact me
           </router-link>
-        <!-- comment out dropdown
+        <!-- comment out
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               More
@@ -57,7 +57,6 @@
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
