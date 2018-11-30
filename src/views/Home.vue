@@ -6,7 +6,7 @@
       </figure>
       <p class="title is-1">Julian Beck</p>
       <p class="subtitle is-4">Computer Science Student</p>
-      <p>Intrested in full Stack development & languages</p>
+      <p class="subtitle is-6"> Intrested in full Stack development & languages</p>
     </div>
     <a class="button is-medium" target="_blank" rel="noopener noreferrer" href="https://github.com/jufabeck2202">
       <span class="icon">
@@ -44,5 +44,11 @@ export default {
 .center {
   margin: auto;
   width: 50%;
+}
+.subtitle{
+  margin-bottom:  10px !important
+}
+.button{
+  margin: 3px
 }
 </style>
