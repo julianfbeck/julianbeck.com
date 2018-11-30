@@ -6,53 +6,43 @@
       </figure>
       <p class="title is-1">Julian Beck</p>
       <p class="subtitle is-4">Computer Science Student</p>
-      <p >Intrested in full Stack development & languages</p>
-
+      <p>Intrested in full Stack development & languages</p>
     </div>
-    <div class="field has-addons has-text-centered">
-      <p class="control">
-        <a class="button is-medium">
-          <span class="icon">
-            <font-awesome-icon :icon="['fab', 'github']" />
-          </span>
-          <span>GitHub</span>
-        </a>
-      </p>
-      <p class="control">
-        <a class="button is-medium">
-          <span class="icon is-medium">
-            <font-awesome-icon :icon="['fab', 'twitter']" />
-          </span>
-          <span>Twitter</span>
-        </a>
-      </p>
-      <p class="control">
-        <a class="button is-medium">
-          <span class="icon is-medium">
-            <font-awesome-icon :icon="['fab', 'linkedin']" />
-          </span>
-          <span>linkedin</span>
-        </a>
-      </p>
-    </div>
-
+    <a class="button is-medium" target="_blank" rel="noopener noreferrer" href="https://github.com/jufabeck2202">
+      <span class="icon">
+        <font-awesome-icon :icon="['fab', 'github']"/>
+      </span>
+      <span>GitHub</span>
+    </a>
+    <a class="button is-medium" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/kickbeak/">
+      <span class="icon is-medium">
+        <font-awesome-icon :icon="['fab', 'instagram']"/>
+      </span>
+      <span>Instagram</span>
+    </a>
+    <a  class="button is-medium" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/julian-beck/">
+      <span class="icon is-medium">
+        <font-awesome-icon :icon="['fab', 'linkedin']"/>
+      </span>
+      <span>linkedin</span>
+    </a>
   </div>
 </template>
 
 <script>
-  // @ is an alias to /src
-  import HelloWorld from "@/components/HelloWorld.vue";
+// @ is an alias to /src
+import HelloWorld from "@/components/HelloWorld.vue";
 
-  export default {
-    name: "home",
-    components: {
-      HelloWorld
-    }
-  };
+export default {
+  name: "home",
+  components: {
+    HelloWorld
+  }
+};
 </script>
 <style>
-  .center {
-    margin: auto;
-    width: 50%;
-  }
+.center {
+  margin: auto;
+  width: 50%;
+}
 </style>
