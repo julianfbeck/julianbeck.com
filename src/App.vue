@@ -2,18 +2,18 @@
   <div id="app">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" href="https://julianbeck.com">
           <img src="/img/julianBeck.png" width="112" height="28">
         </a>
 
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
+         <div class="navbar-burger burger" v-on:click="showNav = !showNav" v-bind:class="{ 'is-active' : showNav }" data-target="navbarExampleTransparentExample">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+        </div>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div id="navbarBasicExample" class="navbar-menu" v-bind:class="{ 'is-active' : showNav }">
         <div class="navbar-start">
           <router-link class="navbar-item" to="/">Home</router-link>
           <router-link class="navbar-item" to="/projects">
@@ -48,9 +48,23 @@
         </div>
       </div>
     </nav>
+    <transition
+        name="fade"
+        mode="out-in"
+      >
+      </transition>
     <router-view />
   </div>
 </template>
+<script>
+export default {
+   data() {
+        return {
+            showNav: false,
+        } 
+}
+}
+</script>
 
 <style>
 #app {
