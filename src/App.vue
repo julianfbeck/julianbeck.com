@@ -6,67 +6,55 @@
           <img src="/img/julianBeck.png" width="112" height="28">
         </a>
 
-         <div class="navbar-burger burger" v-on:click="showNav = !showNav" v-bind:class="{ 'is-active' : showNav }" data-target="navbarExampleTransparentExample">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+        <div
+          class="navbar-burger burger"
+          v-on:click="showNav = !showNav"
+          v-bind:class="{ 'is-active' : showNav }"
+          data-target="navbarExampleTransparentExample"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
 
       <div id="navbarBasicExample" class="navbar-menu" v-bind:class="{ 'is-active' : showNav }">
         <div class="navbar-start">
           <router-link class="navbar-item" to="/">Home</router-link>
-          <router-link class="navbar-item" to="/projects">
-            Project
-          </router-link>
-          <router-link class="navbar-item" to="/contact">
-            Contact me
-          </router-link>
-        <!-- comment out
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
-
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue
-              </a>
-            </div>
-          </div>
-          -->
+          <router-link class="navbar-item" to="/projects">Project</router-link>
+          <router-link class="navbar-item" to="/contact">Contact me</router-link>
         </div>
       </div>
     </nav>
     <transition
-        name="fade"
-        mode="out-in"
-      >
-      </transition>
-    <router-view />
+      name="router-anim"
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+    >
+      <router-view/>
+    </transition>
+    <footer class="footer">
+      <div class="has-text-centered">
+        <p>
+          <strong>Bulma</strong> by
+          <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+        </p>
+      </div>
+    </footer>
   </div>
 </template>
 <script>
 export default {
-   data() {
-        return {
-            showNav: false,
-        } 
-}
-}
+  data() {
+    return {
+      showNav: false
+    };
+  }
+};
 </script>
 
 <style>
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css";
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

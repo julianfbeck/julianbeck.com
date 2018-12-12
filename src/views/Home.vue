@@ -46,6 +46,7 @@ export default {
 <style>
 .home{
   text-align: center;
+  margin-top: 1em
 }
 .center {
   margin: auto;
