@@ -37,9 +37,6 @@ export default {
   name: "home",
   components: {
     HelloWorld
-  },
-  track () {
-    this.$ga.page('/home')
   }
 };
 </script>

@@ -13,7 +13,8 @@ import{faEnvelope} from "@fortawesome/free-solid-svg-icons"
 
 
 Vue.use(VueAnalytics, {
-  id: 'UA-123121612-1'
+  id: 'UA-123121612-1',
+  router
 })
 
 library.add(faGithub,faLinkedin,faTwitter,faInstagram,faEnvelope)
