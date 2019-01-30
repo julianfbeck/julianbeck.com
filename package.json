@@ -1,54 +1,27 @@
 {
-  "name": "julianbeck.com",
-  "version": "0.1.0",
+  "name": "t",
+  "version": "1.0.0",
+  "description": "Personal Website",
+  "author": "Julian Beck",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.8",
-    "@fortawesome/free-brands-svg-icons": "^5.5.0",
-    "@fortawesome/free-solid-svg-icons": "^5.5.0",
-    "@fortawesome/vue-fontawesome": "^0.1.2",
-    "bulma": "^0.7.2",
-    "register-service-worker": "^1.0.0",
-    "vue": "^2.5.17",
-    "vue-analytics": "^5.16.1",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "cross-env": "^5.2.0",
+    "nuxt": "^2.3.4",
+    "express": "^4.16.4",
+    "@nuxtjs/bulma": "^1.2.1",
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/pwa": "^2.6.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.5",
-    "@vue/cli-plugin-eslint": "^3.0.5",
-    "@vue/cli-plugin-pwa": "^3.0.5",
-    "@vue/cli-service": "^3.0.5",
-    "@vue/eslint-config-prettier": "^3.0.5",
-    "vue-template-compiler": "^2.5.17"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "@vue/prettier"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "nodemon": "^1.18.9",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "2.6.2",
+    "prettier": "1.14.3"
+  }
 }
