@@ -1,6 +1,8 @@
 <template>
   <div class="home">
     <div class="center">
+      <button           v-on:click='alert("test")'></button>
+
       <figure class="image is-128x128 center">
         <img class="is-rounded" src="https://avatars2.githubusercontent.com/u/7285926?s=460&v=4">
       </figure>
@@ -33,10 +35,7 @@
 <script>
 
 export default {
-  
   name: "home",
-
-
 };
 </script>
 <style>
