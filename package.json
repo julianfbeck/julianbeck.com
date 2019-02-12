@@ -11,17 +11,25 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "cross-env": "^5.2.0",
-    "nuxt": "^2.3.4",
-    "express": "^4.16.4",
-    "@nuxtjs/bulma": "^1.2.1",
+    "@fortawesome/fontawesome-free-brands": "^5.0.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.15",
+    "@fortawesome/free-brands-svg-icons": "^5.7.2",
+    "@fortawesome/free-solid-svg-icons": "^5.7.2",
+    "@fortawesome/vue-fontawesome": "^0.1.5",
     "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/pwa": "^2.6.0"
+    "@nuxtjs/bulma": "^1.2.1",
+    "@nuxtjs/pwa": "^2.6.0",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "nuxt": "^2.3.4",
+    "nuxt-fontawesome": "^0.4.0",
+    "qonfucius-nuxt-fontawesome": "^1.0.1",
+    "vue-analytics": "^5.16.2"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-prettier": "2.6.2",
+    "nodemon": "^1.18.9",
     "prettier": "1.14.3"
   }
 }

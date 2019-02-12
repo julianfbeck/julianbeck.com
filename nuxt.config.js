@@ -34,6 +34,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+   '~/plugins/vue-analytics'
   ],
 
   /*
@@ -44,8 +45,17 @@ module.exports = {
     '@nuxtjs/axios',
     // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    ['qonfucius-nuxt-fontawesome'], 
   ],
+  fontAwesome: {
+    packs: [
+      {
+        package: '@fortawesome/fontawesome-free-brands',
+        icons: ['faGithub',"faLinkedin","faInstagram"],
+      },
+    ],
+  },
   /*
   ** Axios module configuration
   */
