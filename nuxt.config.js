@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const path = require('path')
 
 
 module.exports = {
@@ -77,7 +78,16 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
+      config.module.rules.push({
+        test: /\.md$/,
+        loader: 'frontmatter-markdown-loader',
+        include: path.resolve(__dirname, 'contents'),
+        options: {
+          vue: {
+            root: "dynamicMarkdown"
+          }
+        }
+      });
     }
   }
 }
