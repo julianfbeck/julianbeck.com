@@ -1,3 +1,3 @@
 export default [
-    'test1',
+    'blog-using-vue-nuxt-markdown',
   ]

@@ -9,16 +9,10 @@
     },
 
     computed: {
-      initHighlightJs () {
-        let targets = document.querySelectorAll('code')
-        targets.forEach((target) => {
-          hljs.highlightBlock(target)
-        })
-      }
+ 
     },
 
     mounted() {
-      this.initHighlightJs
     },
 
     render: function (createElement) {
