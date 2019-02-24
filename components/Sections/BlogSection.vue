@@ -4,8 +4,7 @@
       <card
         v-for="blog in blogs"
         :key="blog.name"
-        :work="blog"
-        :isWork="false" />
+        :project="blog"/>
     </ul>
   </section>
 </template>

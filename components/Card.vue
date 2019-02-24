@@ -1,12 +1,12 @@
 <template>
   <li>
-    <nuxt-link :to="{ path: 'blogs/'+work.name, params: { slug: work.name }}">
+    <nuxt-link :to="{ path: 'blogs/'+project.name, params: { slug: project.name }}">
       <div class="">
         <h3>
-          {{ work.title }}
+          {{ project.title }}
         </h3>
         <h3>
-          {{ work.description }}
+          {{ project.description }}
         </h3>
       </div>
     </nuxt-link>
@@ -16,14 +16,11 @@
 <script lang="js">
   export default {
     props: {
-      work: {
+      project: {
         type: Object
       },
       article: {
         type: Object
-      },
-      isWork: {
-        type: Boolean
       }
     },
 
