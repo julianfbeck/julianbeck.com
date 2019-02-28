@@ -8,14 +8,14 @@
 
 <script>
   import BlogSection from "~/components/Sections/BlogSection"
-  import blogs from '~/contents/blogs.js'
+  import blogs from '~/contents/projects.js'
 
   export default {
     async asyncData ({store}) {
 
       
       async function asyncImport (blogName) {
-        const wholeMD = await import(`~/contents/blogs/${blogName}.md`)
+        const wholeMD = await import(`~/contents/projects/${blogName}.md`)
         return wholeMD.attributes
       }
 
