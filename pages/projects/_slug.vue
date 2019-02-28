@@ -88,6 +88,29 @@
   }
 </script>
 
-<style >
+<style lang="scss">
+.dynamicMarkdown {
+  code {
+    background: #f3f4f4;
+    border-radius: 4px;
+    display: inline;
+    color: #030303;
+    font-size: 14px;
+    padding: .2em .4em;
+  }
+  pre {
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+    padding: 2.4rem;
+    border-radius: 4px;
+    background-color: #f6f8fa;
+    overflow-x: scroll;
+    display: block;
+    margin-bottom: 5rem;
+    code {
+      background-color: #f6f8fa;
+    }
+  }
+}
+
 
 </style>
