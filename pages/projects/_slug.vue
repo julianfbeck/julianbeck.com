@@ -35,7 +35,7 @@
   export default {
 
     async asyncData ({params, store}) {
-      const fileContent = await import(`~/contents/blogs/${params.slug}.md`)
+      const fileContent = await import(`~/contents/projects/${params.slug}.md`)
       const attr = fileContent.attributes
       return {
         name: params.slug,
@@ -65,7 +65,7 @@
       return {
         title: this.pageTitle,
         meta: [
-          { name: "author", content: "Marina Aisa" },
+          { name: "author", content: "Julian Beck" },
           { name: "description", property: "og:description", content: this.description, hid: "description" },
           { property: "og:title", content: this.pageTitle },
           { property: "og:image", content: this.ogImage },
