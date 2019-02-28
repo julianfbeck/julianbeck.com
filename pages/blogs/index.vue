@@ -32,7 +32,7 @@
     head () {
       return {
         meta: [
-          { name: "author", content: "Marina Aisa" },
+          { name: "author", content: "Julian Beck" },
         ]
       }
     },
@@ -44,6 +44,6 @@
 </script>
 <style >
 .page-blog {
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 </style>
