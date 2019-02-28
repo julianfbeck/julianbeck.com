@@ -1,6 +1,6 @@
 <template>
   <li>
-    <nuxt-link :to="{ path: 'blogs/'+project.name, params: { slug: project.name }}">
+    <nuxt-link :to="{ path: 'projects/'+project.name, params: { slug: project.name }}">
       <div class="box">
         <h3 class="is-size-4">
           {{ project.title }}
