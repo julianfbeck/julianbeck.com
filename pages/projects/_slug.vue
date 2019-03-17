@@ -110,6 +110,9 @@
       background-color: #f6f8fa;
     }
   }
+  h1{
+    class: blue;
+  }
 }
 
 
