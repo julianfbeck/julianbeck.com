@@ -46,6 +46,7 @@ module.exports = {
     // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
     '@nuxtjs/pwa',
+    '@nuxtjs/auth',
     ['qonfucius-nuxt-fontawesome'], 
   ],
   fontAwesome: {
@@ -62,6 +63,16 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
+  auth: {
+    // Options
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/'
+    }
+  },
+
 
   /*
   ** Build configuration

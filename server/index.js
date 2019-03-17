@@ -1,6 +1,11 @@
 const express = require('express')
 const consola = require('consola')
-const { Nuxt, Builder } = require('nuxt')
+const api = require("./api")
+const {
+  Nuxt,
+  Builder
+} = require('nuxt')
+const bodyParser = require("body-parser")
 const app = express()
 
 // Import and Set Nuxt.js options
@@ -13,7 +18,7 @@ async function start() {
 
   const {
     host = process.env.HOST || '127.0.0.1',
-    port = process.env.PORT || 3000
+      port = process.env.PORT || 3000
   } = nuxt.options.server
 
   // Build only in dev mode
@@ -21,7 +26,12 @@ async function start() {
     const builder = new Builder(nuxt)
     await builder.build()
   }
+  app.use('/api', api)
 
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }))
   // Give nuxt middleware to express
   app.use(nuxt.render)
 
