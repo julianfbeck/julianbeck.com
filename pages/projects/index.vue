@@ -12,8 +12,6 @@
 
   export default {
     async asyncData ({store}) {
-
-      
       async function asyncImport (blogName) {
         const wholeMD = await import(`~/contents/projects/${blogName}.md`)
         return wholeMD.attributes

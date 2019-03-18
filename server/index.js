@@ -28,8 +28,7 @@ async function start() {
     const builder = new Builder(nuxt)
     await builder.build()
   }
-  app.use('/api', api)
-
+  
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({
     extended: true
@@ -43,6 +42,14 @@ async function start() {
       maxAge: 60000
     }
   }))
+  app.use((req, res, next) => {
+    Object.setPrototypeOf(req, app.request)
+    Object.setPrototypeOf(res, app.response)
+    req.res = res
+    res.req = req
+    next()
+  })
+  app.use('/api', api)
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
