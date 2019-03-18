@@ -7,6 +7,8 @@ const {
 } = require('nuxt')
 const bodyParser = require("body-parser")
 const app = express()
+const session = require('express-session')
+
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
@@ -32,6 +34,16 @@ async function start() {
   app.use(bodyParser.urlencoded({
     extended: true
   }))
+  // Sessions to create `req.session`
+  app.use(session({
+    secret: 'super-secret-key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 60000
+    }
+  }))
+
   // Give nuxt middleware to express
   app.use(nuxt.render)
 
