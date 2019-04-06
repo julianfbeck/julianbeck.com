@@ -28,7 +28,7 @@
     "frontmatter-markdown-loader": "^1.6.0",
     "highlight.js": "^9.15.6",
     "node-sass": "^4.11.0",
-    "nuxt": "^2.4.5",
+    "nuxt": "^2.6.1",
     "nuxt-fontawesome": "^0.4.0",
     "qonfucius-nuxt-fontawesome": "^1.0.1",
     "sass-loader": "^7.1.0",
