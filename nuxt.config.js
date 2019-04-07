@@ -45,6 +45,7 @@ module.exports = {
     '@nuxtjs/bulma',
     'nuxt-buefy',
     '@nuxtjs/pwa',
+    '@nuxtjs/auth',
     '@nuxtjs/axios',
     ['qonfucius-nuxt-fontawesome'], 
   ],

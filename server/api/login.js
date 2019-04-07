@@ -3,7 +3,6 @@ const router = express.Router();
 
 
 router.post('/login', (req, res) => {
-  console.log("login")
     if (req.body.username === 'demo' && req.body.password === 'demo') {
       req.session.authUser = { username: 'demo' }
       return res.json({ username: 'demo' })

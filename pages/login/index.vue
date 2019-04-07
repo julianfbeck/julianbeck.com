@@ -14,15 +14,15 @@
     </form>
     <div v-else>
       Hello {{ $store.state.authUser.username }}!
-      <HostList :hosts="hosts"/>
+      <NuxtLink to="/set">
+        Logged in devices
+      </NuxtLink>
       <button @click="logout">
         Logout
       </button>
     </div>
     <p>
-      <NuxtLink to="/secret">
-        Super secret page
-      </NuxtLink>
+ 
     </p>
   </div>
 </template>
@@ -36,7 +36,6 @@ export default {
       formError: null,
       formUsername: '',
       formPassword: '',
-      sessionId:"5ca7bb3c73c8c7781bb72402"
     }
   },
   async asyncData({ $axios }) {
