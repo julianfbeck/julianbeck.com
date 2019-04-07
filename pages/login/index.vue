@@ -1,11 +1,11 @@
 <template>
   <div class="container">
+    <HostList :hosts="hosts"/>
     <h1>Please login to see the secret content</h1>
     <form v-if="!$store.state.authUser" @submit.prevent="login">
       <p v-if="formError" class="error">
         {{ formError }}
       </p>
-      {{ip}}
       <p><i>To login, use <b>demo</b> as username and <b>demo</b> as password.</i></p>
       <p>Username: <input v-model="formUsername" type="text" name="username"></p>
       <p>Password: <input v-model="formPassword" type="password" name="password"></p>
@@ -17,7 +17,6 @@
       Hello {{ $store.state.authUser.username }}!
       <pre>I am the secret content, I am shown only when the use is connected.</pre>
       <p><i>You can also refresh this page, you'll still be connected!</i></p>
-      <HostList :hosts="hosts"/>
       <button @click="logout">
         Logout
       </button>
