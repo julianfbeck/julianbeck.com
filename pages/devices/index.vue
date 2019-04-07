@@ -11,7 +11,7 @@ export default {
   components: { HostList },
   async asyncData({ $axios }) {
     const hosts = await $axios.$get(
-      "http://localhost:3001/user/5ca7bb3c73c8c7781bb72402/hosts"
+      "http://localhost:3001/user/5caa44d072255e2383da700c/hosts"
     );
     return { hosts: hosts };
   }
