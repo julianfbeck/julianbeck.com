@@ -5,8 +5,9 @@ const jwt = require('express-jwt')
 const jsonwebtoken = require('jsonwebtoken')
 
 const app = express()
-const host = process.env.HOST || '127.0.0.1'
-const port = process.env.PORT || 3000
+const host = process.env.NUXT_HOST || '127.0.0.1'
+console.log("Host", host)
+const port = process.env.NUXT_PORT || 3000
 
 app.set('port', port)
 
