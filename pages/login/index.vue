@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <HostList :hosts="hosts"/>
-    <h1>Please login to see the secret content</h1>
+    <h1>Please login to see this page</h1>
     <form v-if="!$store.state.authUser" @submit.prevent="login">
       <p v-if="formError" class="error">
         {{ formError }}
@@ -15,8 +14,7 @@
     </form>
     <div v-else>
       Hello {{ $store.state.authUser.username }}!
-      <pre>I am the secret content, I am shown only when the use is connected.</pre>
-      <p><i>You can also refresh this page, you'll still be connected!</i></p>
+      <HostList :hosts="hosts"/>
       <button @click="logout">
         Logout
       </button>

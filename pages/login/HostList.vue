@@ -7,7 +7,8 @@
 
 
         <b-table-column field="date" label="Last seen" centered>
-          <span class="tag is-success">{{ new Date(host.row.lastSeen).toLocaleDateString() }}</span>
+          <span  v-if="host.row.status" class="tag is-success">now</span>
+          <span v-else class="tag is-danger">{{ host.row.lastSeen }}</span>
         </b-table-column>
 
         <b-table-column label="Status">
