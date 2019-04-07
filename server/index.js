@@ -1,14 +1,14 @@
 const express = require('express')
-const consola = require('consola')
-const api = require("./api")
-const {
-  Nuxt,
-  Builder
-} = require('nuxt')
-const bodyParser = require("body-parser")
-const app = express()
-const session = require('express-session')
+const { Nuxt, Builder } = require('nuxt')
+const bodyParser = require('body-parser')
+const jwt = require('express-jwt')
+const jsonwebtoken = require('jsonwebtoken')
 
+const app = express()
+const host = process.env.HOST || '127.0.0.1'
+const port = process.env.PORT || 3000
+
+app.set('port', port)
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
@@ -18,47 +18,41 @@ async function start() {
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
 
-  const {
-    host = process.env.HOST || '127.0.0.1',
-      port = process.env.PORT || 3000
-  } = nuxt.options.server
-
   // Build only in dev mode
   if (config.dev) {
     const builder = new Builder(nuxt)
     await builder.build()
   }
-  
   app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({
-    extended: true
-  }))
-  // Sessions to create `req.session`
-  app.use(session({
-    secret: 'super-secret-key',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 60000
-    }
-  }))
-  app.use((req, res, next) => {
-    Object.setPrototypeOf(req, app.request)
-    Object.setPrototypeOf(res, app.response)
-    req.res = res
-    res.req = req
-    next()
-  })
-  app.use('/api', api)
+  app.post('/api/auth/login', (req, res) => {
+    const { username, password } = req.body
 
+    const valid = username.length && password === '123'
+
+    if (!valid) {
+      throw new Error('Invalid username or password')
+    }
+
+    const accessToken = jsonwebtoken.sign({ username }, 'dummy')
+
+    res.json({ token: accessToken })
+  })
+
+  app.post('/api/auth/logout', (req, res, next) => {
+    res.json({ status: 'OK' })
+  })
+  app.get('/api/auth/user', jwt({secret: 'dummy'}), (req, res, next) => {
+    res.json({ user: req.user })
+  })
   // Give nuxt middleware to express
   app.use(nuxt.render)
 
+  app.use((err, req, res, next) => {
+    console.error(err) // eslint-disable-line no-console
+    res.status(401).send(err + '')
+  })
   // Listen the server
   app.listen(port, host)
-  consola.ready({
-    message: `Server listening on http://${host}:${port}`,
-    badge: true
-  })
+  console.log('Server listening on http://' + host + ':' + port) // eslint-disable-line no-console
 }
 start()
