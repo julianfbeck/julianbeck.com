@@ -57,7 +57,7 @@ async function start() {
     res.status(401).send(err + '')
   })
   // Listen the server
-  app.listen(port, host)
+  app.listen(port)
   console.log('Server listening on http://' + host + ':' + port) // eslint-disable-line no-console
 }
 start()
