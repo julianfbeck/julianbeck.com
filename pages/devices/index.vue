@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container is-fluid">
     <HostList :hosts="hosts"/>
     <NuxtLink to="/">Back to the home page</NuxtLink>
   </div>

@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container">
+  <div class="container is-fluid">
     <form @submit.prevent="requestLogin">
 
       <b-field label="Username"  type="is-success">

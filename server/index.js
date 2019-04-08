@@ -3,6 +3,8 @@ const { Nuxt, Builder } = require('nuxt')
 const bodyParser = require('body-parser')
 const jwt = require('express-jwt')
 const jsonwebtoken = require('jsonwebtoken')
+const cors = require("cors")
+
 
 const app = express()
 const host = process.env.NUXT_HOST || '127.0.0.1'
@@ -24,6 +26,7 @@ async function start() {
     const builder = new Builder(nuxt)
     await builder.build()
   }
+  app.use(cors())
   app.use(bodyParser.json())
   app.post('/api/auth/login', (req, res) => {
     console.log(req.body)
