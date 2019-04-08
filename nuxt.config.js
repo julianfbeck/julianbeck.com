@@ -64,9 +64,9 @@ module.exports = {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
-          logout: { url: '/api/auth/logout', method: 'post' },
-          user: { url: '/api/auth/user', method: 'get', propertyName: 'user' }
+          login: { baseURL:"https://julianbeck.de/", url: '/api/auth/login', method: 'post', propertyName: 'token' },
+          logout: { baseURL:"https://julianbeck.de/",url: '/api/auth/logout', method: 'post' },
+          user: {baseURL:"https://julianbeck.de/" ,url: '/api/auth/user', method: 'get', propertyName: 'user' }
         },
         // tokenRequired: true,
         // tokenType: 'bearer',
