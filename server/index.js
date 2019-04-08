@@ -26,6 +26,7 @@ async function start() {
   }
   app.use(bodyParser.json())
   app.post('/api/auth/login', (req, res) => {
+    console.log(req.body)
     const { username, password } = req.body
 
     const valid = username.length && password === '123'

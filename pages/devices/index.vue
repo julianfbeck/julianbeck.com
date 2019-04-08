@@ -11,7 +11,7 @@ export default {
   components: { HostList },
   async asyncData({ $axios }) {
     const hosts = await $axios.$get(
-      "http://localhost:3001/user/5caa44d072255e2383da700c/hosts"
+      "https://api.julianbeck.de/user/5caafbd7742a7432bee00135/hosts"
     );
     return { hosts: hosts };
   }
