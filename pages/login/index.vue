@@ -4,11 +4,11 @@
     <form @submit.prevent="requestLogin">
 
       <b-field label="Username"  type="is-success">
-        <b-input v-model="form.username" value="123" maxlength="30"></b-input>
+        <b-input v-model="form.username"  maxlength="30"></b-input>
       </b-field>
 
       <b-field label="Password">
-        <b-input type="password" v-model="form.password" value="" message="pw is 123" ></b-input>
+        <b-input type="password" v-model="form.password" value="" ></b-input>
       </b-field>
       <input type="submit" class="button is-fullwidth">
     </form>
@@ -43,3 +43,8 @@ export default {
   }
 };
 </script> 
+<style>
+div {
+  margin: 2px;
+}
+</style>

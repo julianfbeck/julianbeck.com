@@ -18,3 +18,8 @@ export default {
   }
 };
 </script>
+<style>
+.container{
+  margin: 3px
+}
+</style>
