@@ -1,5 +1,6 @@
 <template>
-  <div class="home">
+<section class="intro">
+  <div class="intro-content">
     <div class="center">
       <figure class="image is-128x128 center">
         <img class="is-rounded" src="https://avatars2.githubusercontent.com/u/7285926?s=460&v=4">
@@ -26,8 +27,8 @@
       </span>
       <span>linkedin</span>
     </a>
-
   </div>
+</section>
 </template>
 
 <script>
@@ -38,9 +39,10 @@ export default {
 };
 </script>
 <style>
-.home{
+.intro-content{
   text-align: center;
-  margin-top: 1em
+  margin-top: 1em;
+  
 }
 .center {
   margin: auto;
