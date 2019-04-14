@@ -46,6 +46,7 @@ module.exports = {
     'nuxt-buefy',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
+    'vue-scrollto/nuxt',
     '@nuxtjs/axios',
     ['qonfucius-nuxt-fontawesome'], 
   ],

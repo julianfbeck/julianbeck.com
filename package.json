@@ -36,6 +36,7 @@
     "qonfucius-nuxt-fontawesome": "^1.0.1",
     "sass-loader": "^7.1.0",
     "vue-analytics": "^5.16.4",
+    "vue-scrollto": "^2.15.0",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
