@@ -7,7 +7,7 @@
           Hello! I am
           <h1 class="title is-1">Julian Beck</h1>
           <h2 class="subtitle is-3">Computer Science Student</h2>
-          <a class="button is-primary" v-scroll-to="'#about'">Learn more</a>
+          <a class="button is-danger" v-scroll-to="'#about'">Learn more</a>
         </div>
       </div>
     </section>
@@ -263,7 +263,7 @@ export default {
 <style>
 
 #intro {
-  background: #151515 url(/wp-content/themes/jethromay/assets/images/intro.jpg)
+  background: #151515 url("~assets/images/background.jpg")
     no-repeat center bottom;
   background-size: cover;
 }

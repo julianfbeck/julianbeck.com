@@ -6,40 +6,50 @@ module.exports = {
   mode: 'universal',
 
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     title: pkg.name,
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+    meta: [{
+        charset: 'utf-8'
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content: pkg.description
+      }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '/favicon.ico'
+    }]
   },
 
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
+   ** Customize the progress-bar color
+   */
+  loading: {
+    color: '#fff'
+  },
 
   /*
-  ** Global CSS
-  */
-  css: [
-  ],
+   ** Global CSS
+   */
+  css: [],
 
   /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-  ],
+   ** Plugins to load before mounting the App
+   */
+  plugins: [],
 
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
@@ -48,15 +58,13 @@ module.exports = {
     '@nuxtjs/auth',
     'vue-scrollto/nuxt',
     '@nuxtjs/axios',
-    ['qonfucius-nuxt-fontawesome'], 
+    ['qonfucius-nuxt-fontawesome']
   ],
   fontAwesome: {
-    packs: [
-      {
-        package: '@fortawesome/fontawesome-free-brands',
-        icons: ['faGithub',"faLinkedin","faInstagram"],
-      },
-    ],
+    packs: [{
+      package: '@fortawesome/fontawesome-free-brands',
+      icons: ['faGithub', "faLinkedin", "faInstagram"],
+    }, ],
   },
   axios: {
     // proxyHeaders: false
@@ -65,23 +73,37 @@ module.exports = {
     strategies: {
       local: {
         endpoints: {
-          login: { baseURL:"https://julianbeck.de/", url: '/api/auth/login', method: 'post', propertyName: 'token' },
-          logout: { baseURL:"https://julianbeck.de/",url: '/api/auth/logout', method: 'post' },
-          user: {baseURL:"https://julianbeck.de/" ,url: '/api/auth/user', method: 'get', propertyName: 'user' }
+          login: {
+            baseURL: "https://julianbeck.de/",
+            url: '/api/auth/login',
+            method: 'post',
+            propertyName: 'token'
+          },
+          logout: {
+            baseURL: "https://julianbeck.de/",
+            url: '/api/auth/logout',
+            method: 'post'
+          },
+          user: {
+            baseURL: "https://julianbeck.de/",
+            url: '/api/auth/user',
+            method: 'get',
+            propertyName: 'user'
+          }
         },
         // tokenRequired: true,
         // tokenType: 'bearer',
       }
     },
-    redirect:{
+    redirect: {
       home: "/devices"
     }
   },
- 
+
 
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     postcss: {
       preset: {
@@ -91,8 +113,8 @@ module.exports = {
       }
     },
     /*
-    ** You can extend webpack config here
-    */
+     ** You can extend webpack config here
+     */
     extend(config, ctx) {
       config.module.rules.push({
         test: /\.md$/,
