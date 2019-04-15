@@ -19,7 +19,7 @@
           <nuxt-link class="navbar-item" to="/">Home</nuxt-link>
           <nuxt-link class="navbar-item" to="/projects">Project</nuxt-link>
           <nuxt-link class="navbar-item" to="/devices">Devices</nuxt-link>
-          <nuxt-link class="navbar-item" to="/contact">Contact me</nuxt-link>
+          <nuxt-link class="navbar-item" to="/testside" v-scroll-to="'#contact'">Contact me</nuxt-link>
         </div>
       </div>
     </nav>

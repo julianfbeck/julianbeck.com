@@ -7,42 +7,71 @@
           Hello! I am
           <h1 class="title is-1">Julian Beck</h1>
           <h2 class="subtitle is-3">Computer Science Student</h2>
-          <a class="button is-danger" v-scroll-to="'#about'">Learn more</a>
+          <a class="button is-danger is-medium" v-scroll-to="'#about'">Learn more</a>
         </div>
       </div>
     </section>
 
     <!-- About -->
-    <section class="section" id="about">
+    <section class="hero is-fullheight-with-navbar" id="about">
       <!-- Title -->
-      <div class="section-heading container is-fluid">
-        <h3 class="title is-2">About Me</h3>
-
+      <div class="hero-body container is-fluid">
         <div class="columns">
-          <div class="column is-one-third">
-            <img src="https://avatars2.githubusercontent.com/u/7285926?s=460&v=4">
+          <div class="column is-one-quarter">
+            <img class="profile-image" src="~assets/images/Profile.jpg">
           </div>
           <div class="column">
-            <h4 class="subtitle">Jack of all trades, master of "some"</h4>
+            <h1 class="title is-1">About me</h1>
             <div>
               <p>
-                Web developer with more than
-                <strong>4 years</strong> of well-rounded experience with a degree in the
-                field of
-                <strong>Computer Science</strong>, extensive knowledge of modern Web techniques and love for
-                <strong>Coffee</strong>.
-                Looking for an opportunity to work and upgrade, as well as being involved in an organization that
-                believes
-                in gaining a competitive edge and giving back to the community.
+                I'm a computer science student at the University of applied sciences in Karlsruhe.
+                Currently I have a huge intrest in learning Web techniques and Full Stack development as well es native App development.
+                Besides that i love drinking coffee and seeing the world!
               </p>
+              <br>
             </div>
+
+            <a
+              class="button is-medium"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/jufabeck2202"
+            >
+              <span class="icon">
+                <fa-icon :icon="['fab', 'github']"/>
+              </span>
+              <span>GitHub</span>
+            </a>
+            <a
+              class="button is-medium"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.instagram.com/kickbeak/"
+            >
+              <span class="icon is-medium">
+                <fa-icon :icon="['fab', 'instagram']"/>
+              </span>
+              <span>Instagram</span>
+            </a>
+            <a
+              class="button is-medium"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/julian-beck/"
+            >
+              <span class="icon is-medium">
+                <fa-icon :icon="['fab', 'linkedin']"/>
+              </span>
+              <span>linkedin</span>
+            </a>
+            <a class="button is-danger is-medium" v-scroll-to="'#contact'">contact me</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Contact -->
-    <section class="section" id="contact">
+    <section class="section " id="contact">
       <div class="container is-fluid">
         <div class="section-heading">
           <h3 class="title is-2">Contact</h3>
@@ -50,46 +79,40 @@
         </div>
         <br>
 
-        <div class="columns">
-          <div class="column is-6 is-offset-3">
-            <div class="box">
-              <div class="field">
-                <label class="label">Name</label>
-                <div class="control">
-                  <input class="input" type="text" placeholder="Text input">
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Email</label>
-                <div class="control has-icons-left">
-                  <input class="input" type="email" placeholder="Email input" value>
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
-                  </span>
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Message</label>
-                <div class="control">
-                  <textarea class="textarea" placeholder="Textarea"></textarea>
-                </div>
-              </div>
-
-              <div class="field is-grouped has-text-centered">
-                <div class="control">
-                  <button class="button is-link is-large">
-                    <span class="icon">
-                      <i class="fas fa-envelope"></i>
-                    </span>
-                    <span>Submit</span>
-                  </button>
-                </div>
-              </div>
+        <form method="POST" action="https://formspree.io/Kickbeck@googlemail.com">
+          <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+              <input class="input" type="text" name="your name" placeholder="Your Name">
             </div>
           </div>
-        </div>
+
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input
+                class="input is-success"
+                type="email"
+                name="_replyto"
+                placeholder="your email"
+                value
+              >
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Message</label>
+            <div class="control">
+              <textarea class="textarea" placeholder="Your message" name="message"></textarea>
+            </div>
+          </div>
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button type="submit" class="button is-link" value="Send">Submit</button>
+            </div>
+          </div>
+        </form>
       </div>
     </section>
 
@@ -114,6 +137,9 @@ export default {
     bottom;
   background-size: cover;
 }
+.profile-image {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
 @media only screen and (max-width: 700px) {
   #intro {
@@ -123,12 +149,9 @@ export default {
   }
 }
 @media (min-width: 1025px) {
-  
-  .container{
+  .container {
     margin-left: 128px !important;
     margin-right: 128px !important;
-
   }
-  
 }
 </style>
