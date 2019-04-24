@@ -30,9 +30,10 @@ async function start() {
   app.use(bodyParser.json())
   app.post('/api/auth/login', (req, res) => {
     console.log(req.body)
+    console.log(process.env.PASSWORD)
     const { username, password } = req.body
 
-    const valid = username.length && password === '123'
+    const valid = username.length && password === process.env.PASSWORD
 
     if (!valid) {
       throw new Error('Invalid username or password')
