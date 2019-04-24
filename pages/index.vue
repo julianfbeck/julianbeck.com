@@ -30,9 +30,9 @@
               </p>
               <br>
             </div>
-
+            
             <a
-              class="button is-medium"
+              class="lbutton button is-medium"
               target="_blank"
               rel="noopener noreferrer"
               href="https://github.com/jufabeck2202"
@@ -43,7 +43,7 @@
               <span>GitHub</span>
             </a>
             <a
-              class="button is-medium"
+              class="lbutton button is-medium"
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.instagram.com/kickbeak/"
@@ -54,7 +54,7 @@
               <span>Instagram</span>
             </a>
             <a
-              class="button is-medium"
+              class="button lbutton is-medium"
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.linkedin.com/in/julian-beck/"
@@ -64,7 +64,7 @@
               </span>
               <span>linkedin</span>
             </a>
-            <a class="button is-danger is-medium" v-scroll-to="'#contact'">contact me</a>
+            <a class="lbutton button is-danger is-medium" v-scroll-to="'#contact'">contact me</a>
           </div>
         </div>
       </div>
@@ -140,7 +140,9 @@ export default {
 .profile-image {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
+.lbutton{
+  margin: 2px
+}
 @media only screen and (max-width: 700px) {
   #intro {
     background: #151515 url("~assets/images/background2.jpg") no-repeat center

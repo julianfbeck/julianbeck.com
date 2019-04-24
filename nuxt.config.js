@@ -58,7 +58,10 @@ module.exports = {
     '@nuxtjs/auth',
     'vue-scrollto/nuxt',
     '@nuxtjs/axios',
-    ['qonfucius-nuxt-fontawesome']
+    ['qonfucius-nuxt-fontawesome'],
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-123121612-1'
+    }]
   ],
   fontAwesome: {
     packs: [{
