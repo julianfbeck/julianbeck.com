@@ -1,6 +1,6 @@
 <template>
   <div class="contact container">
-    <form method="POST" action="https://formspree.io/Kickbeck@googlemail.com">
+    <form method="POST" action="https://formspree.io/mail@julianbeck.com">
       <div class="field">
         <label class="label">Name</label>
         <div class="control">
