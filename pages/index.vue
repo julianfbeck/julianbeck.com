@@ -25,12 +25,12 @@
             <div>
               <p>
                 I'm a computer science student at the University of applied sciences in Karlsruhe.
-                Currently I have a huge intrest in learning Web techniques and Full Stack development as well es native App development.
-                Besides that i love drinking coffee and seeing the world!
+                Currently, I have a huge interest in learning Web techniques and Full Stack development as well as native App development. 
+                Besides that I love drinking coffee and seeing the world!
               </p>
               <br>
             </div>
-            
+
             <a
               class="lbutton button is-medium"
               target="_blank"
@@ -71,7 +71,7 @@
     </section>
 
     <!-- Contact -->
-    <section class="section " id="contact">
+    <section class="section" id="contact">
       <div class="container is-fluid">
         <div class="section-heading">
           <h3 class="title is-2">Contact</h3>
@@ -140,8 +140,8 @@ export default {
 .profile-image {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.lbutton{
-  margin: 2px
+.lbutton {
+  margin: 2px;
 }
 @media only screen and (max-width: 700px) {
   #intro {
