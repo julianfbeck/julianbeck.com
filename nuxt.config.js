@@ -77,18 +77,18 @@ module.exports = {
       local: {
         endpoints: {
           login: {
-            baseURL: "https://julianbeck.de/",
+            baseURL: "https://julianbeck.com/",
             url: '/api/auth/login',
             method: 'post',
             propertyName: 'token'
           },
           logout: {
-            baseURL: "https://julianbeck.de/",
+            baseURL: "https://julianbeck.com/",
             url: '/api/auth/logout',
             method: 'post'
           },
           user: {
-            baseURL: "https://julianbeck.de/",
+            baseURL: "https://julianbeck.com/",
             url: '/api/auth/user',
             method: 'get',
             propertyName: 'user'
