@@ -12,7 +12,7 @@ export default {
   middleware: 'auth',
   async asyncData({ $axios }) {
     const hosts = await $axios.$get(
-      "https://api.julianbeck.de/user/5caafbd7742a7432bee00135/hosts"
+      "https://api.julianbeck.com/user/5cdda570f593ba4893456066/hosts"
     );
     return { hosts: hosts };
   }

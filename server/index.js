@@ -33,7 +33,7 @@ async function start() {
     console.log(process.env.PASSWORD)
     const { username, password } = req.body
 
-    const valid = username.length && password === 123
+    const valid = password === 123
 
     if (!valid) {
       throw new Error('Invalid username or password')
@@ -46,10 +46,11 @@ async function start() {
 
   app.post('/api/auth/logout', (req, res, next) => {
     res.json({ status: 'OK' })
-  })
-  app.get('/api/auth/user', jwt({secret: 'dummy'}), (req, res, next) => {
+  });
+
+  app.get('/api/auth/user', jwt({secret: 'dummy'}), (req, res, ) => {
     res.json({ user: req.user })
-  })
+  });
   // Give nuxt middleware to express
   app.use(nuxt.render)
 
