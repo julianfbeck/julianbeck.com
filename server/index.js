@@ -33,7 +33,7 @@ async function start() {
     console.log(process.env.PASSWORD)
     const { username, password } = req.body
 
-    const valid = password === 123
+    const valid = password === process.env.PASSWORD
 
     if (!valid) {
       throw new Error('Invalid username or password')
