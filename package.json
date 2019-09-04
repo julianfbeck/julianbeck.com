@@ -31,7 +31,7 @@
     "highlight.js": "^9.15.6",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
-    "nuxt": "^2.6.1",
+    "nuxt": "^2.9.2",
     "nuxt-buefy": "^0.3.4",
     "nuxt-fontawesome": "^0.4.0",
     "qonfucius-nuxt-fontawesome": "^1.0.1",
