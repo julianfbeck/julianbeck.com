@@ -17,7 +17,7 @@
       <div id="navbarBasicExample" class="navbar-menu" v-bind:class="{ 'is-active' : showNav }">
         <div class="navbar-start">
           <nuxt-link class="navbar-item" to="/">Home</nuxt-link>
-          <nuxt-link class="navbar-item" to="/projects">Project</nuxt-link>
+          <nuxt-link class="navbar-item" to="/projects">Tools</nuxt-link>
           <nuxt-link class="navbar-item" to="/devices">Devices</nuxt-link>
           <nuxt-link class="navbar-item" to="/" v-scroll-to="'#contact'">Contact me</nuxt-link>
         </div>

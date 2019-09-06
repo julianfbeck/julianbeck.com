@@ -120,7 +120,7 @@
     <footer class="footer">
       <div class="section-heading">
         <p>
-          <strong>My personal Website is made using the amazing Nuxt.js libary</strong>
+          <strong>I made this side with 💚 using Nuxt.js </strong>
         </p>
       </div>
     </footer>
