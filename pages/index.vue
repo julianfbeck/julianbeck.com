@@ -120,7 +120,7 @@
     <footer class="footer">
       <div class="section-heading">
         <p>
-          <strong>Personal website</strong>
+          <strong>My personal Website is made using the amazing Nuxt.js libary</strong>
         </p>
       </div>
     </footer>
@@ -155,5 +155,12 @@ export default {
     margin-left: 128px !important;
     margin-right: 128px !important;
   }
+}
+#contact{
+  margin-bottom: 300px;
+
+}
+footer{
+   text-align: center;
 }
 </style>
