@@ -44,7 +44,5 @@ export default {
 };
 </script> 
 <style>
-div {
-  margin: 2px;
-}
+
 </style>

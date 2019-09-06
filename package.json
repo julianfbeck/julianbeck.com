@@ -29,6 +29,7 @@
     "express-session": "^1.15.6",
     "frontmatter-markdown-loader": "^1.6.0",
     "highlight.js": "^9.15.6",
+    "isomorphic-unfetch": "^3.0.0",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
     "nuxt": "^2.9.2",
