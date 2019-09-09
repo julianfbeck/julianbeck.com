@@ -1,5 +1,5 @@
 <template>
-  <div class="blogSelected">
+  <div class="blogSelected content">
     <div class="intro">
       <div class="elevate-cover">
         <div class="elevate-cover__textOffset">
@@ -19,12 +19,9 @@
       </div>
     </div>
     <div class="container small">
-    <div class="content">
-
       <DynamicMarkdown
         :render-func="renderFunc"
         :static-render-funcs="staticRenderFuncs" />
-    </div>
     </div>
   </div>
 </template>
