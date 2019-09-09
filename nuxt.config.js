@@ -35,13 +35,16 @@ module.exports = {
    ** Customize the progress-bar color
    */
   loading: {
-    color: '#fff'
+    color: '#5a46ff',
+    height: '3px'
   },
 
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    '@/assets/css/main.scss'
+  ],
 
   /*
    ** Plugins to load before mounting the App
@@ -59,11 +62,18 @@ module.exports = {
     '@nuxtjs/auth',
     'vue-scrollto/nuxt',
     '@nuxtjs/axios',
+    '@nuxtjs/style-resources',
     ['qonfucius-nuxt-fontawesome'],
     ['@nuxtjs/google-analytics', {
       id: 'UA-123121612-1'
     }]
   ],
+  styleResources: {
+    scss: [
+      '@/assets/css/utilities/_variables.scss',
+    ],
+  },
+
   fontAwesome: {
     packs: [{
       package: '@fortawesome/fontawesome-free-brands',
@@ -103,8 +113,6 @@ module.exports = {
       home: "/devices"
     }
   },
-
-
   /*
    ** Build configuration
    */
