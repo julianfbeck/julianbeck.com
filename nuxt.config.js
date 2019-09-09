@@ -35,7 +35,7 @@ module.exports = {
    ** Customize the progress-bar color
    */
   loading: {
-    color: '#5a46ff',
+    color: 'blue',
     height: '3px'
   },
 
@@ -49,7 +49,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/lazyload', '~/plugins/globalComponents'],
 
   /*
    ** Nuxt.js modules

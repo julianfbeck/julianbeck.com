@@ -5,7 +5,7 @@
         <div class="elevate-cover__textOffset">
           <div class="elevate-cover__text">
             <span class="blogSelected-year">{{ year }}</span>
-            <h1 >
+            <h1 class="title is-1" >
               {{ title }} 
             </h1>
             <p class="elevate-cover__description">{{ description }}</p>
@@ -208,7 +208,7 @@
     padding: 2.4rem;
     border-radius: 4px;
     background-color: #f6f8fa;
-    overflow-x: scroll;
+    overflow-x: hidden;
     display: block;
     margin-bottom: 5rem;
 
