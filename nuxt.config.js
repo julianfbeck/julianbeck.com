@@ -1,5 +1,6 @@
 const pkg = require('./package')
 const path = require('path')
+const builtAt = new Date().toISOString()
 
 
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    title: 'Julian Beck | Computer Science Student',
     meta: [{
         charset: 'utf-8'
       },
@@ -18,17 +19,26 @@ module.exports = {
         name: 'viewport',
         content: 'width=device-width, initial-scale=1'
       },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: '@kickbeak' },
+      { property: 'og:type', content: 'profile' },
+      { property: 'og:updated_time', content: builtAt },
+
       {
         hid: 'description',
         name: 'description',
-        content: pkg.description
+        content: 'Julian Becks Personal website and blog'
       }
     ],
-    link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico'
-    }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+      { rel: 'icon', type: 'image/png', href: '/favicons/favicon-16x16.png', sizes: '16x16' },
+      { rel: 'icon', type: 'image/png', href: '/favicons/favicon-32x32.png', sizes: '32x32' },
+      { rel: 'apple-touch-icon', type: 'image/png', href: '/favicons/apple-touch-icon.png', sizes: '180x180' },
+      { rel: 'manifest', href: '/favicons/site.webmanifest' },
+      { rel: 'mask-icon', href: 'href="/favicons/safari-pinned-tab.svg',color:'#5bbad5' },
+      { rel: 'shortcut icon', href: '/favicons/favicon.ico' }
+    ]
   },
 
   /*
