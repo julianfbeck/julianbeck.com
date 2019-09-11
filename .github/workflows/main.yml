@@ -1,16 +1,17 @@
-name: Greeting from Mona
-on: push
+name: Build Package
+
+on: [push]
 jobs:
-  my-job:
-    name: My Job
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Print a greeting
-      env:
-        MY_VAR: Hi there! My name is
-        FIRST_NAME: Mona
-        MIDDLE_NAME: The
-        LAST_NAME: Octocat
+    - uses: actions/checkout@master
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        version: 10.x
+    - name: NPM Build and Test
       run: |
-        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
-    
+        npm install
+        npm run build --if-present
+        npm run generate
