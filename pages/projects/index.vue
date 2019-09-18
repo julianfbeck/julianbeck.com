@@ -5,18 +5,13 @@
     <section class="section">
       <div class="container">
         <h1 class="title">Apps</h1>
-        <h2 class="subtitle">
-          A simple container to divide your page into
-          <strong>sections</strong>, like the one you're currently reading
-        </h2>
       </div>
     </section>
     <section class="section">
       <div class="container">
         <h1 class="title">Blog Entires</h1>
         <h2 class="subtitle">
-          A simple container to divide your page into
-          <strong>sections</strong>, like the one you're currently reading
+          Check out the blog posts i wrote
         </h2>
           <BlogSection :blogs="blogs" />
       </div>
@@ -25,8 +20,7 @@
       <div class="container">
         <h1 class="title">npm Packages</h1>
         <h2 class="subtitle">
-          A simple container to divide your page into
-          <strong>sections</strong>, like the one you're currently reading
+          <strong>npm Package</strong> I published
         </h2>
       </div>
     </section>
