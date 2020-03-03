@@ -3,15 +3,30 @@
     "dir": "blog",
     "prefix": "/blog",
     "title": "Julian Becks Blog",
-    "links": [],
-    "icons": [],
+    "links": [
+      {
+        "Home": "/blog/"
+      },
+      {
+        "Archive": "/blog/archive/"
+      }
+    ],
+    "icons": [
+      {
+        "github": "http://github.com/jufabeck2202"
+      },
+      {
+        "twitter": "https://twitter.com/kickbeak"
+      }
+    ],
     "feed": {
-      "link": "http://julianbeck.com/",
+      "link": "https://julianbeck.com",
       "description": "Blog posts from Julian Beck",
-      "tagDomain": "julianbeck.com/",
+      "tagDomain": "julianbeck.com",
       "path": "/rss.xml"
     },
-    "naked": true
+    "naked": true,
+    "search": true
   },
   "docs": {
     "dir": "docs",
