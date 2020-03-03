@@ -73,9 +73,7 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     ['qonfucius-nuxt-fontawesome'],
-    ["@nuxtjs/google-analytics",
-      { id: "UA-123121612-1"}, debug: { sendHitTask: true }
-    ]
+    ["@nuxtjs/google-analytics"]
   ],
   styleResources: {
     scss: [
