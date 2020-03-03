@@ -65,7 +65,7 @@ export default {
   modules: [
     // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
-    ['@nuxt/press', 'docs'],
+    ['@nuxt/press'],
     'nuxt-buefy',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
