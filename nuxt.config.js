@@ -1,8 +1,7 @@
-const pkg = require('./package')
 const path = require('path')
 const builtAt = new Date().toISOString()
 
-module.exports = {
+export default {
   mode: 'universal',
   
 
@@ -66,6 +65,7 @@ module.exports = {
   modules: [
     // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
+    ['@nuxt/press', 'docs'],
     'nuxt-buefy',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
@@ -73,7 +73,7 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     ['qonfucius-nuxt-fontawesome'],
-    ["@nuxtjs/google-analytics"]
+    ["@nuxtjs/google-analytics"],
   ],
   styleResources: {
     scss: [
