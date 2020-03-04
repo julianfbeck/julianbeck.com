@@ -1,7 +1,7 @@
 const path = require('path')
 const builtAt = new Date().toISOString()
 
-export default {
+module.exports = {
   mode: 'universal',
   
 
