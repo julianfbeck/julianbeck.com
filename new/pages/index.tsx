@@ -129,47 +129,62 @@ const Home: NextPage = () => {
       <div className="inline-block w-full max-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg last:border-b-0">
         <table className="w-full">
           <tbody className="bg-white">
-            <Position
-              company="Tobias Lins"
-              position="Freelance Consultant, System Architect"
-              description="Helping clients develop React & Node applications"
-              url=""
-              from="June 2019"
+          <Position
+              company="Iteratec"
+              position="Working Student"
+              description=""
+              url="https://www.iteratec.com/"
+              from="Mar 2021"
               logo={
                 <img
                   className="w-10 h-10"
-                  src={`/tobiaslins.svg`}
-                  alt="Tobias Lins logo"
+                  src={`/IteratecLogo.jpeg`}
+                  alt="Iteratec Logo"
                 />
               }
             />
             <Position
-              company="d:code:it"
-              position="Fullstack Software Engineer"
-              description="Building Axcept.io, a visual testing platform"
+              company="Daimler Trucks"
+              position="Bachelor Thesis"
+              description="Smart Charging using Reinforcement Learning"
               url=""
-              from="Sept. 2018"
-              to="July 2019"
+              from="Sep 2019"
+              to="Feb 2020"
               logo={
                 <img
                   className="w-10 h-10"
-                  src={`/dcodeit.png`}
-                  alt="d:code:it logo"
+                  src={`/DaimlerLogo.svg`}
+                  alt="Daimler Logo"
                 />
               }
             />
             <Position
-              company="mPAY24"
-              position="Software Engineer"
-              description="Working on the complete platform, website & SDKs"
+              company="Mitsubishi Fuso Tokyo"
+              position="Internship"
+              description="Full Stack, DevOps, IT Consulting and Project Management"
               url=""
-              from="Sept. 2014"
-              to="June 2018"
+              from="Mar 2018"
+              to="Aug 2018"
               logo={
                 <img
-                  className="w-10"
-                  src={`/mpay24.svg`}
-                  alt="d:code:it logo"
+                  className="w-10 h-10"
+                  src={`/FusoLogo.svg`}
+                  alt="Mitsubishi logo"
+                />
+              }
+            />
+            <Position
+              company="Bosch"
+              position="Mechatronics Technician"
+              description="Vocational Training as a Mechatronics Technician"
+              url=""
+              from="Sep 2013"
+              to="Jun 2016"
+              logo={
+                <img
+                  className="w-10 h-10"
+                  src={`/BoschLogo.svg`}
+                  alt="Bosch logo"
                 />
               }
             />
@@ -177,7 +192,41 @@ const Home: NextPage = () => {
         </table>
       </div>
       <h2 className="mt-8 mb-3 text-2xl font-bold">Education</h2>
-
+      <div className="inline-block w-full max-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg last:border-b-0">
+        <table className="w-full">
+          <tbody className="bg-white">
+          <Position
+              company="Karlsruhe University of Applied Sciences"
+              position="Master of Science - Computer Science"
+              description="Emphasis on Machine Learning"
+              url="https://www.iteratec.com/"
+              from="2020"
+              logo={
+                <img
+                  className="w-10 h-10"
+                  src={`/HSKALogo.svg`}
+                  alt="Iteratec Logo"
+                />
+              }
+            />
+            <Position
+              company="Karlsruhe University of Applied Sciences"
+              position="Bachelor of Science - Computer Science"
+              description=""
+              url=""
+              from="2016"
+              to="2020"
+              logo={
+                <img
+                  className="w-10 h-10"
+                  src={`/HSKALogo.svg`}
+                  alt="Daimler Logo"
+                />
+              }
+            />
+          </tbody>
+        </table>
+      </div>
       <h2 className="mt-8 mb-3 text-2xl font-bold">Contact</h2>
       <div className="text-base text-gray-900">
         If you are interested in working with me just drop me a short mail at{" "}
