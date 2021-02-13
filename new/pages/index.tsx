@@ -19,11 +19,11 @@ const Home: NextPage = () => {
           name="description"
           content="Julian Beck, Student, Webdevelopment, iOS Developer"
         />
-        <script async src="https://cdn.splitbee.io/sb.js" />
       </Head>
       <h1 className="text-4xl font-bold">Julian Beck</h1>
       <div className="mb-5 font-medium text-gray-600">
-        Computer Science Student focusing on iOS and Fullstack Development. Also intrested in Cloud and Dev-Ops!
+        Computer Science Student focusing on iOS and Fullstack Development. Also
+        intrested in Cloud and Dev-Ops!
       </div>
       <h2 className="mt-8 mb-3 text-2xl font-bold">Projects</h2>
       <motion.div
@@ -44,15 +44,16 @@ const Home: NextPage = () => {
         className="grid grid-cols-1 gap-3 sm:grid-cols-3"
       >
         <Project
-          name="Splitbee"
-          color="#FFF0D3"
-          url="https://splitbee.io/"
+          name="LocalPDF"
+          url="https://localpdf.tech"
           style={{ scale }}
-          description="Splitbee is an analytics and A/B testing tool that focuses on usability and performance"
+          color="#2091c5"
+          description="Web App to merge multiple PDF Files into one File, locally, using Webassembly and PDFCPU "
           logo={
             <img
               className="w-16 transition-transform duration-500 transform group-hover:scale-110"
-              src="/logo.svg"
+              src="/PDFLogo.png"
+              alt="Localpdf.tech Logo"
             />
           }
           tags={
@@ -61,65 +62,101 @@ const Home: NextPage = () => {
                 React
               </span>
               <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-blue-100 text-blue-800 mr-2">
-                TimescaleDB
+                Nextjs
               </span>
               <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-indigo-100 text-indigo-800 mr-2">
-                GraphQL
+                Webassembly
               </span>
               <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-green-100 text-green-800 mr-2">
-                Cloudflare Workers
-              </span>
-              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-orange-100 text-orange-800 mr-2">
-                Redis
+                Go
               </span>
             </div>
           }
         />
+
         <Project
-          name="Upclimb"
-          url="https://apps.apple.com/br/app/upclimb/id1479219726?l=en"
+          name="Score Tracker"
+          url="https://apps.apple.com/de/app/score-tracking-and-statistics/id1497662306?l=en"
           style={{ scale }}
           color="rgba(180, 216, 165, 0.23)"
-          description="A mobile app for climbers that provides workouts and tracking."
+          description="Score Tracker to track all kind of Game Scores and generate Statistics"
           logo={
             <img
-              className="w-16 transition-transform duration-500 transform group-hover:scale-110"
-              src="/upclimb.svg"
+              className="w-16 rounded-lg transition-transform duration-500 transform group-hover:scale-110"
+              src="/TournamentsLogo.png"
+              alt="Tournaments Logo"
             />
           }
           tags={
             <div className="mt-2">
               <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-gray-100 text-gray-800 mr-2">
-                React Native
+                iOS
               </span>
               <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-blue-100 text-blue-800 mr-2">
-                Sanity
+                SwiftUI
               </span>
               <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-indigo-100 text-indigo-800 mr-2">
-                GraphQL
+                CoreData
+              </span>
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-green-100 text-green-800 mr-2">
+                CloudKit
               </span>
             </div>
           }
         />
         <Project
-          name="Mobile Hub for Lisk"
-          url="https://apps.apple.com/at/app/mobile-hub-for-lisk/id1390358799"
+          name="IWI-Checker"
+          url="https://github.com/jufabeck2202/HSKA-App"
           style={{ scale }}
-          color="rgba(108, 186, 248, 0.2)"
-          description="An iOS and Android App for the Lisk Blockchain. Provides a wallet and an blockchain explorer"
+          color="#fa8f87"
+          description="Open Source App for my University to check Information and Grades using Widgets"
           logo={
             <img
-              className="w-16 transition-transform duration-500 transform group-hover:scale-110"
-              src="/lisk_hub.png"
+              className="w-16 rounded-lg transition-transform duration-500 transform group-hover:scale-110"
+              src="/CheckerLogo.png"
+              alt="Checker Logo"
             />
           }
           tags={
             <div className="mt-2">
               <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-gray-100 text-gray-800 mr-2">
-                React Native
+                iOS
               </span>
               <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-blue-100 text-blue-800 mr-2">
-                LiskJS
+                Swift
+              </span>
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-indigo-100 text-indigo-800 mr-2">
+                SwiftUI
+              </span>
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-green-100 text-green-800 mr-2">
+                WidgetKit
+              </span>
+            </div>
+          }
+        />
+        <Project
+          name="WhatStat"
+          color="#c5acfa"
+          url="https://www.linkedin.com/feed/update/urn:li:activity:6596866573691129856/"
+          style={{ scale }}
+          description="WhatStat is an app to analyse WhatsApp Chats. Unfortunately I had to pull it from the App Store"
+          logo={
+            <img
+              className="w-16 transition-transform rounded-lg duration-500 transform group-hover:scale-110"
+              src="/WhatStatLogo.png"
+              alt="WhatStat Logo"
+            />
+          }
+          tags={
+            <div className="mt-2">
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-gray-100 text-gray-800 mr-2">
+                iOS
+              </span>
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-blue-100 text-blue-800 mr-2">
+                Swift
+              </span>
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-indigo-100 text-indigo-800 mr-2">
+                SwiftUI
               </span>
             </div>
           }
@@ -129,7 +166,7 @@ const Home: NextPage = () => {
       <div className="inline-block w-full max-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg last:border-b-0">
         <table className="w-full">
           <tbody className="bg-white">
-          <Position
+            <Position
               company="Iteratec"
               position="Working Student"
               description=""
@@ -195,7 +232,7 @@ const Home: NextPage = () => {
       <div className="inline-block w-full max-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg last:border-b-0">
         <table className="w-full">
           <tbody className="bg-white">
-          <Position
+            <Position
               company="Karlsruhe University of Applied Sciences"
               position="Master of Science - Computer Science"
               description="Emphasis on Machine Learning"
@@ -229,12 +266,11 @@ const Home: NextPage = () => {
       </div>
       <h2 className="mt-8 mb-3 text-2xl font-bold">Contact</h2>
       <div className="text-base text-gray-900">
-        If you are interested in working with me just drop me a short mail at{" "}
-        <b>me@tobi.sh</b>
+        If you are interested in contacting me, drop me a short email: {" "}
+        <b>kickbeck@googlemail.com</b>
       </div>
       <div className="flex justify-center mt-8 mb-5 font-medium text-gray-600">
         <a
-          data-splitbee-event="Click Github"
           target="_blank"
           href="https://github.com/jufabeck2202"
         >
@@ -242,7 +278,6 @@ const Home: NextPage = () => {
         </a>
         <span className="mx-2 font-bold">·</span>
         <a
-          data-splitbee-event="Click LinkedIn"
           target="_blank"
           href="https://www.linkedin.com/in/julian-beck/"
         >
@@ -250,7 +285,6 @@ const Home: NextPage = () => {
         </a>
         <span className="mx-2 font-bold">·</span>
         <a
-          data-splitbee-event="Click Twitter"
           target="_blank"
           href="https://twitter.com/Kickbeak"
         >

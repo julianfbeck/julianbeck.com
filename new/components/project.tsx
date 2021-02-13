@@ -13,7 +13,6 @@ export const Project: React.FC<{
   return (
     <motion.a
       href={url}
-      data-splitbee-event={`Click Project ${name}`}
       target="_blank"
       variants={{
         hidden: { filter: "grayscale(80%)" },
