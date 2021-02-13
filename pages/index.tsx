@@ -17,13 +17,13 @@ const Home: NextPage = () => {
         <link rel="manifest" href="/static/manifest.json" />
         <meta
           name="description"
-          content="Julian Beck, Student, Webdevelopment, iOS Developer"
+          content="Julian Beck, Student, FullStack and iOS Developer"
         />
       </Head>
       <h1 className="text-4xl font-bold">Julian Beck</h1>
       <div className="mb-5 font-medium text-gray-600">
         Computer Science Student focusing on iOS and Fullstack Development. Also
-        intrested in Cloud and Dev-Ops!
+        interested in Cloud and Dev-Ops!
       </div>
       <h2 className="mt-8 mb-3 text-2xl font-bold">Projects</h2>
       <motion.div
@@ -267,7 +267,7 @@ const Home: NextPage = () => {
       <h2 className="mt-8 mb-3 text-2xl font-bold">Contact</h2>
       <div className="text-base text-gray-900">
         If you are interested in contacting me, drop me a short email: {" "}
-        <b>kickbeck@googlemail.com</b>
+        <b>mail@julianbeck.com</b>
       </div>
       <div className="flex justify-center mt-8 mb-5 font-medium text-gray-600">
         <a
