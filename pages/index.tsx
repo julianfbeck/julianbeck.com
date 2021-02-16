@@ -48,7 +48,7 @@ const Home: NextPage = () => {
           url="https://localpdf.tech"
           style={{ scale }}
           color="#2091c5"
-          description="Web App to merge multiple PDF Files into one File, locally, using Webassembly and PDFCPU "
+          description="Web App to merge multiple PDF Files into one File, locally, using Webassembly and PDFCPU"
           logo={
             <img
               className="w-16 transition-transform duration-500 transform group-hover:scale-110"
