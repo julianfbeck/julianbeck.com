@@ -137,9 +137,9 @@ const Home: NextPage = () => {
         <Project
           name="WhatStat"
           color="#c5acfa"
-          url="https://www.linkedin.com/feed/update/urn:li:activity:6596866573691129856/"
+          url="https://apps.apple.com/de/app/whatstats-chat-analyser/id1481007233?l=en"
           style={{ scale }}
-          description="WhatStat is an app to analyse WhatsApp Chats. Unfortunately I had to pull it from the App Store"
+          description="WhatStats is an app to analyse WhatsApp Chats locally on your device"
           logo={
             <img
               className="w-16 transition-transform rounded-lg duration-500 transform group-hover:scale-110"
