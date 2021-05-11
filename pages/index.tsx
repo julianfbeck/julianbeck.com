@@ -20,9 +20,14 @@ const Home: NextPage = () => {
           content="Julian Beck, Student, FullStack and iOS Developer"
         />
       </Head>
-      <h1 className="text-4xl font-bold">Julian Beck</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="flex text-4xl font-bold ">Julian Beck</h1>
+        <a  href="https://blog.julianbeck.com" className="p-1 text-blue-700	rounded shadow bg-white cursor-pointer flex text-2xl font-bold  justify-end	border-b border-gray-200">
+          Visit my Blog
+        </a>
+      </div>
       <div className="mb-5 font-medium text-gray-600">
-        Computer Science Student focusing on iOS and Fullstack Development. Also
+        Computer Science Student focusing on ML, iOS and Fullstack Development. Also
         interested in Cloud and Dev-Ops!
       </div>
       <h2 className="mt-8 mb-3 text-2xl font-bold">Projects</h2>
@@ -266,28 +271,19 @@ const Home: NextPage = () => {
       </div>
       <h2 className="mt-8 mb-3 text-2xl font-bold">Contact</h2>
       <div className="text-base text-gray-900">
-        If you are interested in contacting me, drop me a short email: {" "}
+        If you are interested in contacting me, drop me a short email:{" "}
         <b>mail@julianbeck.com</b>
       </div>
       <div className="flex justify-center mt-8 mb-5 font-medium text-gray-600">
-        <a
-          target="_blank"
-          href="https://github.com/jufabeck2202"
-        >
+        <a target="_blank" href="https://github.com/jufabeck2202">
           GitHub
         </a>
         <span className="mx-2 font-bold">·</span>
-        <a
-          target="_blank"
-          href="https://www.linkedin.com/in/julian-beck/"
-        >
+        <a target="_blank" href="https://www.linkedin.com/in/julian-beck/">
           LinkedIn
         </a>
         <span className="mx-2 font-bold">·</span>
-        <a
-          target="_blank"
-          href="https://twitter.com/Kickbeak"
-        >
+        <a target="_blank" href="https://twitter.com/Kickbeak">
           Twitter
         </a>
       </div>
