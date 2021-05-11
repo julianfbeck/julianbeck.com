@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       </Head>
       <div className="flex items-center justify-between">
         <h1 className="flex text-4xl font-bold ">Julian Beck</h1>
-        <a  href="https://blog.julianbeck.com" className="p-1 text-blue-700	rounded shadow bg-white cursor-pointer flex text-2xl font-bold  justify-end	border-b border-gray-200">
+        <a target="_blank"  href="https://blog.julianbeck.com" className="p-1 text-blue-700	rounded shadow bg-white cursor-pointer flex text-2xl font-bold  justify-end	border-b border-gray-200">
           Visit my Blog
         </a>
       </div>
@@ -285,6 +285,10 @@ const Home: NextPage = () => {
         <span className="mx-2 font-bold">·</span>
         <a target="_blank" href="https://twitter.com/Kickbeak">
           Twitter
+        </a>
+        <span className="mx-2 font-bold">·</span>
+        <a target="_blank" href="https://blog.julianbeck.com">
+          blog
         </a>
       </div>
     </div>
