@@ -288,7 +288,7 @@ const Home: NextPage = () => {
         </a>
         <span className="mx-2 font-bold">·</span>
         <a target="_blank" href="https://blog.julianbeck.com">
-          blog
+          Blog
         </a>
       </div>
     </div>
