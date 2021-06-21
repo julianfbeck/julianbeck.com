@@ -171,12 +171,27 @@ const Home: NextPage = () => {
       <div className="inline-block w-full max-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg last:border-b-0">
         <table className="w-full">
           <tbody className="bg-white">
+             <Position
+              company="Iteratec"
+              position="Master Thesis"
+              description="Remote Machine-Learning for Augmented-Reality Devices"
+              url="https://www.iteratec.com/"
+              from="May 2021"
+              logo={
+                <img
+                  className="w-10 h-10"
+                  src={`/IteratecLogo.jpeg`}
+                  alt="Iteratec Logo"
+                />
+              }
+            />
             <Position
               company="Iteratec"
               position="Working Student"
               description=""
               url="https://www.iteratec.com/"
               from="Mar 2021"
+              to="May 2021"
               logo={
                 <img
                   className="w-10 h-10"
