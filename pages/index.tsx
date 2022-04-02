@@ -299,7 +299,7 @@ const Home: NextPage = () => {
           </tbody>
         </table>
       </div>
-      <h2 className="mt-8 mb-3 text-2xl font-bold font-white">Education</h2>
+      <h2 className="mt-8 mb-3 text-2xl font-bold text-white">Education</h2>
       <div className="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600">
         <table className="w-full">
           <tbody className="">
