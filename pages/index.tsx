@@ -309,6 +309,7 @@ const Home: NextPage = () => {
               description="Emphasis on Machine Learning"
               url="https://www.iteratec.com/"
               from="2020"
+              to="2022"
               logo={
                 <img
                   className="w-10 h-10"
