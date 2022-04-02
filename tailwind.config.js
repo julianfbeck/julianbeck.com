@@ -1,22 +1,26 @@
 module.exports = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     container: {
       center: true,
-      padding: 10
+      padding: 10,
     },
     filter: { grayscale: "grayscale(1)", none: "none" },
     screens: {
       sm: "640px",
       md: "768px",
       lg: "1024px",
-      xl: "1024px"
-    }
+      xl: "1024px",
+    },
   },
   variants: {
     filter: ["hover", "group-hover"],
     scale: ["group-hover"],
     opacity: ["hover", "group-hover"],
-    borderWidth: ["last"]
+    borderWidth: ["last"],
   },
-  plugins: [require("tailwindcss-filters")]
+  plugins: [require("tailwindcss-filters")],
 };
