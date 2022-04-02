@@ -20,10 +20,10 @@ export const Project: React.FC<{
           transition: { duration: 0.4, easings: "circOut" },
           opacity: 1,
           filter: "grayscale(0%)",
-          scale: 1
-        }
+          scale: 1,
+        },
       }}
-      className="rounded-lg shadow bg-white cursor-pointer overflow-hidden transition-all duration-200 group hover:shadow-lg"
+      className="rounded-lg shadow-md shadow-gray-600/60 bg-gray-800 cursor-pointer overflow-hidden transition-all duration-200 group hover:shadow-lg"
     >
       <div
         className="h-32 w-full flex justify-center items-center transition-all duration-200 transform"
@@ -33,14 +33,14 @@ export const Project: React.FC<{
       </div>
       <div className="p-4">
         <div className="flex items-center">
-          <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
+          <h3 className="text-lg font-semibold text-white">{name}</h3>
           <img
-            className="text-red-200 ml-auto opacity-0 transform duration-200 group-hover:opacity-100 h-3"
+            className="ml-auto opacity-0 transform duration-200 group-hover:opacity-100 h-3"
             src="./arrow-right.svg"
           />
         </div>
 
-        <div className="mt-3 text-sm text-gray-700">{description}</div>
+        <div className="mt-3 text-sm text-white">{description}</div>
         {tags}
       </div>
     </motion.a>

@@ -20,16 +20,24 @@ const Home: NextPage = () => {
         />
       </Head>
       <div className="flex items-center justify-between">
-        <h1 className="flex text-4xl font-bold ">Julian Beck</h1>
-        <a target="_blank"  href="https://blog.julianbeck.com" className="p-1 text-blue-700	rounded shadow bg-white cursor-pointer flex text-2xl font-bold  justify-end	border-b border-gray-200">
-          Visit my Blog
+        <h1 className="flex text-4xl font-bold text-white ">Julian Beck</h1>
+        <a
+          target="_blank"
+          href="https://blog.julianbeck.com"
+          className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+        >
+          My Blog
         </a>
       </div>
-      <div className="mb-5 font-medium text-gray-600">
-        Computer Science Student focusing on ML, iOS and Fullstack Development. Also
-        interested in Cloud and Dev-Ops!
+      <div className="mb-5 font-medium text-gray-300">
+        Software-Engineer @
+        <a className="underline decoration-sky-500" href="https://iteratec.com">
+          Iteratec
+        </a>
+        . Interested in all stuff DevOps, Cloud, Golang as well as
+        iOS-Development.
       </div>
-      <h2 className="mt-8 mb-3 text-2xl font-bold">Projects</h2>
+      <h2 className="mt-8 mb-3 text-2xl font-bold text-white">Projects</h2>
       <motion.div
         variants={{
           hidden: { opacity: 1, scale: 1 },
@@ -47,6 +55,33 @@ const Home: NextPage = () => {
         animate="visible"
         className="grid grid-cols-1 gap-3 sm:grid-cols-3"
       >
+        <Project
+          name="Pi-Stock-DE"
+          url="https://pi.juli.sh"
+          style={{ scale }}
+          color="#ff5d62"
+          description="Get notified when a raspberry pi is in stock in german stores"
+          logo={
+            <img
+              className="w-20 transition-transform duration-500 transform group-hover:scale-110"
+              src="/PiScraper.png"
+              alt="Localpdf.tech Logo"
+            />
+          }
+          tags={
+            <div className="mt-2">
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-gray-100 text-gray-800 mr-2">
+                React
+              </span>
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-blue-100 text-blue-800 mr-2">
+                Go
+              </span>
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium leading-4 bg-indigo-100 text-indigo-800 mr-2">
+                Kubernetes
+              </span>
+            </div>
+          }
+        />
         <Project
           name="LocalPDF"
           url="https://localpdf.tech"
@@ -82,7 +117,7 @@ const Home: NextPage = () => {
           name="Score Tracker"
           url="https://apps.apple.com/de/app/score-tracking-and-statistics/id1497662306?l=en"
           style={{ scale }}
-          color="rgba(180, 216, 165, 0.23)"
+          color="#eff6eb"
           description="Score Tracker to track all kind of Game Scores and generate Statistics"
           logo={
             <img
@@ -166,16 +201,33 @@ const Home: NextPage = () => {
           }
         />
       </motion.div>
-      <h2 className="mt-8 mb-3 text-2xl font-bold">Work Experience</h2>
-      <div className="inline-block w-full max-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg last:border-b-0">
+      <h2 className="mt-8 mb-3 text-2xl font-bold text-white">
+        Work Experience
+      </h2>
+      <div className="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600 ">
         <table className="w-full">
-          <tbody className="bg-white">
-             <Position
+          <tbody className="border-cyan-50">
+            <Position
+              company="Iteratec"
+              position="Software Engineer"
+              description="Junior Software Engineer"
+              url="https://www.iteratec.com/"
+              from="Jan 2022"
+              logo={
+                <img
+                  className="w-10 h-10"
+                  src={`/IteratecLogo.jpeg`}
+                  alt="Iteratec Logo"
+                />
+              }
+            />
+            <Position
               company="Iteratec"
               position="Master Thesis"
               description="Remote Machine-Learning for Augmented-Reality Devices"
               url="https://www.iteratec.com/"
               from="May 2021"
+              to="Nov 2021"
               logo={
                 <img
                   className="w-10 h-10"
@@ -247,10 +299,10 @@ const Home: NextPage = () => {
           </tbody>
         </table>
       </div>
-      <h2 className="mt-8 mb-3 text-2xl font-bold">Education</h2>
-      <div className="inline-block w-full max-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg last:border-b-0">
+      <h2 className="mt-8 mb-3 text-2xl font-bold font-white">Education</h2>
+      <div className="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600">
         <table className="w-full">
-          <tbody className="bg-white">
+          <tbody className="">
             <Position
               company="Karlsruhe University of Applied Sciences"
               position="Master of Science - Computer Science"
@@ -283,12 +335,18 @@ const Home: NextPage = () => {
           </tbody>
         </table>
       </div>
-      <h2 className="mt-8 mb-3 text-2xl font-bold">Contact</h2>
-      <div className="text-base text-gray-900">
+      <h2 className="mt-8 mb-3 text-2xl font-bold text-white">Contact</h2>
+      <div className="text-base text-gray-100">
         If you are interested in contacting me, drop me a short email:{" "}
-        <b>mail@julianbeck.com</b>
+        <a
+          target="_blank"
+          className="underline decoration-sky-500"
+          href="mailto:mail@julianbeck.com"
+        >
+          <b>mail@julianbeck.com</b>
+        </a>
       </div>
-      <div className="flex justify-center mt-8 mb-5 font-medium text-gray-600">
+      <div className="flex justify-center mt-8 mb-5 font-medium text-gray-300">
         <a target="_blank" href="https://github.com/jufabeck2202">
           GitHub
         </a>
