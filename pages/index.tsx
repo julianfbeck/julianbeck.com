@@ -356,7 +356,7 @@ const Home: NextPage = () => {
           LinkedIn
         </a>
         <span className="mx-2 font-bold">·</span>
-        <a target="_blank" href="https://twitter.com/Kickbeak">
+        <a target="_blank" href="https://twitter.com/julianfbeck">
           Twitter
         </a>
         <span className="mx-2 font-bold">·</span>
