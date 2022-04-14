@@ -348,7 +348,7 @@ const Home: NextPage = () => {
         </a>
       </div>
       <div className="flex justify-center mt-8 mb-5 font-medium text-gray-300">
-        <a target="_blank" href="https://github.com/jufabeck2202">
+        <a target="_blank" href="https://github.com/julianfbeck">
           GitHub
         </a>
         <span className="mx-2 font-bold">·</span>
