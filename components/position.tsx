@@ -10,8 +10,11 @@ export const Position: React.FC<{
   to?: string;
 }> = ({ company, url, from, to, position, logo, description }) => {
   return (
-    <tr className="shadow-md shadow-gray-600/60 bg-gray-800  hover:bg-gray-700 transform duration-150 border-b border-gray-900 last:border-0">
-      <td className="px-6 py-4 whitespace-no-wrap  ">
+    <tr
+      className="shadow-md shadow-gray-600/60 bg-gray-800 hover:cursor-pointer hover:bg-gray-700 transform duration-150 border-b border-gray-900 last:border-0"
+      onClick={() => window.open(url, "_blank")}
+    >
+      <td className="px-6 py-4 whitespace-no-wrap ">
         <div className="flex items-center">
           <div className="flex-shrink-0 w-10">{logo}</div>
           <div className="ml-4">

@@ -174,7 +174,7 @@ const Home: NextPage = () => {
           }
         />
         <Project
-          name="WhatStat"
+          name="WhatStats"
           color="#c5acfa"
           url="https://apps.apple.com/de/app/whatstats-chat-analyser/id1481007233?l=en"
           style={{ scale }}
@@ -255,7 +255,7 @@ const Home: NextPage = () => {
               company="Daimler Trucks"
               position="Bachelor Thesis"
               description="Smart Charging using Reinforcement Learning"
-              url=""
+              url="https://www.daimlertruck.com/career/"
               from="Sep 2019"
               to="Feb 2020"
               logo={
@@ -270,7 +270,7 @@ const Home: NextPage = () => {
               company="Mitsubishi Fuso Tokyo"
               position="Internship"
               description="Full Stack, DevOps, IT Consulting and Project Management"
-              url=""
+              url="https://www.mitsubishi-fuso.com/en/"
               from="Mar 2018"
               to="Aug 2018"
               logo={
@@ -285,7 +285,7 @@ const Home: NextPage = () => {
               company="Bosch"
               position="Mechatronics Technician"
               description="Vocational Training as a Mechatronics Technician"
-              url=""
+              url="https://www.bosch.de/en/"
               from="Sep 2013"
               to="Jun 2016"
               logo={
@@ -293,6 +293,56 @@ const Home: NextPage = () => {
                   className="w-10 h-10"
                   src={`/BoschLogo.svg`}
                   alt="Bosch logo"
+                />
+              }
+            />
+          </tbody>
+        </table>
+      </div>
+      <h2 className="mt-8 mb-3 text-2xl font-bold text-white">
+        Certifications
+      </h2>
+      <div className="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600">
+        <table className="w-full">
+          <tbody className="">
+            <Position
+              company=""
+              position="CKAD: Certified Kubernetes Application Developer"
+              description="The Linux Foundation"
+              url="https://www.credly.com/badges/40989aee-8f65-43aa-bc61-b43910cc6f8a?source=linked_in_profile"
+              from="Dec 2021"
+              to="Dec 2024"
+              logo={
+                <img
+                  className="w-10 h-10"
+                  src={"./LinuxFoundation.jpeg"}
+                  alt="Linux Foundation Logo"
+                />
+              }
+            />
+            <Position
+              company=""
+              position="AWS Certified Cloud Practitioner"
+              description="Amazon Web Services"
+              url="https://www.credly.com/badges/d184b1eb-711f-4a97-b9b4-b3c9dad46481?source=linked_in_profile"
+              from="Jul 2021"
+              to="Jul 2024"
+              logo={
+                <img className="w-10 h-10" src={"./AWS.jpeg"} alt="AWS Logo" />
+              }
+            />
+            <Position
+              company=""
+              position="Microsoft Certified: Azure Fundamentals"
+              description="Microsoft"
+              url="https://www.credly.com/badges/97a5fa9a-2b4f-4f09-984b-bffa7d923ea6?source=linked_in_profile"
+              from="2021"
+              to="No Expiration"
+              logo={
+                <img
+                  className="w-10 h-10"
+                  src={"./MicrosoftLogo.jpeg"}
+                  alt="Microsoft Logo"
                 />
               }
             />
@@ -307,7 +357,7 @@ const Home: NextPage = () => {
               company="Karlsruhe University of Applied Sciences"
               position="Master of Science - Computer Science"
               description="Emphasis on Machine Learning"
-              url="https://www.iteratec.com/"
+              url="https://www.h-ka.de/en/"
               from="2020"
               to="2022"
               logo={
@@ -322,14 +372,14 @@ const Home: NextPage = () => {
               company="Karlsruhe University of Applied Sciences"
               position="Bachelor of Science - Computer Science"
               description=""
-              url=""
+              url="https://www.h-ka.de/en/"
               from="2016"
               to="2020"
               logo={
                 <img
                   className="w-10 h-10"
                   src={`/HSKALogo.svg`}
-                  alt="Daimler Logo"
+                  alt="HSKA Logo"
                 />
               }
             />
