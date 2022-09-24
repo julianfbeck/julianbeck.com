@@ -37,7 +37,7 @@ const Home: NextPage = () => {
         . Interested in all stuff DevOps, Cloud, Golang as well as
         iOS-Development.
       </div>
-      <h2 className="mt-8 mb-3 text-2xl font-bold text-white">Projects</h2>
+      <h2 className="mt-8 mb-3 text-2xl font-bold text-white">Personal Projects</h2>
       <motion.div
         variants={{
           hidden: { opacity: 1, scale: 1 },
