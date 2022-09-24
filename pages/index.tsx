@@ -30,9 +30,9 @@ const Home: NextPage = () => {
         </a>
       </div>
       <div className="mb-5 font-medium text-gray-300">
-        Software-Engineer @
-        <a className="underline decoration-sky-500" href="https://iteratec.com">
-          Iteratec
+        Cloud Platform Engineer @
+        <a className="underline decoration-sky-500" href="https://inovex.de/">
+          Inovex
         </a>
         . Interested in all stuff DevOps, Cloud, Golang as well as
         iOS-Development.
