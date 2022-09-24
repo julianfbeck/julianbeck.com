@@ -207,12 +207,27 @@ const Home: NextPage = () => {
       <div className="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600 ">
         <table className="w-full">
           <tbody className="border-cyan-50">
+          <Position
+              company="Inovex"
+              position="Cloud Platform Engineer"
+              description="Cloud Platform Engineer"
+              url="https://inovex.de/"
+              from="Sep 2022"
+              logo={
+                <img
+                  className="w-10 h-10"
+                  src={`https://www.inovex.de/wp-content/uploads/2020/10/inovex-logo-dunkelblau-quadrat-1.svg`}
+                  alt="Inovex Logo"
+                />
+              }
+            />
             <Position
               company="Iteratec"
               position="Software Engineer"
               description="Junior Software Engineer"
               url="https://www.iteratec.com/"
               from="Jan 2022"
+              to="Sep 2022"
               logo={
                 <img
                   className="w-10 h-10"
