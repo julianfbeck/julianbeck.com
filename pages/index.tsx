@@ -254,7 +254,7 @@ const Home: NextPage = () => {
             <Position
               company="Iteratec"
               position="Working Student"
-              description=""
+              description="Medical-Care-Glasses"
               url="https://www.iteratec.com/"
               from="Mar 2021"
               to="May 2021"
