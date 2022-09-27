@@ -3,21 +3,13 @@ import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import * as gtag from "../components/gtag";
+import PlausibleProvider from "next-plausible";
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleRouteChange = (url: URL) => {
-      /* invoke analytics function only for production */
-      gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  return <Component {...pageProps} />;
+  return (
+  <PlausibleProvider domain="juli.sh" selfHosted customDomain="https://plausible.home.juli.sh" trackLocalhost enabled>
+    <Component {...pageProps} />
+  </PlausibleProvider>
+  )
 };
 
 export default App;
