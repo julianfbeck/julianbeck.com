@@ -32,7 +32,7 @@ const Home: NextPage = () => {
       <div className="mb-5 font-medium text-gray-300">
         Cloud Platform Engineer @
         <a className="underline decoration-sky-500" href="https://inovex.de/">
-          Inovex
+          inovex
         </a>
         . Interested in all stuff DevOps, Cloud, Golang as well as
         iOS-Development.
