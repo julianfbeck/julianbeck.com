@@ -20,5 +20,5 @@ module.exports = {
     opacity: ["hover", "group-hover"],
     borderWidth: ["last"],
   },
-  plugins: [require("tailwindcss-filters")],
+  // plugins: [require("tailwindcss-filters")],
 };

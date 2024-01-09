@@ -5,6 +5,8 @@ import Footer from "../components/Footer.astro";
 import Projects from "../components/Projects.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
+import { Position } from "../components/react/Positions";
+
 const allPositions = await getCollection("position");
 const monthMap: { [key: string]: string } = {
   Jan: "01",
@@ -31,7 +33,6 @@ allPositions.sort(
     parseDateString(b.data.from).getTime() -
     parseDateString(a.data.from).getTime()
 );
-console.log(allPositions);
 ---
 
 <!doctype html>
@@ -237,13 +238,25 @@ console.log(allPositions);
 					}
 				  />
 				</motion.div> -->
-        <Projects />
         <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Work Experience</h2>
         <div
           class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
         >
           <table class="w-full">
             <tbody class="border-cyan-50">
+              {
+                allPositions.map((position) => (
+                  <Position
+                    company={position.data.company}
+                    position={position.data.position}
+                    description={position.data.description}
+                    url={position.data.url}
+                    from={position.data.from}
+					to={position.data.to}
+					logo={position.data.logo}
+                  />
+                ))
+              }
               <!-- <Position
 						company="Inovex"
 						position="Cloud Platform Engineer"
