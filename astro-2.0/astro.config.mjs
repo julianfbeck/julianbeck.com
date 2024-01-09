@@ -11,7 +11,7 @@ export default defineConfig({
     sitemap(),
     tailwind(),
     react({
-      include: ["**/react/*"],
+      include: ["./src/components/react/*"],
     }),
   ],
 });
