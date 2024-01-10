@@ -51,8 +51,8 @@ const position = defineCollection({
 
 const education = defineCollection({
   schema: z.object({
-    school: z.string(),
-    degree: z.string(),
+    company: z.string(),
+    position: z.string(),
     description: z.string(),
     url: z.string(),
     from: z.string(),
@@ -61,4 +61,16 @@ const education = defineCollection({
   }),
 });
 
-export const collections = { blog, app, position, education };
+const certification = defineCollection({
+  schema: z.object({
+    company: z.string(),
+    position: z.string(),
+    description: z.string(),
+    url: z.string(),
+    from: z.string(),
+    to: z.string(),
+    logo: z.string(),
+  }),
+});
+
+export const collections = { blog, app, position, education , certification};

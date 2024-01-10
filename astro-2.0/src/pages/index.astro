@@ -8,6 +8,8 @@ import { getCollection } from "astro:content";
 import { Position } from "../components/react/Positions";
 
 const allPositions = await getCollection("position");
+const allEducation = await getCollection("education");
+const allCertifications = await getCollection("certification");
 const monthMap: { [key: string]: string } = {
   Jan: "01",
   Feb: "02",
@@ -32,6 +34,18 @@ allPositions.sort(
   (a, b) =>
     parseDateString(b.data.from).getTime() -
     parseDateString(a.data.from).getTime()
+);
+
+allEducation.sort(
+  (a, b) =>
+    parseDateString(b.data.from).getTime() -
+    parseDateString(a.data.from).getTime()
+);
+
+allCertifications.sort(
+  (a, b) =>
+	parseDateString(b.data.from).getTime() -
+	parseDateString(a.data.from).getTime()
 );
 ---
 
@@ -252,115 +266,11 @@ allPositions.sort(
                     description={position.data.description}
                     url={position.data.url}
                     from={position.data.from}
-					to={position.data.to}
-					logo={position.data.logo}
+                    to={position.data.to}
+                    logo={position.data.logo}
                   />
                 ))
               }
-              <!-- <Position
-						company="Inovex"
-						position="Cloud Platform Engineer"
-						description="Cloud Platform Engineer"
-						url="https://inovex.de/"
-						from="Sep 2022"
-						logo={
-						  <img
-							class="w-10 h-10"
-							src={`https://www.inovex.de/wp-content/uploads/2020/10/inovex-logo-dunkelblau-quadrat-1.svg`}
-							alt="Inovex Logo"
-						  />
-						}
-					  />
-					  <Position
-						company="Iteratec"
-						position="Software Engineer"
-						description="Junior Software Engineer"
-						url="https://www.iteratec.com/"
-						from="Jan 2022"
-						to="Sep 2022"
-						logo={
-						  <img
-							class="w-10 h-10"
-							src={`/IteratecLogo.jpeg`}
-							alt="Iteratec Logo"
-						  />
-						}
-					  />
-					  <Position
-						company="Iteratec"
-						position="Master Thesis"
-						description="Remote Machine-Learning for Augmented-Reality Devices"
-						url="https://www.iteratec.com/"
-						from="May 2021"
-						to="Nov 2021"
-						logo={
-						  <img
-							class="w-10 h-10"
-							src={`/IteratecLogo.jpeg`}
-							alt="Iteratec Logo"
-						  />
-						}
-					  />
-					  <Position
-						company="Iteratec"
-						position="Working Student"
-						description="Medical-Care-Glasses"
-						url="https://www.iteratec.com/"
-						from="Mar 2021"
-						to="May 2021"
-						logo={
-						  <img
-							class="w-10 h-10"
-							src={`/IteratecLogo.jpeg`}
-							alt="Iteratec Logo"
-						  />
-						}
-					  />
-					  <Position
-						company="Daimler Trucks"
-						position="Bachelor Thesis"
-						description="Smart Charging using Reinforcement Learning"
-						url="https://www.daimlertruck.com/career/"
-						from="Sep 2019"
-						to="Feb 2020"
-						logo={
-						  <img
-							class="w-10 h-10"
-							src={`/DaimlerLogo.svg`}
-							alt="Daimler Logo"
-						  />
-						}
-					  />
-					  <Position
-						company="Mitsubishi Fuso Tokyo"
-						position="Internship"
-						description="Full Stack, DevOps, IT Consulting and Project Management"
-						url="https://www.mitsubishi-fuso.com/en/"
-						from="Mar 2018"
-						to="Aug 2018"
-						logo={
-						  <img
-							class="w-10 h-10"
-							src={`/FusoLogo.svg`}
-							alt="Mitsubishi logo"
-						  />
-						}
-					  />
-					  <Position
-						company="Bosch"
-						position="Mechatronics Technician"
-						description="Vocational Training as a Mechatronics Technician"
-						url="https://www.bosch.de/en/"
-						from="Sep 2013"
-						to="Jun 2016"
-						logo={
-						  <img
-							class="w-10 h-10"
-							src={`/BoschLogo.svg`}
-							alt="Bosch logo"
-						  />
-						}
-					  /> -->
             </tbody>
           </table>
         </div>
@@ -370,47 +280,17 @@ allPositions.sort(
         >
           <table class="w-full">
             <tbody class="">
-              <!-- <Position
-						company=""
-						position="CKAD: Certified Kubernetes Application Developer"
-						description="The Linux Foundation"
-						url="https://www.credly.com/badges/40989aee-8f65-43aa-bc61-b43910cc6f8a?source=linked_in_profile"
-						from="Dec 2021"
-						to="Dec 2024"
-						logo={
-						  <img
-							class="w-10 h-10"
-							src={"./LinuxFoundation.jpeg"}
-							alt="Linux Foundation Logo"
-						  />
-						}
-					  />
-					  <Position
-						company=""
-						position="AWS Certified Cloud Practitioner"
-						description="Amazon Web Services"
-						url="https://www.credly.com/badges/d184b1eb-711f-4a97-b9b4-b3c9dad46481?source=linked_in_profile"
-						from="Jul 2021"
-						to="Jul 2024"
-						logo={
-						  <img class="w-10 h-10" src={"./AWS.jpeg"} alt="AWS Logo" />
-						}
-					  />
-					  <Position
-						company=""
-						position="Microsoft Certified: Azure Fundamentals"
-						description="Microsoft"
-						url="https://www.credly.com/badges/97a5fa9a-2b4f-4f09-984b-bffa7d923ea6?source=linked_in_profile"
-						from="2021"
-						to="No Expiration"
-						logo={
-						  <img
-							class="w-10 h-10"
-							src={"./MicrosoftLogo.jpeg"}
-							alt="Microsoft Logo"
-						  />
-						}
-					  /> -->
+            {allCertifications.map((certification) => (
+			  <Position
+				company={certification.data.company}
+				position={certification.data.position}
+				description={certification.data.description}
+				url={certification.data.url}
+				from={certification.data.from}
+				to={certification.data.to}
+				logo={certification.data.logo}
+			  />
+			))}
             </tbody>
           </table>
         </div>
@@ -420,36 +300,19 @@ allPositions.sort(
         >
           <table class="w-full">
             <tbody class="">
-              <!-- <Position
-						company="Karlsruhe University of Applied Sciences"
-						position="Master of Science - Computer Science"
-						description="Emphasis on Machine Learning"
-						url="https://www.h-ka.de/en/"
-						from="2020"
-						to="2022"
-						logo={
-						  <img
-							class="w-10 h-10"
-							src={`/HSKALogo.svg`}
-							alt="Iteratec Logo"
-						  />
-						}
-					  />
-					  <Position
-						company="Karlsruhe University of Applied Sciences"
-						position="Bachelor of Science - Computer Science"
-						description=""
-						url="https://www.h-ka.de/en/"
-						from="2016"
-						to="2020"
-						logo={
-						  <img
-							class="w-10 h-10"
-							src={`/HSKALogo.svg`}
-							alt="HSKA Logo"
-						  />
-						}
-					  /> -->
+              {
+                allEducation.map((education) => (
+                  <Position
+                    company={education.data.company}
+                    position={education.data.position}
+                    description={education.data.description}
+                    url={education.data.url}
+                    from={education.data.from}
+					to={education.data.to}
+                    logo={education.data.logo}
+                  />
+                ))
+              }
             </tbody>
           </table>
         </div>
