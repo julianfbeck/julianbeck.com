@@ -34,6 +34,8 @@ const app = defineCollection({
       .transform((str) => (str ? new Date(str) : undefined)),
     appId: z.string(),
     shownInPortfolio: z.boolean(),
+    isIOSApp: z.boolean(),
+    appIdIOS: z.string().optional(),
   }),
 });
 
