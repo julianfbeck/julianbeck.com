@@ -35,7 +35,7 @@ const app = defineCollection({
     link: z.string(),
     shownInPortfolio: z.boolean(),
     isIOSApp: z.boolean(),
-    appStoreId: z.string().optional(),
+    appStoreId: z.number().optional(),
     draft: z.boolean().default(false),
     isMenuBarApp: z.boolean().default(false),
   }),

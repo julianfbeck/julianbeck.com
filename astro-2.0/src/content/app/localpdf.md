@@ -7,6 +7,5 @@ updatedDate: "PLACEHOLDER_DATE_OR_UNDEFINED"
 link: "https://localpdf.tech"
 shownInPortfolio: true
 isIOSApp: false
-appStoreId: undefined
 ---
 

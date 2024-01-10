@@ -7,6 +7,6 @@ updatedDate: "PLACEHOLDER_DATE_OR_UNDEFINED"
 link: "https://apps.apple.com/de/app/whatstats-chat-analyser/id1481007233?l=en"
 shownInPortfolio: true
 isIOSApp: true
-appStoreId: "https://apps.apple.com/de/app/whatstats-chat-analyser/id1481007233?l=en"
+appStoreId: 1481007233
 ---
 

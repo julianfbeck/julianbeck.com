@@ -7,6 +7,5 @@ updatedDate: "PLACEHOLDER_DATE_OR_UNDEFINED"
 link: "https://apps.apple.com/de/app/score-tracking-and-statistics/id1497662306?l=en"
 shownInPortfolio: true
 isIOSApp: true
-appStoreId: "https://apps.apple.com/de/app/score-tracking-and-statistics/id1497662306?l=en"
+appStoreId: 1497662306
 ---
-

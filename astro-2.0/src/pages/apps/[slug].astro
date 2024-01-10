@@ -1,16 +1,23 @@
 ---
-import { test } from "../../helpers/apps";
-// export async function getStaticPaths() {
-//   const apps = await fetchApps();
+import { getAppDetails } from "../../helpers/apps";
+import { getCollection } from "astro:content";
 
-//   return apps.map((app) => ({
-//     params: {
-//       slug: app.slug,
-//     },
-//     props: {
-//       app,
-//     },
-//   }));
-// }
-await test();
+export async function getStaticPaths() {
+  const apps = await getCollection("app", ({ data }) => data.isIOSApp);
+
+  return apps.map((app) => {
+    return {
+      params: { slug: app.slug },
+      props: { app: app },
+    };
+  });
+}
+const { app } = Astro.props;
+const appDetails = await getAppDetails(app);
 ---
+
+<div>
+  {appDetails?.screenshots.map((screenshot) => (
+    <img src={screenshot} alt={appDetails.name} />
+  ))
+</div>

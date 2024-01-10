@@ -7,5 +7,4 @@ updatedDate: "PLACEHOLDER_DATE_OR_UNDEFINED"
 link: "https://pi.juli.sh"
 shownInPortfolio: true
 isIOSApp: false
-appStoreId: undefined
 ---

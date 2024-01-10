@@ -1,5 +1,5 @@
 ---
-import { test } from "../../helpers/apps";
+import { getCollection } from "astro:content";
 // export async function getStaticPaths() {
 //   const apps = await fetchApps();
 
@@ -12,5 +12,6 @@ import { test } from "../../helpers/apps";
 //     },
 //   }));
 // }
-await test();
+const result = await getCollection("app");
+console.log(result);
 ---

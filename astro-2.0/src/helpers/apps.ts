@@ -37,9 +37,11 @@ type AppInfo = {
   appletvScreenshots: string[];
   supportedDevices: string[];
 };
-const getScreenshots = async (app: CollectionEntry<"app">) => {};
-
-export const test = async () => {
-  let result:AppInfo = await store.app({ id: 553834731 });
-  console.log(result.appId);
+export const getAppDetails = async (app: CollectionEntry<"app">) => {
+  try {
+    let result: AppInfo = await store.app({ id: Number(app.data.appStoreId) });
+    return result;
+  } catch (e) {
+    console.log(e);
+  }
 };

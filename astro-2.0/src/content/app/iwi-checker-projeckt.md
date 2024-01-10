@@ -7,6 +7,5 @@ updatedDate: "PLACEHOLDER_DATE_OR_UNDEFINED"
 link: "https://github.com/jufabeck2202/HSKA-App"
 shownInPortfolio: true
 isIOSApp: true
-appStoreId: undefined
 ---
 
