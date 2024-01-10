@@ -32,10 +32,12 @@ const app = defineCollection({
       .string()
       .optional()
       .transform((str) => (str ? new Date(str) : undefined)),
-    appId: z.string(),
+    link: z.string(),
     shownInPortfolio: z.boolean(),
     isIOSApp: z.boolean(),
-    appIdIOS: z.string().optional(),
+    appStoreId: z.string().optional(),
+    draft: z.boolean().default(false),
+    isMenuBarApp: z.boolean().default(false),
   }),
 });
 
@@ -75,4 +77,4 @@ const certification = defineCollection({
   }),
 });
 
-export const collections = { blog, app, position, education , certification};
+export const collections = { blog, app, position, education, certification };

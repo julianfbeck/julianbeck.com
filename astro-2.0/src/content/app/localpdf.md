@@ -4,9 +4,9 @@ description: "Web App to merge multiple PDF Files into one File, locally, using 
 tags: ["React", "Nextjs", "Webassembly", "Go"]
 pubDate: "PLACEHOLDER_DATE"
 updatedDate: "PLACEHOLDER_DATE_OR_UNDEFINED"
-appId: "https://localpdf.tech"
+link: "https://localpdf.tech"
 shownInPortfolio: true
 isIOSApp: false
-appIdIOS: undefined
+appStoreId: undefined
 ---
 
