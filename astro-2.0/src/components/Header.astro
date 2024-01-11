@@ -1,6 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
+import ToggleMenu from "./ToggleMenu.astro";
 
 const { pathname } = Astro.url;
 const currentPath = pathname.slice(1).replace(/\.\w+$/, "");
@@ -26,7 +26,7 @@ const currentPath = pathname.slice(1).replace(/\.\w+$/, "");
         </span>
       </a>
       <div class="flex items-center md:hidden">
-        <!-- <ToggleMenu/> -->
+        <ToggleMenu />
       </div>
     </div>
     <nav
@@ -41,26 +41,39 @@ const currentPath = pathname.slice(1).replace(/\.\w+$/, "");
         <HeaderLink href="/blog">Blog</HeaderLink>
         <HeaderLink href="/contact" class="md:hidden">Contact</HeaderLink>
       </ul>
-      <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
-        <div class="hidden items-center md:flex">
-          <a
-            aria-label="RSS Feed"
-            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-            href="/rss.xml"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <!-- <Icon name="tabler:rss" class="w-5 h-5"/> -->
-          </a>
-          <a
-            href="/contact"
-            aria-label="Contact"
-            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-          >
-            <!-- <Icon name="tabler:mail" class="w-5 h-5"/> -->
-          </a>
-        </div>
-      </div>
     </nav>
   </div>
 </header>
+<script type="module" is:inline>
+  function attachEvent(selector, event, fn) {
+    const matches = document.querySelectorAll(selector);
+    if (matches?.length > 0) {
+      for (const element of matches) {
+        element.addEventListener(
+          event,
+          () => {
+            fn(element);
+          },
+          false
+        );
+      }
+    }
+  }
+
+  window.onload = () => {
+    attachEvent("[data-toggle-menu]", "click", (element) => {
+      element.classList.toggle("expanded");
+      document.body.classList.toggle("overflow-hidden");
+      document.getElementById("menu")?.classList.toggle("hidden");
+    });
+  };
+
+  window.onpageshow = () => {
+    const element = document.querySelector("[data-toggle-menu]");
+    if (element) {
+      element.classList.remove("expanded");
+    }
+    document.body.classList.remove("overflow-hidden");
+    document.getElementById("menu")?.classList.add("hidden");
+  };
+</script>

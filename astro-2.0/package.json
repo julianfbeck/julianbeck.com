@@ -16,6 +16,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "app-store-scraper": "^0.18.0",
     "astro": "^4.1.1",
+    "astro-iconify": "^1.2.0",
     "framer-motion": "^10.17.12",
     "install": "^0.13.0",
     "react": "^18.2.0",
