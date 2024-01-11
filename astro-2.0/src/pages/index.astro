@@ -1,5 +1,5 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
+import MetaTags from "../layouts/MetaTags.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Projects from "../components/Projects.astro";
@@ -44,15 +44,15 @@ allEducation.sort(
 
 allCertifications.sort(
   (a, b) =>
-	parseDateString(b.data.from).getTime() -
-	parseDateString(a.data.from).getTime()
+    parseDateString(b.data.from).getTime() -
+    parseDateString(a.data.from).getTime()
 );
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <MetaTags title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <title>Julian Beck</title>
     <link rel="manifest" href="/static/manifest.json" />
     <meta
@@ -280,17 +280,19 @@ allCertifications.sort(
         >
           <table class="w-full">
             <tbody class="">
-            {allCertifications.map((certification) => (
-			  <Position
-				company={certification.data.company}
-				position={certification.data.position}
-				description={certification.data.description}
-				url={certification.data.url}
-				from={certification.data.from}
-				to={certification.data.to}
-				logo={certification.data.logo}
-			  />
-			))}
+              {
+                allCertifications.map((certification) => (
+                  <Position
+                    company={certification.data.company}
+                    position={certification.data.position}
+                    description={certification.data.description}
+                    url={certification.data.url}
+                    from={certification.data.from}
+                    to={certification.data.to}
+                    logo={certification.data.logo}
+                  />
+                ))
+              }
             </tbody>
           </table>
         </div>
@@ -308,7 +310,7 @@ allCertifications.sort(
                     description={education.data.description}
                     url={education.data.url}
                     from={education.data.from}
-					to={education.data.to}
+                    to={education.data.to}
                     logo={education.data.logo}
                   />
                 ))

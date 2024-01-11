@@ -37,6 +37,25 @@ type AppInfo = {
   appletvScreenshots: string[];
   supportedDevices: string[];
 };
+
+type AppWIthDetails = {
+  app: CollectionEntry<"app">;
+  details?: AppInfo;
+};
+
+export const addAppInfos = async (
+  apps: CollectionEntry<"app">[]
+): Promise<AppWIthDetails[]> => {
+  const appStoreApps = apps.filter((app) => app.data.appStoreId);
+
+  const appDetailsPromises = appStoreApps.map(async (app) => {
+    let details = await getAppDetails(app);
+    return { app, details };
+  });
+
+  return Promise.all(appDetailsPromises);
+};
+
 export const getAppDetails = async (app: CollectionEntry<"app">) => {
   try {
     let result: AppInfo = await store.app({ id: Number(app.data.appStoreId) });
