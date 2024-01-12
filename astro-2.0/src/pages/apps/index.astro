@@ -1,10 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { addAppInfos } from "../../helpers/apps";
-import Footer from "../../components/Footer.astro";
-import Header from "../../components/Header.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import MetaTags from "../../layouts/MetaTags.astro";
 import PageLayout from "../../layouts/PageLayout.astro";
 const apps = await getCollection("app", ({ data }) => data.appStoreId);
 
@@ -16,7 +13,18 @@ const meta = {
   image: "/images/og.png",
   url: "https://astro.build",
 };
-
-
 ---
-<PageLayout meta={meta}></PageLayout>
+
+<PageLayout meta={meta}>
+  <div>
+    <h1
+      class="text-center text-4xl md:text-6xl font-bold leading-tighter tracking-tighter mb-8 md:mb-16 font-heading text-blue-100"
+    >
+      Quality crafted
+      <span
+        class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-red-500 pr-[0.025em] mr-[-0.025em]"
+        >apps</span
+      >
+    </h1>
+  </div>
+</PageLayout>
