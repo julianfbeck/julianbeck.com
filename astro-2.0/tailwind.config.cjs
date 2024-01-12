@@ -1,3 +1,6 @@
+import typography from "@tailwindcss/typography";
+import forms from "@tailwindcss/forms";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -21,4 +24,5 @@ module.exports = {
     borderWidth: ["last"],
   },
   // plugins: [require("tailwindcss-filters")],
+  plugins: [typography, forms],
 };
