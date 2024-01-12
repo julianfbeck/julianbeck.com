@@ -16,10 +16,20 @@ export const Project: React.FC<{
 }> = ({ name, url, logo, color, description, tags }) => {
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1]);
+
+  const tagColors = [
+    "bg-blue-500",
+    "bg-green-500",
+    "bg-yellow-500",
+    "bg-red-500",
+    "bg-purple-500",
+    "bg-pink-500",
+  ];
   return (
     <a href={url} target="_blank">
       <motion.div
-        className="rounded-lg bg-gray-800 cursor-pointer overflow-hidden group hover:shadow-lg shadow-lg shover:shadow-xl hover:sm:shadow-indigo-500/20 transition duration-500 border-2 border-slate-800"
+        // target="_blank"
+        className="rounded-lg shadow-md shadow-blue-800 bg-gray-800 cursor-pointer overflow-hidden transition-all duration-200 group hover:shadow-lg"
         variants={{
           hidden: { filter: "grayscale(80%)" },
           visible: {
@@ -31,14 +41,11 @@ export const Project: React.FC<{
         }}
       >
         <div
-          className="h-32 w-full flex justify-evenly items-center transition-all duration-200 transform"
+          className="h-32 w-full flex justify-center items-center transition-all duration-200 transform"
           style={{ backgroundColor: color }}
         >
-          <h2 className="text-center text-4xl md:text-6xl font-bold leading-tighter tracking-tighter font-heading text-blue-100">
-            {name}
-          </h2>
           <img
-            className="w-20 transition-transform rounded-2xl duration-500 transform group-hover:scale-150"
+            className="w-16 transition-transform rounded-2xl duration-500 transform group-hover:scale-110"
             src={logo}
             alt={name}
           />

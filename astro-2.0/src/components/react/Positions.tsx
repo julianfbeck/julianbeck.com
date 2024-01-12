@@ -17,7 +17,7 @@ export const Position: React.FC<{
       <td className="px-6 py-4 whitespace-no-wrap ">
         <div className="flex items-center">
           <div className="flex-shrink-0 w-10">
-            <img class="w-10 h-10" src={logo} alt="Inovex Logo" />
+            <img className="w-10 h-10" src={logo} alt="Inovex Logo" />
           </div>
           <div className="ml-4">
             <div className="text-sm leading-5 font-medium text-gray-100">
