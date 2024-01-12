@@ -1,15 +1,21 @@
 import React from "react";
-import { motion, type MotionStyle } from "framer-motion";
+import {
+  motion,
+  useTransform,
+  type MotionStyle,
+  useViewportScroll,
+} from "framer-motion";
 
 export const Project: React.FC<{
   name: string;
-  logo: JSX.Element;
+  logo: string;
   color: string;
   description: string;
-  style: MotionStyle;
   url: string;
-  tags: JSX.Element;
-}> = ({ name, url, logo, color, description, style, tags }) => {
+  tags: string
+}> = ({ name, url, logo, color, description, tags }) => {
+  const { scrollYProgress } = useViewportScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1]);
   return (
     <motion.a
       href={url}
@@ -29,7 +35,11 @@ export const Project: React.FC<{
         className="h-32 w-full flex justify-center items-center transition-all duration-200 transform"
         style={{ backgroundColor: color }}
       >
-        {logo}
+        <img
+          class="w-16 transition-transform rounded-lg duration-500 transform group-hover:scale-110"
+          src={logo}
+          alt={name}
+        />
       </div>
       <div className="p-4">
         <div className="flex items-center">

@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import { addAppInfos } from "../../helpers/apps";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import PageLayout from "../../layouts/PageLayout.astro";
+import { Position } from "../../components/react/Positions";
+import { Project } from "../../components/react/Project";
 const apps = await getCollection("app", ({ data }) => data.appStoreId);
 
 const appDetails = await addAppInfos(apps);
@@ -26,5 +28,15 @@ const meta = {
         >apps</span
       >
     </h1>
+    <section>
+      <Project
+        color="blue"
+        description="test"
+        logo="/inovex.png"
+        tags="text"
+        name="tst"
+        url="google.com"
+      />
+    </section>
   </div>
 </PageLayout>
