@@ -1,11 +1,12 @@
 ---
-import MetaTags from "../layouts/MetaTags.astro";
+import MetaTags, { type MetaProps } from "../layouts/MetaTags.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Projects from "../components/Projects.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import { Position } from "../components/react/Positions";
+import PageLayout from "../layouts/PageLayout.astro";
 
 const allPositions = await getCollection("position");
 const allEducation = await getCollection("education");
@@ -47,43 +48,25 @@ allCertifications.sort(
     parseDateString(b.data.from).getTime() -
     parseDateString(a.data.from).getTime()
 );
+const meta: MetaProps = {
+  title: "Julian Beck",
+  description: "Julian Beck, Student, FullStack and iOS Developer",
+};
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <MetaTags title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <title>Julian Beck</title>
-    <link rel="manifest" href="/static/manifest.json" />
-    <meta
-      name="description"
-      content="Julian Beck, Student, FullStack and iOS Developer"
-    /><title>Julian Beck</title>
-    <link rel="manifest" href="/static/manifest.json" />
-    <meta
-      name="description"
-      content="Julian Beck, Student, FullStack and iOS Developer"
-    />
-  </head>
-  <body>
-    <Header title={SITE_TITLE} />
-    <main>
-      <div class="container mt-10">
-        <div class="flex items-center justify-between">
-          <h1 class="flex text-4xl font-bold text-white">Julian Beck</h1>
-        </div>
-        <span class="mb-5 font-medium text-gray-300 wh">
-          <!-- prettier-ignore -->
+<PageLayout meta={meta}>
+  <div class="flex items-center justify-between">
+    <h1 class="flex text-4xl font-bold text-white">Julian Beck</h1>
+  </div>
+  <span class="mb-5 font-medium text-gray-300 wh">
+    <!-- prettier-ignore -->
           Cloud Platform Engineer @<spa
-            class="underline decoration-sky-500"
-            href="https://inovex.de/">{"inovex"}</spa
-          >. Interested in all stuff DevOps, Cloud, Golang as well as
-          iOS-Development.
-        </span>
-        <h2 class="mt-8 mb-3 text-2xl font-bold text-white">
-          Personal Projects
-        </h2>
-        <!-- <motion.div
+      class="underline decoration-sky-500"
+      href="https://inovex.de/">{"inovex"}</spa
+    >. Interested in all stuff DevOps, Cloud, Golang as well as iOS-Development.
+  </span>
+  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Personal Projects</h2>
+  <!-- <motion.div
 				  variants={{
 					hidden: { opacity: 1, scale: 1 },
 					visible: {
@@ -246,85 +229,81 @@ allCertifications.sort(
 					}
 				  />
 				</motion.div> -->
-        <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Work Experience</h2>
-        <div
-          class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
-        >
-          <table class="w-full">
-            <tbody class="border-cyan-50">
-              {
-                allPositions.map((position) => (
-                  <Position
-                    company={position.data.company}
-                    position={position.data.position}
-                    description={position.data.description}
-                    url={position.data.url}
-                    from={position.data.from}
-                    to={position.data.to}
-                    logo={position.data.logo}
-                  />
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
-        <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Certifications</h2>
-        <div
-          class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
-        >
-          <table class="w-full">
-            <tbody class="">
-              {
-                allCertifications.map((certification) => (
-                  <Position
-                    company={certification.data.company}
-                    position={certification.data.position}
-                    description={certification.data.description}
-                    url={certification.data.url}
-                    from={certification.data.from}
-                    to={certification.data.to}
-                    logo={certification.data.logo}
-                  />
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
-        <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Education</h2>
-        <div
-          class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
-        >
-          <table class="w-full">
-            <tbody class="">
-              {
-                allEducation.map((education) => (
-                  <Position
-                    company={education.data.company}
-                    position={education.data.position}
-                    description={education.data.description}
-                    url={education.data.url}
-                    from={education.data.from}
-                    to={education.data.to}
-                    logo={education.data.logo}
-                  />
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
-        <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Contact</h2>
-        <div class="text-base text-gray-100">
-          If you are interested in contacting me, drop me a short email:{" "}
-          <a
-            target="_blank"
-            class="underline decoration-sky-500"
-            href="mailto:mail@julianbeck.com"
-          >
-            <b>mail@julianbeck.com</b>
-          </a>
-        </div>
-      </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Work Experience</h2>
+  <div
+    class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
+  >
+    <table class="w-full">
+      <tbody class="border-cyan-50">
+        {
+          allPositions.map((position) => (
+            <Position
+              company={position.data.company}
+              position={position.data.position}
+              description={position.data.description}
+              url={position.data.url}
+              from={position.data.from}
+              to={position.data.to}
+              logo={position.data.logo}
+            />
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Certifications</h2>
+  <div
+    class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
+  >
+    <table class="w-full">
+      <tbody class="">
+        {
+          allCertifications.map((certification) => (
+            <Position
+              company={certification.data.company}
+              position={certification.data.position}
+              description={certification.data.description}
+              url={certification.data.url}
+              from={certification.data.from}
+              to={certification.data.to}
+              logo={certification.data.logo}
+            />
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Education</h2>
+  <div
+    class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
+  >
+    <table class="w-full">
+      <tbody class="">
+        {
+          allEducation.map((education) => (
+            <Position
+              company={education.data.company}
+              position={education.data.position}
+              description={education.data.description}
+              url={education.data.url}
+              from={education.data.from}
+              to={education.data.to}
+              logo={education.data.logo}
+            />
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Contact</h2>
+  <div class="text-base text-gray-100">
+    If you are interested in contacting me, drop me a short email:{" "}
+    <a
+      target="_blank"
+      class="underline decoration-sky-500"
+      href="mailto:mail@julianbeck.com"
+    >
+      <b>mail@julianbeck.com</b>
+    </a>
+  </div>
+</PageLayout>
