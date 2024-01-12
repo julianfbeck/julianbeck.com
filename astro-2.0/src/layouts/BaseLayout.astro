@@ -1,6 +1,6 @@
 ---
 import MetaTags, { type MetaProps } from "./MetaTags.astro";
-
+import "../styles/global.css";
 // props
 export interface Props {
   meta: MetaProps;
@@ -14,9 +14,7 @@ const { meta } = Astro.props;
   <head>
     <MetaTags {...meta} />
   </head>
-  <body
-    class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-950"
-  >
+  <body class="antialiased">
     <slot />
     <style is:global>
       img {

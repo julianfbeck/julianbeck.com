@@ -14,7 +14,9 @@ const { meta } = Astro.props;
 <BaseLayout {meta}>
   <Header />
   <main>
-    <slot />
+    <div class="container mt-10">
+      <slot />
+    </div>
   </main>
   <Footer />
 </BaseLayout>
