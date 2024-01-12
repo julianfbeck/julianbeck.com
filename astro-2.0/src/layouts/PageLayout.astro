@@ -1,0 +1,20 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import type { MetaProps } from "./MetaTags.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+export interface Props {
+  meta: MetaProps;
+}
+
+const { meta } = Astro.props;
+---
+
+<BaseLayout {meta}>
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>

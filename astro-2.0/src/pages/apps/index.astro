@@ -5,31 +5,18 @@ import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import MetaTags from "../../layouts/MetaTags.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 const apps = await getCollection("app", ({ data }) => data.appStoreId);
 
 const appDetails = await addAppInfos(apps);
+
+const meta = {
+  title: `${SITE_TITLE} - Apps`,
+  description: SITE_DESCRIPTION,
+  image: "/images/og.png",
+  url: "https://astro.build",
+};
+
+
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <MetaTags title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <title>Julian Beck</title>
-    <link rel="manifest" href="/static/manifest.json" />
-    <meta
-      name="description"
-      content="Julian Beck, Student, FullStack and iOS Developer"
-    /><title>Julian Beck</title>
-    <link rel="manifest" href="/static/manifest.json" />
-    <meta
-      name="description"
-      content="Julian Beck, Student, FullStack and iOS Developer"
-    />
-  </head>
-  <body>
-    <Header title={SITE_TITLE} />
-    <main>
-      <div class="container mt-10"></div>
-    </main>
-    <Footer />
-  </body>
-</html>
+<PageLayout meta={meta}></PageLayout>
