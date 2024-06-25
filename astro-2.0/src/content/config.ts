@@ -38,6 +38,7 @@ const app = defineCollection({
     appStoreId: z.number().optional(),
     draft: z.boolean().default(false),
     isMenuBarApp: z.boolean().default(false),
+    logo: z.string().optional(),
   }),
 });
 

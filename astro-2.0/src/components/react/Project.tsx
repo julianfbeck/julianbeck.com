@@ -1,25 +1,18 @@
 import React from "react";
-import {
-  motion,
-  useTransform,
-  type MotionStyle,
-  useViewportScroll,
-} from "framer-motion";
-
+import { motion } from "framer-motion";
+const tagClass =
+  "text-[10px] inline-flex items-center font-bold leading-sm px-1.5 text-black/70 dark:text-black rounded-lg";
 export const Project: React.FC<{
   name: string;
   logo: string;
-  color: string;
   description: string;
   url: string;
-  tags: string;
-}> = ({ name, url, logo, color, description, tags }) => {
-  const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1]);
+  tags: string[];
+}> = ({ name, url, logo, description, tags }) => {
   return (
     <a href={url} target="_blank">
       <motion.div
-        className="rounded-lg bg-gray-800 cursor-pointer overflow-hidden group hover:shadow-lg shadow-lg shover:shadow-xl hover:sm:shadow-indigo-500/20 transition duration-500 border-2 border-slate-800"
+        className="rounded-lg bg-black/20 cursor-pointer overflow-hidden group hover:shadow-lg shadow-lg  hover:sm:shadow-indigo-500/20 transition duration-500 border-2 border-slate-800"
         variants={{
           hidden: { filter: "grayscale(80%)" },
           visible: {
@@ -30,11 +23,8 @@ export const Project: React.FC<{
           },
         }}
       >
-        <div
-          className="h-32 w-full flex justify-evenly items-center transition-all duration-200 transform"
-          style={{ backgroundColor: color }}
-        >
-          <h2 className="text-center text-4xl md:text-6xl font-bold leading-tighter tracking-tighter font-heading text-blue-100">
+        <div className="h-32 w-full flex justify-evenly items-center transition-all duration-200 transform">
+          <h2 className="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading text-blue-100">
             {name}
           </h2>
           <img
@@ -51,9 +41,12 @@ export const Project: React.FC<{
               src="./arrow-right.svg"
             />
           </div>
-
           <div className="mt-3 text-sm text-white">{description}</div>
-          {tags}
+          {tags.map((tag) => (
+            <span className={`${tagClass} bg-sky-200 m-1`}>
+              {tag}
+            </span>
+          ))}
         </div>
       </motion.div>
     </a>

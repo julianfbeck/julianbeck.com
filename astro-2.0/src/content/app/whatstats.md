@@ -1,6 +1,6 @@
 ---
 title: "WhatStats"
-description: "WhatStats is an app to analyse WhatsApp Chats locally on your device"
+description: "WhatStats is an app to analyze WhatsApp Chats locally on your device"
 tags: ["iOS", "Swift", "SwiftUI"]
 pubDate: "PLACEHOLDER_DATE"
 updatedDate: "PLACEHOLDER_DATE_OR_UNDEFINED"

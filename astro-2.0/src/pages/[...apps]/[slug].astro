@@ -1,0 +1,16 @@
+---
+export async function getStaticPaths() {
+  const apps =
+
+  return apps.map((app) => ({
+    params: {
+      slug: app.slug,
+    },
+    props: {
+      app,
+    },
+  }));
+}
+
+const { app } = Astro.props;
+---

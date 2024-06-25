@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import { addAppInfos } from "../../helpers/apps";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import PageLayout from "../../layouts/PageLayout.astro";
-import { Project } from "../../components/react/Project";
+import { addAppInfos } from "../helpers/apps";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import PageLayout from "../layouts/PageLayout.astro";
+import { Project } from "../components/react/Project";
 const apps = await getCollection("app", ({ data }) => data.appStoreId);
 
 const appDetails = await addAppInfos(apps);
@@ -28,26 +28,19 @@ const meta = {
       >
     </h1>
     <section
-      class="mx-auto grid sm:gap-12 grid-cols-1 lg:grid-cols-2 sm:p-1 my-12 dark:text-white"
+      class="mx-auto grid gap-5 sm:gap-12 grid-cols-1 lg:grid-cols-2 sm:p-1 my-12 text-white"
     >
-      <Project
-        client:load
-        color="blue"
-        description="test"
-        logo="/WhatStatLogo.png"
-        tags="text"
-        name="WhatStats"
-        url="google.com"
-      />
-      <Project
-        client:load
-        color="blue"
-        description="test"
-        logo="/WhatStatLogo.png"
-        tags="text"
-        name="WhatStats"
-        url="google.com"
-      />
+      {
+        appDetails.map((app) => (
+          <Project
+            description={app.app.data.description}
+            logo={app.app.data.logo || app.details?.icon || "404"}
+            tags={app.app.data.tags}
+            name={app.app.data.title}
+            url={app.app.slug}
+          />
+        ))
+      }
     </section>
   </div>
 </PageLayout>
