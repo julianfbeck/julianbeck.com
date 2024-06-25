@@ -38,14 +38,14 @@ type AppInfo = {
   supportedDevices: string[];
 };
 
-type AppWIthDetails = {
+type DetailedApp = {
   app: CollectionEntry<"app">;
   details?: AppInfo;
 };
 
 export const addAppInfos = async (
   apps: CollectionEntry<"app">[]
-): Promise<AppWIthDetails[]> => {
+): Promise<DetailedApp[]> => {
   const appStoreApps = apps.filter((app) => app.data.appStoreId);
 
   const appDetailsPromises = appStoreApps.map(async (app) => {

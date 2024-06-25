@@ -1,10 +1,15 @@
 ---
-export async function getStaticPaths() {
-  const apps =
+import { getCollection } from "astro:content";
+import { addAppInfos } from "../../helpers/apps";
+import { SITE } from "../../../config.mjs";
 
-  return apps.map((app) => ({
+export async function getStaticPaths() {
+  const apps = await getCollection("app", ({ data }) => data.appStoreId);
+  const appDetails = await addAppInfos(apps);
+
+  return appDetails.map((app) => ({
     params: {
-      slug: app.slug,
+      slug: app.app.slug,
     },
     props: {
       app,
@@ -13,4 +18,12 @@ export async function getStaticPaths() {
 }
 
 const { app } = Astro.props;
+const meta = {
+  title: `${app.app.data.title} — ${SITE.name}`,
+  description: app.app.data.description,
+  image: app.iconUrl,
+  ogTitle: app.title,
+  ogType: "product",
+  appStoreId: app.appStoreId,
+};
 ---
