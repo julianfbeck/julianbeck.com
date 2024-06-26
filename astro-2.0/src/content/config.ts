@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { z, defineCollection } from "astro:content";
 
 const blog = defineCollection({
   // Type-check frontmatter using a schema
@@ -27,12 +27,13 @@ const app = defineCollection({
     pubDate: z
       .string()
       .or(z.date())
-      .transform((val) => new Date(val)),
+      .transform((val: string | number | Date) => new Date(val)),
     updatedDate: z
       .string()
       .optional()
       .transform((str) => (str ? new Date(str) : undefined)),
     link: z.string(),
+    screenshots: z.array(z.string()).optional(),
     shownInPortfolio: z.boolean(),
     isIOSApp: z.boolean(),
     appStoreId: z.number().optional(),

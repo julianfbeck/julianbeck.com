@@ -1,12 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import { addAppInfos } from "../helpers/apps";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import PageLayout from "../layouts/PageLayout.astro";
 import { Project } from "../components/react/Project";
-const apps = await getCollection("app", ({ data }) => data.appStoreId);
+import { fetchApps } from "../helpers/apps";
 
-const appDetails = await addAppInfos(apps);
+const apps = await fetchApps();
 
 const meta = {
   title: `${SITE_TITLE} - Apps`,
@@ -31,13 +30,13 @@ const meta = {
       class="mx-auto grid gap-5 sm:gap-12 grid-cols-1 lg:grid-cols-2 sm:p-1 my-12 text-white"
     >
       {
-        appDetails.map((app) => (
+        apps.map((app) => (
           <Project
-            description={app.app.data.description}
-            logo={app.app.data.logo || app.details?.icon || "404"}
-            tags={app.app.data.tags}
-            name={app.app.data.title}
-            url={app.app.slug}
+            description={app.description}
+            logo={app.icon}
+            tags={app.data.tags}
+            name={app.data.title}
+            url={app.slug}
           />
         ))
       }
