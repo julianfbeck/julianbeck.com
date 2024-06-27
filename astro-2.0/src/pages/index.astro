@@ -1,12 +1,10 @@
 ---
-import MetaTags, { type MetaProps } from "../layouts/MetaTags.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Projects from "../components/Projects.astro";
+import { Project } from "../components/react/FrontProjects";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import { Position } from "../components/react/Positions";
 import PageLayout from "../layouts/PageLayout.astro";
+import { fetchApps } from "../helpers/apps";
 
 const allPositions = await getCollection("position");
 const allEducation = await getCollection("education");
@@ -31,6 +29,7 @@ const parseDateString = (dateStr: string): Date => {
   return new Date(`${year}-${monthMap[month]}-01`);
 };
 
+const apps = await fetchApps();
 allPositions.sort(
   (a, b) =>
     parseDateString(b.data.from).getTime() -
@@ -66,7 +65,30 @@ const meta = {
     >. Interested in all stuff DevOps, Cloud, Golang as well as iOS-Development.
   </span>
   <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Personal Projects</h2>
-
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+    {
+      apps
+        .filter((app) => app.data.shownInPortfolio)
+        .map((app) => (
+          <Project
+            description={app.description}
+            logo={app.icon}
+            tags={app.data.tags}
+            name={app.data.title}
+            url={app.slug}
+          />
+        ))
+    }
+  </div>
+  <!-- Button that shows see all my apps -->
+  <div class="flex justify-center items-center">
+    <a
+      href="/apps"
+      class="px-4 py-2 mt-4 text-xl font-bold text-white bg-slate-800 rounded-md hover:bg-blue-600"
+    >
+      See all my apps ➔
+    </a>
+  </div>
   <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Work Experience</h2>
   <div
     class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"

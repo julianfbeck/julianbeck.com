@@ -1,4 +1,3 @@
-import React from "react";
 import {
   motion,
   useTransform,
@@ -9,11 +8,10 @@ import {
 export const Project: React.FC<{
   name: string;
   logo: string;
-  color: string;
   description: string;
   url: string;
-  tags: string;
-}> = ({ name, url, logo, color, description, tags }) => {
+  tags: string[];
+}> = ({ name, url, logo,  description, tags }) => {
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1]);
 
@@ -41,8 +39,7 @@ export const Project: React.FC<{
         }}
       >
         <div
-          className="h-32 w-full flex justify-center items-center transition-all duration-200 transform"
-          style={{ backgroundColor: color }}
+          className="h-32 w-full flex justify-center items-center transition-all duration-200 transform bg-slate-950"
         >
           <img
             className="w-16 transition-transform rounded-2xl duration-500 transform group-hover:scale-110"
@@ -60,7 +57,7 @@ export const Project: React.FC<{
           </div>
 
           <div className="mt-3 text-sm text-white">{description}</div>
-          {tags}
+          {/* {tags} */}
         </div>
       </motion.div>
     </a>
