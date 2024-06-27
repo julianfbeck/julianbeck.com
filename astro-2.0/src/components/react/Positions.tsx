@@ -1,5 +1,3 @@
-import React from "@astrojs/react";
-
 export const Position: React.FC<{
   company: string;
   logo: string;
