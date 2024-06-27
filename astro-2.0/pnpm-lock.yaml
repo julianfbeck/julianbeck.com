@@ -23,6 +23,9 @@ importers:
       '@astrolib/seo':
         specifier: 1.0.0-beta.5
         version: 1.0.0-beta.5(astro@4.11.3(@types/node@20.14.9))
+      '@fontsource-variable/dm-sans':
+        specifier: ^5.0.6
+        version: 5.0.6
       '@tailwindcss/forms':
         specifier: ^0.5.7
         version: 0.5.7(tailwindcss@3.4.4)
@@ -388,6 +391,9 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource-variable/dm-sans@5.0.6':
+    resolution: {integrity: sha512-+CNVseJRlYGB4gUZ2L7yTeCHHBKAMVVhqUz85nb/OoU0hketJrWCHOUJwF5W2MpZCeE0JqJmDFAsEdx8znkrGw==}
 
   '@iconify/tools@4.0.4':
     resolution: {integrity: sha512-hX1Z3i1Tm6JxyrDv45jNEijPpepZZfal/4leFGtUC04H9LsgRo597BOBFB9PUZsQdFGLOxVUUfv6lqU/dC+xXw==}
@@ -2962,6 +2968,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.5':
     optional: true
+
+  '@fontsource-variable/dm-sans@5.0.6': {}
 
   '@iconify/tools@4.0.4':
     dependencies:

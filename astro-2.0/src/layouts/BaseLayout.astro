@@ -1,10 +1,7 @@
 ---
-import MetaTags, { type MetaProps } from "./MetaTags.astro";
+import MetaTags  from "./MetaTags.astro";
 import "../styles/global.css";
 // props
-export interface Props {
-  meta: MetaProps;
-}
 
 const { meta } = Astro.props;
 ---
