@@ -1,8 +1,8 @@
 ---
-import { getCollection } from "astro:content";
 import { SITE } from "../../../config.mjs";
 import { fetchApps, type DetailedApp, proseCSS } from "../../helpers/apps";
 import Layout from "../../layouts/PageLayout.astro";
+import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const apps = await fetchApps();
@@ -30,12 +30,6 @@ const meta = {
   ogType: "product",
   appStoreId: app.data.appStoreId || "",
 };
-
-const { title, description } = app.data;
-
-
-const tagClass =
-  "text-[10px] inline-flex items-center font-bold leading-sm px-1.5 text-black/70 dark:text-black rounded-lg";
 ---
 
 <Layout {meta}>
@@ -60,13 +54,6 @@ const tagClass =
           {
             app.data.isIOSApp && app.data.appStoreId && (
               <div class="relative">
-                {/* <button
-                  id="share-button"
-                  class="hidden absolute inset-0 left-[-26px] opacity-90"
-                  style="width:16px"
-                >
-                  <Icon name="tabler:share-2" class="w-4" />
-                </button> */}
                 <a href={app.appstoreUrl}>
                   <img
                     src="/base/download-on-app-store-badge.svg"
@@ -78,12 +65,40 @@ const tagClass =
             )
           }
         </>
+        {
+          Object.keys(app.data.links || {}).length > 0 && (
+            <nav class="flex flex-wrap gap-4 max-w-md justify-center mt-8 font-semibold text-xl text-primary-600 instapaper_ignore">
+              <>
+                {Object.entries(app.data.links || {}).map(([title, url]) => (
+                  <a
+                    href={url}
+                    class="hover:text-primary-400 dark:text-primary-400 dark:hover:text-primary-200"
+                  >
+                    {title}
+                  </a>
+                ))}
+              </>
+            </nav>
+          )
+        }
       </header>
     </article>
     <div class={proseCSS}>
       <app.Content />
       <section class="mb-20">
-        {app.screenshots.map((screenshot) => <img src={screenshot} />)}
+        {
+          app.screenshots.map((screenshot) => (
+            <Image
+              src={screenshot}
+              alt="Picture of the app"
+              inferSize
+              loading="lazy"
+              decoding="async"
+              widths={[240, 540, 720]}
+              sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px`}
+            />
+          ))
+        }
       </section>
     </div>
   </section>

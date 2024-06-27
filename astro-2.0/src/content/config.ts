@@ -40,6 +40,7 @@ const app = defineCollection({
     draft: z.boolean().default(false),
     isMenuBarApp: z.boolean().default(false),
     logo: z.string().optional(),
+    links: z.record(z.string().url()).optional(),
   }),
 });
 

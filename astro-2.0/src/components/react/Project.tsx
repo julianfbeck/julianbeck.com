@@ -43,9 +43,7 @@ export const Project: React.FC<{
           </div>
           <div className="mt-3 text-sm text-white">{description}</div>
           {tags.map((tag) => (
-            <span className={`${tagClass} bg-sky-200 m-1`}>
-              {tag}
-            </span>
+            <span className={`${tagClass} bg-sky-200 m-1`}>{tag}</span>
           ))}
         </div>
       </motion.div>
