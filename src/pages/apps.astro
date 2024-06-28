@@ -1,0 +1,44 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import PageLayout from "../layouts/PageLayout.astro";
+import { Project } from "../components/react/Project";
+import { fetchApps } from "../helpers/apps";
+
+const apps = await fetchApps();
+
+const meta = {
+  title: `${SITE_TITLE} - Apps`,
+  description: SITE_DESCRIPTION,
+  image: "/images/og.png",
+  url: "https://astro.build",
+};
+---
+
+<PageLayout meta={meta}>
+  <div>
+    <h1
+      class="text-center text-4xl md:text-6xl font-bold leading-tighter tracking-tighter mb-8 md:mb-16 font-heading text-blue-100"
+    >
+      My Projects and
+      <span
+        class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-red-500 pr-[0.025em] mr-[-0.025em]"
+        >Apps</span
+      >
+    </h1>
+    <section
+      class="mx-auto grid gap-5 sm:gap-12 grid-cols-1 lg:grid-cols-2 sm:p-1 my-12 text-white"
+    >
+      {
+        apps.map((app) => (
+          <Project
+            description={app.description}
+            logo={app.icon}
+            tags={app.data.tags}
+            name={app.data.title || app.appDetails?.title || "Untitled"}
+            url={app.slug}
+          />
+        ))
+      }
+    </section>
+  </div>
+</PageLayout>

@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-900;
+  background-color: #000000;
+  -webkit-font-smoothing: antialiased;
+  font-family: "DM Sans Variable", sans-serif;
+}

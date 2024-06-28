@@ -1,0 +1,169 @@
+---
+import { Project } from "../components/react/FrontProjects";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
+import { Position } from "../components/react/Positions";
+import PageLayout from "../layouts/PageLayout.astro";
+import { fetchApps } from "../helpers/apps";
+
+const allPositions = await getCollection("position");
+const allEducation = await getCollection("education");
+const allCertifications = await getCollection("certification");
+const monthMap: { [key: string]: string } = {
+  Jan: "01",
+  Feb: "02",
+  Mar: "03",
+  Apr: "04",
+  May: "05",
+  Jun: "06",
+  Jul: "07",
+  Aug: "08",
+  Sep: "09",
+  Oct: "10",
+  Nov: "11",
+  Dec: "12",
+};
+
+const parseDateString = (dateStr: string): Date => {
+  const [month, year] = dateStr.split(" ");
+  return new Date(`${year}-${monthMap[month]}-01`);
+};
+
+const apps = await fetchApps();
+allPositions.sort(
+  (a, b) =>
+    parseDateString(b.data.from).getTime() -
+    parseDateString(a.data.from).getTime()
+);
+
+allEducation.sort(
+  (a, b) =>
+    parseDateString(b.data.from).getTime() -
+    parseDateString(a.data.from).getTime()
+);
+
+allCertifications.sort(
+  (a, b) =>
+    parseDateString(b.data.from).getTime() -
+    parseDateString(a.data.from).getTime()
+);
+const meta = {
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+};
+---
+
+<PageLayout meta={meta}>
+  <div class="flex items-center justify-between">
+    <h1 class="flex text-4xl font-bold text-white">Julian Beck</h1>
+  </div>
+  <span class="mb-5 font-medium text-gray-300 wh">
+    <!-- prettier-ignore -->
+          Cloud Platform Engineer @<spa
+      class="underline decoration-sky-500"
+      href="https://inovex.de/">{"inovex"}</spa
+    >. Interested in all stuff DevOps, Cloud, Golang as well as iOS-Development.
+  </span>
+  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Personal Projects</h2>
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+    {
+      apps
+        .filter((app) => app.data.shownInPortfolio)
+        .map((app) => (
+          <Project
+            description={app.description}
+            logo={app.icon}
+            tags={app.data.tags}
+            name={app.data.title}
+            url={app.slug}
+          />
+        ))
+    }
+  </div>
+  <!-- Button that shows see all my apps -->
+  <div class="flex justify-center items-center">
+    <a
+      href="/apps"
+      class="px-4 py-2 mt-4 text-xl font-bold text-white bg-slate-800 rounded-md hover:bg-blue-600"
+    >
+      See all my apps ➔
+    </a>
+  </div>
+  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Work Experience</h2>
+  <div
+    class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
+  >
+    <table class="w-full">
+      <tbody class="border-cyan-50">
+        {
+          allPositions.map((position) => (
+            <Position
+              company={position.data.company}
+              position={position.data.position}
+              description={position.data.description}
+              url={position.data.url}
+              from={position.data.from}
+              to={position.data.to}
+              logo={position.data.logo}
+            />
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Certifications</h2>
+  <div
+    class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
+  >
+    <table class="w-full">
+      <tbody class="">
+        {
+          allCertifications.map((certification) => (
+            <Position
+              company={certification.data.company}
+              position={certification.data.position}
+              description={certification.data.description}
+              url={certification.data.url}
+              from={certification.data.from}
+              to={certification.data.to}
+              logo={certification.data.logo}
+            />
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Education</h2>
+  <div
+    class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
+  >
+    <table class="w-full">
+      <tbody class="">
+        {
+          allEducation.map((education) => (
+            <Position
+              company={education.data.company}
+              position={education.data.position}
+              description={education.data.description}
+              url={education.data.url}
+              from={education.data.from}
+              to={education.data.to}
+              logo={education.data.logo}
+            />
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Contact</h2>
+  <div class="text-base text-gray-100">
+    If you are interested in contacting me, drop me a short email:{" "}
+    <a
+      target="_blank"
+      class="underline decoration-sky-500"
+      href="mailto:mail@julianbeck.com"
+    >
+      <b>mail@julianbeck.com</b>
+    </a>
+  </div>
+</PageLayout>

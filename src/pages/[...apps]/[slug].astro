@@ -1,0 +1,96 @@
+---
+import { SITE } from "../../../config.mjs";
+import { fetchApps, type DetailedApp, proseCSS } from "../../helpers/apps";
+import Layout from "../../layouts/PageLayout.astro";
+import { Image } from "astro:assets";
+import ImageSlider from "../../components/ImageSlider";
+
+export async function getStaticPaths() {
+  const apps = await fetchApps();
+
+  return apps.map((app) => ({
+    params: {
+      slug: app.slug,
+    },
+    props: {
+      app,
+    },
+  }));
+}
+
+interface Props {
+  app: DetailedApp;
+}
+
+const { app } = Astro.props;
+const meta = {
+  title: `${app.data.title} — ${SITE.name}`,
+  description: app.data.description,
+  image: app.icon,
+  ogTitle: app.data.title,
+  ogType: "product",
+  appStoreId: app.data.appStoreId || "",
+};
+---
+
+<Layout {meta}>
+  <section class="max-w-3xl py-8 sm:py-16 lg:py-20 mx-auto lg:-mt-10 mb-10">
+    <article>
+      <header class="flex flex-col items-center text-center px-4 sm:px-6 mb-20">
+        <img
+          src={app.icon}
+          width="224"
+          height="224"
+          class={`mb-3 rounded-[44px]`}
+        />
+        <h1
+          class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading text-white"
+        >
+          {app.data.title}
+        </h1>
+        <h2 class="text-2xl md:text-3xl tracking-tight mb-8 text-white">
+          {app.data.description}
+        </h2>
+        <>
+          {
+            app.data.isIOSApp && app.data.appStoreId && (
+              <div class="relative">
+                <a href={app.appstoreUrl}>
+                  <img
+                    src="/base/download-on-app-store-badge.svg"
+                    alt="Download on the App Store"
+                    style="margin: 0; padding: 0; display: block; height: 60px; user-select: none"
+                  />
+                </a>
+              </div>
+            )
+          }
+        </>
+        {
+          Object.keys(app.data.links || {}).length > 0 && (
+            <nav class="flex flex-wrap gap-4 max-w-md justify-center mt-8 font-semibold text-xl text-slate-300 instapaper_ignore">
+              <>
+                {Object.entries(app.data.links || {}).map(([title, url]) => (
+                  <a
+                    href={url}
+                    class="hover:text-slate-100 dark:text-slate-400 "
+                  >
+                    {title}
+                  </a>
+                ))}
+              </>
+            </nav>
+          )
+        }
+      </header>
+    </article>
+    {
+      app.screenshots.length > 0 && (
+        <ImageSlider images={app.screenshots} client:load />
+      )
+    }
+    <div class={proseCSS}>
+      <app.Content />
+    </div>
+  </section>
+</Layout>

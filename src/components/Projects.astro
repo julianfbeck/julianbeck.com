@@ -1,0 +1,19 @@
+<div
+  variants={{
+    hidden: { opacity: 1, scale: 1 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: 0,
+        easings: "backOut",
+        staggerChildren: 0.2,
+      },
+    },
+  }}
+  initial="hidden"
+  animate="visible"
+  class="grid grid-cols-1 gap-3 sm:grid-cols-3"
+>
+  <div>test</div>
+</div>

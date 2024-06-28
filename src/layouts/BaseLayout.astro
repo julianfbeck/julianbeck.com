@@ -1,0 +1,22 @@
+---
+import MetaTags  from "./MetaTags.astro";
+import "../styles/global.css";
+// props
+
+const { meta } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="motion-safe:scroll-smooth 2xl:text-[20px]">
+  <head>
+    <MetaTags {...meta} />
+  </head>
+  <body class="antialiased">
+    <slot />
+    <style is:global>
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+</html>

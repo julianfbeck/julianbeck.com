@@ -1,0 +1,73 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import { Plausible } from "astro-analytics";
+import { AstroSeo } from "@astrolib/seo";
+import { SITE } from "../../config.mjs";
+
+const {
+  title = SITE.name,
+  description = "",
+  image: _image,
+  noindex = false,
+  nofollow = false,
+  ogTitle = title,
+  ogType = "website",
+  appStoreId,
+} = Astro.props;
+
+const image = _image && new URL(_image, Astro.site);
+const canonicalURL = new URL(
+  Astro.url.pathname.replace(/\.html$/, ""),
+  Astro.site
+);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="Julian Beck" />
+<meta name="twitter:site" content="@julianfbeck" />
+<meta name="twitter:creator" content="@julianfbeck" />
+<meta name="twitter:description" content={description} />
+<meta name="x-build-time" content={new Date().toUTCString()} />
+
+{
+  appStoreId ? (
+    <>
+      <meta name="apple-itunes-app" content={`app-id=${appStoreId}`} />
+      <meta name="twitter:card" content="app" />
+      <meta name="twitter:app:id:iphone" content={appStoreId} />
+    </>
+  ) : (
+    <meta name="twitter:card" content="summary" />
+  )
+}
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+  rel="icon"
+  href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>"
+/>
+
+<ViewTransitions />
+<Plausible domain="juli.sh" src="https://plausible.home.juli.sh/js/script.js" />
+
+<AstroSeo
+  title={title}
+  description={description}
+  canonical={canonicalURL.toString()}
+  noindex={noindex}
+  nofollow={nofollow}
+  openGraph={{
+    title: ogTitle,
+    description,
+    url: canonicalURL.toString(),
+    type: ogType,
+    images: image
+      ? [
+          {
+            url: image.toString(),
+          },
+        ]
+      : undefined,
+  }}
+/>
