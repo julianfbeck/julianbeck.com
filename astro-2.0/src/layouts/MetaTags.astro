@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from "astro:transitions";
+import { Plausible } from "astro-analytics";
 import { AstroSeo } from "@astrolib/seo";
 import { SITE } from "../../config.mjs";
 
@@ -48,6 +49,7 @@ const canonicalURL = new URL(
 />
 
 <ViewTransitions />
+<Plausible domain="juli.sh" src="https://plausible.home.juli.sh/js/script.js" />
 
 <AstroSeo
   title={title}
