@@ -34,7 +34,7 @@ const meta = {
             description={app.description}
             logo={app.icon}
             tags={app.data.tags}
-            name={app.data.title}
+            name={app.data.title || app.appDetails?.title || "Untitled"}
             url={app.slug}
           />
         ))

@@ -5,17 +5,15 @@ tags: ["iOS", "Swift", "SwiftUI", "WidgetKit"]
 pubDate: "Feb 25, 2024"
 updatedDate: "Feb 25, 2024"
 appStoreId: 6476065390
-link: "https://apps.apple.com/us/app/coffee-bean-tracker-vault/id6476065390"
+link: "https://apps.apple.com/app/id6476065390"
 shownInPortfolio: true
 isIOSApp: true
 ---
-# Beanvault: Your Ultimate Coffee Companion
+## Beanvault: Your Ultimate Coffee Companion
 
-## Elevate Your Coffee Journey!
+### Elevate Your Coffee Journey!
 
 Discover, track, and enjoy your coffee beans like never before. Beanvault is your go-to app for managing everything about your coffee beans. 
-
-### Key Features:
 
 #### Comprehensive Tracking
 Effortlessly log and monitor details about your coffee beans, including:

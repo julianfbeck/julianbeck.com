@@ -44,14 +44,15 @@ const normalizeApps = async (app: CollectionEntry<"app">) => {
   const appDetails = await getAppDetails(app);
   const screenshots = [];
 
+  screenshots.push(...(app.data.screenshots ?? []));
   if (appDetails) {
-    screenshots.push(...(app.data.screenshots ?? []));
     screenshots.push(...appDetails.screenshots);
     if (appDetails.screenshots.length === 0) {
       screenshots.push(...appDetails.ipadScreenshots);
       screenshots.push(...appDetails.appletvScreenshots);
     }
   }
+
   const { Content, headings } = await app.render();
   const appstoreUrl = appDetails?.id
     ? `https://apps.apple.com/app/id${appDetails.id}`
