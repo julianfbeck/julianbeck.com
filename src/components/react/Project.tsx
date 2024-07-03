@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 const tagClass =
-  "text-[10px] inline-flex items-center font-bold leading-sm px-1.5 text-black/70 dark:text-black rounded-lg";
+  "text-[10px] inline-flex items-center font-bold leading-sm px-1.5 text-black/70 text-black rounded-lg";
 export const Project: React.FC<{
   name: string;
   logo: string;
@@ -12,7 +12,7 @@ export const Project: React.FC<{
   return (
     <a href={url}>
       <motion.div
-        className="rounded-lg bg-black/20 cursor-pointer overflow-hidden group hover:shadow-lg shadow-lg  hover:sm:shadow-indigo-500/20 transition duration-500 border-2 border-slate-800"
+        className="h-full flex flex-col rounded-lg bg-black/20 cursor-pointer overflow-hidden group hover:shadow-lg shadow-lg  hover:sm:shadow-indigo-500/20 transition duration-500 border-2 border-slate-800"
         variants={{
           hidden: { filter: "grayscale(80%)" },
           visible: {
@@ -24,9 +24,7 @@ export const Project: React.FC<{
         }}
       >
         <div className="h-32 w-full flex justify-evenly items-center transition-all duration-200 transform">
-          {/* <h2 className="text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading text-blue-100">
-            {name}
-          </h2> */}
+       
           <img
             className="w-20 transition-transform rounded-2xl duration-500 transform group-hover:scale-150"
             src={logo}

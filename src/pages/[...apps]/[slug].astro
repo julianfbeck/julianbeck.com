@@ -71,10 +71,7 @@ const meta = {
             <nav class="flex flex-wrap gap-4 max-w-md justify-center mt-8 font-semibold text-xl text-slate-300 instapaper_ignore">
               <>
                 {Object.entries(app.data.links || {}).map(([title, url]) => (
-                  <a
-                    href={url}
-                    class="hover:text-slate-100 dark:text-slate-400 "
-                  >
+                  <a href={url} class="hover:text-slate-100 text-slate-400 ">
                     {title}
                   </a>
                 ))}

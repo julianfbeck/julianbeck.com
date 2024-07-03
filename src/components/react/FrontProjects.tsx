@@ -27,7 +27,7 @@ export const Project: React.FC<{
     <a href={url} target="_blank">
       <motion.div
         // target="_blank"
-        className="rounded-lg shadow-md shadow-blue-800 bg-gray-800 cursor-pointer overflow-hidden transition-all duration-200 group hover:shadow-lg"
+        className="flex flex-col h-full rounded-lg shadow-md shadow-blue-800 bg-gray-800 cursor-pointer overflow-hidden transition-all duration-200 group hover:shadow-lg"
         variants={{
           hidden: { filter: "grayscale(80%)" },
           visible: {
