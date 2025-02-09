@@ -4,7 +4,7 @@ description: "Create custom emoji stickers using AI"
 tags: ["iOS", "Swift", "SwiftUI", "AI"]
 pubDate: "Feb 8, 2024"
 updatedDate: "Feb 8, 2024"
-link: "https://apps.apple.com/app/id6740461326"
+link: "https://apps.apple.com/app/apple-store/id6740461326?pt=120183609&ct=trystickers&mt=8"
 shownInPortfolio: true
 isIOSApp: true
 appStoreId: 6740461326
