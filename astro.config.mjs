@@ -17,7 +17,9 @@ export default defineConfig({
   ],
   redirects: {
 
-    // "/blog": "blog.julianbeck.om",
-    "/anify": "https://apps.apple.com/app/id6744032201",
+    "/anify": {
+      status: 302,
+      destination: "https://apps.apple.com/app/id6744032201",
+    },
   },
 });
