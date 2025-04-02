@@ -16,6 +16,8 @@ export default defineConfig({
     }),
   ],
   redirects: {
+
     // "/blog": "blog.julianbeck.om",
+    "/anify": "apps.apple.com/app/id6744032201",
   },
 });
