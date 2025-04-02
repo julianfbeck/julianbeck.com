@@ -19,7 +19,7 @@ export default defineConfig({
 
     "/anify": {
       status: 302,
-      destination: "https://apps.apple.com/app/id6744032201",
+      destination: "https://apps.apple.com/app/apple-store/id6744032201?pt=120183609&ct=website&mt=8",
     },
   },
 });
