@@ -1,0 +1,35 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "redeem-worker",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-07-05",
+  "kv_namespaces": [
+    {
+      "binding": "REDEEM_KV",
+      "id": "a9bc9e61be724c9d9dc090fd33b91a3d"
+    }
+  ],
+  "vars": {
+    "ADMIN_USERNAME": "admin"
+  }
+  // "r2_buckets": [
+  //   {
+  //     "binding": "MY_BUCKET",
+  //     "bucket_name": "my-bucket"
+  //   }
+  // ],
+  // "d1_databases": [
+  //   {
+  //     "binding": "MY_DB",
+  //     "database_name": "my-database",
+  //     "database_id": ""
+  //   }
+  // ],
+  // "ai": {
+  //   "binding": "AI"
+  // },
+  // "observability": {
+  //   "enabled": true,
+  //   "head_sampling_rate": 1
+  // }
+}

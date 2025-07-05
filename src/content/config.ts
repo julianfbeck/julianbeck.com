@@ -80,4 +80,11 @@ const certification = defineCollection({
   }),
 });
 
-export const collections = { blog, app, position, education, certification };
+const redeem = defineCollection({
+  schema: z.object({
+    appName: z.string(),
+    appLink: z.string(),
+  }),
+});
+
+export const collections = { blog, app, position, education, certification, redeem };
