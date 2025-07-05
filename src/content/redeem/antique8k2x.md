@@ -1,6 +1,6 @@
 ---
 appName: "Antique Identifier by Photos"
-appLink: "https://apps.apple.com/us/app/antique-identifier-by-picture/id6747666867"
+appLink: "https://apps.apple.com/app/id6747666867"
 ---
 
 # Unlock Antique Identifier Premium
