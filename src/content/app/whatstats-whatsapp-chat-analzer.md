@@ -8,6 +8,9 @@ link: "https://apps.apple.com/de/app/whatstats-chat-analyser/id1481007233?l=en"
 shownInPortfolio: true
 isIOSApp: true
 appStoreId: 1481007233
+links:
+  Website: "https://whatstatistics.com/"
+  App Store: "https://apps.apple.com/de/app/whatstats-chat-analyser/id1481007233?l=en"
 ---
 ### WhatStats: Analyze Your WhatsApp Chats with Ease
 
