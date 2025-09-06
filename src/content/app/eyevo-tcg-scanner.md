@@ -4,14 +4,14 @@ description: "Lightning-fast Pokémon TCG card scanner with instant recognition 
 tags: ["iOS", "Swift", "Vision", "Pokémon TCG"]
 pubDate: "Sep 6, 2025"
 updatedDate: "Sep 6, 2025"
-link: "https://eyevo.app/"
+link: "https://eyevo.app/?utm_source=julianbeck.com&utm_medium=referral&utm_campaign=app-card"
 shownInPortfolio: true
 isIOSApp: true
 appStoreId: 6748607064
 screenshots: ["eyevo/1.png", "eyevo/2.png", "eyevo/3.png", "eyevo/4.png"]
 links:
-  Website: "https://eyevo.app/"
-  App Store: "https://apps.apple.com/app/id6748607064"
+  Website: "https://eyevo.app/?utm_source=julianbeck.com&utm_medium=referral&utm_campaign=app-detail"
+  App Store: "https://apps.apple.com/app/id6748607064?pt=120183609&ct=julianbeck-app-detail&mt=8"
 ---
 ---
 ### Eyevo - Scan Pokémon TCG Cards Instantly
@@ -40,9 +40,9 @@ Whether you’re sorting decks, cataloging binders, or pricing trades, Eyevo sav
 
 Available on iPhone:
 
-- App Store: https://apps.apple.com/app/id6748607064
+- App Store: https://apps.apple.com/app/id6748607064?pt=120183609&ct=julianbeck-post-body&mt=8
 
-Learn more and download: https://eyevo.app/
+Learn more and download: https://eyevo.app/?utm_source=julianbeck.com&utm_medium=referral&utm_campaign=post-body
 
 #### Screenshots
 
@@ -63,6 +63,6 @@ Learn more and download: https://eyevo.app/
 
 #### Helpful Links
 
-- Eyevo homepage - Pokémon TCG scanner: https://eyevo.app/
-- Download on the App Store: https://apps.apple.com/app/id6748607064
-- Learn about scanning Pokémon cards fast: https://eyevo.app/
+- Eyevo homepage - Pokémon TCG scanner: https://eyevo.app/?utm_source=julianbeck.com&utm_medium=referral&utm_campaign=helpful-links
+ - Download on the App Store: https://apps.apple.com/app/id6748607064?pt=120183609&ct=julianbeck-helpful-links&mt=8
+ - Learn about scanning Pokémon cards fast: https://eyevo.app/?utm_source=julianbeck.com&utm_medium=referral&utm_campaign=helpful-links

@@ -4,13 +4,13 @@ description: "Messages, Statistics & Emojis"
 tags: ["iOS", "Swift", "SwiftUI"]
 pubDate: "Mar 2, 2021"
 updatedDate: "Mar 2, 2021"
-link: "https://apps.apple.com/de/app/whatstats-chat-analyser/id1481007233?l=en"
+link: "https://apps.apple.com/de/app/whatstats-chat-analyser/id1481007233?l=en&pt=120183609&ct=julianbeck-app-card&mt=8"
 shownInPortfolio: true
 isIOSApp: true
 appStoreId: 1481007233
 links:
-  Website: "https://whatstatistics.com/"
-  App Store: "https://apps.apple.com/de/app/whatstats-chat-analyser/id1481007233?l=en"
+  Website: "https://whatstatistics.com/?utm_source=julianbeck.com&utm_medium=referral&utm_campaign=app-detail"
+  App Store: "https://apps.apple.com/de/app/whatstats-chat-analyser/id1481007233?l=en&pt=120183609&ct=julianbeck-app-detail&mt=8"
 ---
 ### WhatStats: Analyze Your WhatsApp Chats with Ease
 

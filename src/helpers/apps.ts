@@ -54,7 +54,7 @@ const normalizeApps = async (app: CollectionEntry<"app">) => {
 
   const { Content, headings } = await app.render();
   const appstoreUrl = appDetails?.id
-    ? `https://apps.apple.com/app/id${appDetails.id}`
+    ? `https://apps.apple.com/app/id${appDetails.id}?pt=120183609&ct=app-detail&mt=8`
     : undefined;
 
   return {
