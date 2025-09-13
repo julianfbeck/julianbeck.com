@@ -8,6 +8,9 @@ appStoreId: 6476065390
 link: "https://apps.apple.com/app/id6476065390"
 shownInPortfolio: true
 isIOSApp: true
+links:
+  Website: "https://coffeebeantracker.com/"
+  App Store: "https://apps.apple.com/app/apple-store/id6476065390?pt=120183609&ct=julianbeck-app-detail&mt=8&platform=iphone"
 ---
 ## Beanvault: Your Ultimate Coffee Companion
 
