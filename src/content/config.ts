@@ -20,6 +20,16 @@ const blog = defineCollection({
     featured: z.boolean().optional().default(false),
     draft: z.boolean().optional().default(false),
     tags: z.array(z.string()).default(["others"]),
+    // Post type: "post" (default) or "release" for app announcements
+    type: z.enum(["post", "release"]).default("post"),
+    // Release-specific fields (only used when type is "release")
+    release: z.object({
+      appName: z.string(),
+      appIcon: z.string(),
+      appStoreUrl: z.string().url(),
+      websiteUrl: z.string().url().optional(),
+      tagline: z.string().optional(),
+    }).optional(),
   }),
 });
 

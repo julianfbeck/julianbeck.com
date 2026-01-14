@@ -11,6 +11,13 @@ tags:
   - Swift
   - Apps
   - Pokemon TCG
+type: release
+release:
+  appName: Eyevo
+  appIcon: /media/eyevo-icon.png
+  appStoreUrl: https://apps.apple.com/app/id6748607064?pt=120183609&ct=blog-eyevo&mt=8
+  websiteUrl: https://eyevotcg.com/?utm_source=julianbeck.com&utm_medium=referral&utm_campaign=blog
+  tagline: Pokemon TCG Card Scanner for iPhone
 ---
 
 Eyevo is my new iOS app for Pokemon TCG collectors. It scans cards instantly using on-device recognition and helps you keep your collection organized.
@@ -24,9 +31,12 @@ Eyevo is my new iOS app for Pokemon TCG collectors. It scans cards instantly usi
 - Collection management and set tracking
 - Card details and price context at a glance
 
-## Download and Learn More
+## How It Works
 
-- [Download on the App Store](https://apps.apple.com/app/id6748607064?pt=120183609&ct=blog-eyevo&mt=8)
-- [Visit eyevotcg.com](https://eyevotcg.com/?utm_source=blog.julianbeck.com&utm_medium=referral&utm_campaign=post)
+Point your camera at any Pokemon card and Eyevo will instantly identify it. The recognition happens entirely on your device, so there's no waiting for server responses and your collection data stays private.
 
-If you collect Pokemon cards or want to catalog your binder quickly, give Eyevo a try and let me know what you think.
+## Why I Built This
+
+As a Pokemon card collector myself, I was frustrated with existing scanning apps that were either slow, required constant internet connection, or had clunky interfaces. Eyevo is designed to be fast and work reliably even in less-than-perfect lighting conditions.
+
+If you collect Pokemon cards or want to catalog your binder quickly, give Eyevo a try and let me know what you think!

@@ -11,6 +11,13 @@ tags:
   - Apps
   - AI
   - Emojis
+type: release
+release:
+  appName: iEmoji
+  appIcon: /media/iemoji-marketing.jpg
+  appStoreUrl: https://apps.apple.com/app/iemoji-ai-custom-emojis-maker/id6740461326?pt=120183609&ct=blog-iemoji&mt=8
+  websiteUrl: https://iemoji.app/?utm_source=julianbeck.com&utm_medium=referral&utm_campaign=blog
+  tagline: AI-Powered Custom Emoji Generator
 ---
 
 I built iEmoji to make custom emoji creation fast and fun. Use simple prompts to generate beautiful emojis and export packs for Discord, Slack, or iMessage.
@@ -19,11 +26,20 @@ I built iEmoji to make custom emoji creation fast and fun. Use simple prompts to
 
 ## Highlights
 
-- AI-powered emoji generation
-- Export packs for Discord/Slack/iMessage
+- AI-powered emoji generation from text prompts
+- Export packs for Discord, Slack, and iMessage
 - Clean and fast experience
+- Multiple style options
 
-## Get iEmoji
+## How It Works
 
-- [Download on the App Store](https://apps.apple.com/app/iemoji-ai-custom-emojis-maker/id6740461326?pt=120183609&ct=blog-iemoji&mt=8)
-- [Visit iemoji.app](https://iemoji.app/?utm_source=blog.julianbeck.com&utm_medium=referral&utm_campaign=post)
+Simply describe the emoji you want to create, and iEmoji's AI will generate it for you. You can create entire emoji packs based on themes, characters, or any concept you can imagine.
+
+## Use Cases
+
+- Create custom emojis for your Discord server
+- Design team-specific Slack emojis
+- Make personalized iMessage stickers
+- Express yourself with unique emojis that don't exist yet
+
+Give it a try and let me know what creative emojis you come up with!

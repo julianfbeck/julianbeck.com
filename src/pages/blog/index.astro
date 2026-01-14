@@ -21,32 +21,67 @@ const meta = {
 
   <div class="space-y-6">
     {
-      posts.map((post) => (
-        <article class="group">
-          <a href={`/blog/${post.slug}`} class="block">
-            <div class="p-4 rounded-lg border border-slate-800 bg-slate-900/40 hover:bg-slate-800/60 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
-                <h2 class="text-xl font-semibold text-white group-hover:text-sky-400 transition-colors">
-                  {post.data.title}
-                </h2>
-                <span class="text-sm text-gray-500 shrink-0">
-                  <FormattedDate date={post.data.pubDate} />
-                </span>
-              </div>
-              <p class="text-gray-400 text-sm mb-3">{post.data.description}</p>
-              {post.data.tags && post.data.tags.length > 0 && (
-                <div class="flex flex-wrap gap-2">
-                  {post.data.tags.map((tag: string) => (
-                    <span class="px-2 py-1 text-xs rounded-md bg-slate-700 text-gray-300">
-                      {tag}
+      posts.map((post) => {
+        const isRelease = post.data.type === "release";
+        return (
+          <article class="group">
+            <a href={`/blog/${post.slug}`} class="block">
+              <div class:list={[
+                "p-4 rounded-lg border transition-colors",
+                isRelease
+                  ? "border-sky-500/30 bg-gradient-to-r from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700"
+                  : "border-slate-800 bg-slate-900/40 hover:bg-slate-800/60"
+              ]}>
+                {isRelease && post.data.release && (
+                  <div class="flex items-center gap-4 mb-3">
+                    <img
+                      src={post.data.release.appIcon}
+                      alt={post.data.release.appName}
+                      class="w-12 h-12 rounded-xl"
+                    />
+                    <div class="flex-1">
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="bg-sky-500 text-white text-xs font-bold px-2 py-0.5 rounded-full uppercase">
+                          Release
+                        </span>
+                        <span class="text-sm text-gray-500">
+                          <FormattedDate date={post.data.pubDate} />
+                        </span>
+                      </div>
+                      <h2 class="text-xl font-semibold text-white group-hover:text-sky-400 transition-colors">
+                        {post.data.release.appName}
+                      </h2>
+                    </div>
+                  </div>
+                )}
+
+                {!isRelease && (
+                  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                    <h2 class="text-xl font-semibold text-white group-hover:text-sky-400 transition-colors">
+                      {post.data.title}
+                    </h2>
+                    <span class="text-sm text-gray-500 shrink-0">
+                      <FormattedDate date={post.data.pubDate} />
                     </span>
-                  ))}
-                </div>
-              )}
-            </div>
-          </a>
-        </article>
-      ))
+                  </div>
+                )}
+
+                <p class="text-gray-400 text-sm mb-3">{post.data.description}</p>
+
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-2">
+                    {post.data.tags.map((tag: string) => (
+                      <span class="px-2 py-1 text-xs rounded-md bg-slate-700 text-gray-300">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </a>
+          </article>
+        );
+      })
     }
   </div>
 </PageLayout>
