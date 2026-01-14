@@ -38,24 +38,28 @@ For most of my applications:
 
 ### Apps with AI Features (e.g., Eyevo, iEmoji)
 
-Some apps that utilize AI features may temporarily process data as follows:
+Some apps utilize AI features powered by **OpenAI**. Here's how data is handled:
 
-**Information Processed:**
-- Images captured through the camera for AI analysis
-- Anonymous usage statistics
-- Basic device information (iOS version, device model)
-- Purchase transaction data (processed by Apple)
+**No Data Storage:**
+- **I do not store any of your data** on my servers
+- Images and prompts are sent directly to OpenAI for processing
+- No copies are retained by me after processing
+- Results are returned directly to your device
 
-**Processing Details:**
-- Images may be uploaded to secure servers for AI-powered analysis
-- Temporary retention during processing (typically 30-60 seconds)
-- Automatic permanent deletion after processing completes
-- Processed results stored locally on your device only
+**How It Works:**
+- When you use an AI feature, your input (image or text) is sent to OpenAI's API
+- OpenAI processes the request and returns the result
+- The result is displayed in the app and stored locally on your device only
+- I have no access to your inputs or the results
 
-**Third-Party Services:**
-- AI providers (such as OpenAI) may receive data for analysis purposes
-- Apple receives purchase data for in-app purchases
-- No other third-party sharing occurs
+**OpenAI's Data Handling:**
+- OpenAI processes data according to their [Privacy Policy](https://openai.com/privacy)
+- API data is not used to train OpenAI models
+- Data is processed securely with encryption in transit
+
+**Other Information:**
+- Basic device information (iOS version, device model) may be collected for crash reporting
+- Purchase transaction data is processed by Apple, not by me
 
 ### Apps with Local Analytics (e.g., WhatStats)
 
