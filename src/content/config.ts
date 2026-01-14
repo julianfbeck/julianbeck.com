@@ -1,5 +1,8 @@
 import { z, defineCollection } from "astro:content";
 
+// Post type enum - "default" for regular posts, "relay" for app promotion posts
+const postType = z.enum(["default", "relay"]).default("default");
+
 const blog = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
@@ -20,6 +23,14 @@ const blog = defineCollection({
     featured: z.boolean().optional().default(false),
     draft: z.boolean().optional().default(false),
     tags: z.array(z.string()).default(["others"]),
+    // Post type - "default" or "relay" for app promotion
+    type: postType,
+    // Relay-specific fields for app promotion
+    appName: z.string().optional(), // Name of the app being promoted
+    appIcon: z.string().optional(), // URL to app icon
+    appStoreUrl: z.string().url().optional(), // App Store link
+    appWebsite: z.string().url().optional(), // App's website URL
+    appTagline: z.string().optional(), // Short tagline for the app
   }),
 });
 

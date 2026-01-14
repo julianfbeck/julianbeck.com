@@ -15,11 +15,17 @@ type Props = CollectionEntry<"blog">;
 const post = Astro.props;
 const { Content } = await post.render();
 
+// Use generated OG image if no custom one is provided
+const generatedOgImage = `/og/${post.slug}.png`;
+const ogImage = post.data.ogImage || post.data.heroImage || generatedOgImage;
+
 const meta = {
   title: `${post.data.title} - Julian Beck`,
   description: post.data.description,
-  image: post.data.ogImage || post.data.heroImage,
+  image: ogImage,
 };
+
+const isRelay = post.data.type === "relay";
 ---
 
 <PageLayout meta={meta}>
@@ -31,6 +37,17 @@ const meta = {
       >
         ← Back to Blog
       </a>
+
+      {/* Relay post type badge */}
+      {isRelay && (
+        <div class="mb-4">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-sm font-medium">
+            <span>🚀</span>
+            <span>App Release</span>
+          </span>
+        </div>
+      )}
+
       {post.data.heroImage && (
         <img
           src={post.data.heroImage}
@@ -38,6 +55,57 @@ const meta = {
           class="w-full h-64 object-cover rounded-lg mb-6"
         />
       )}
+
+      {/* Relay App Card */}
+      {isRelay && post.data.appName && (
+        <div class="mb-6 p-6 rounded-xl bg-gradient-to-br from-slate-800/80 to-indigo-900/40 border border-indigo-500/30">
+          <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+            {post.data.appIcon && (
+              <img
+                src={post.data.appIcon}
+                alt={post.data.appName}
+                class="w-20 h-20 rounded-2xl shadow-lg"
+              />
+            )}
+            <div class="flex-1">
+              <h2 class="text-2xl font-bold text-white mb-1">{post.data.appName}</h2>
+              {post.data.appTagline && (
+                <p class="text-gray-300 mb-3">{post.data.appTagline}</p>
+              )}
+              <div class="flex flex-wrap gap-3">
+                {post.data.appStoreUrl && (
+                  <a
+                    href={post.data.appStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-black text-white font-medium hover:bg-gray-900 transition-colors"
+                  >
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <span>Download on App Store</span>
+                  </a>
+                )}
+                {post.data.appWebsite && (
+                  <a
+                    href={post.data.appWebsite}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-700 text-white font-medium hover:bg-slate-600 transition-colors"
+                  >
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    <span>Visit Website</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <h1 class="text-3xl sm:text-4xl font-bold text-white mb-3">
         {post.data.title}
       </h1>
@@ -55,7 +123,10 @@ const meta = {
       {post.data.tags && post.data.tags.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-4">
           {post.data.tags.map((tag: string) => (
-            <span class="px-2 py-1 text-xs rounded-md bg-slate-700 text-gray-300">
+            <span class:list={[
+              "px-2 py-1 text-xs rounded-md",
+              isRelay ? "bg-indigo-900/50 text-indigo-300 border border-indigo-700/50" : "bg-slate-700 text-gray-300"
+            ]}>
               {tag}
             </span>
           ))}
@@ -63,21 +134,42 @@ const meta = {
       )}
     </header>
 
-    <div class="prose prose-invert prose-slate max-w-none
-      prose-headings:text-white prose-headings:font-bold
-      prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
-      prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
-      prose-p:text-gray-300 prose-p:leading-relaxed
-      prose-a:text-sky-400 prose-a:no-underline hover:prose-a:underline
-      prose-strong:text-white
-      prose-code:text-sky-300 prose-code:bg-slate-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-      prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700
-      prose-img:rounded-lg prose-img:mx-auto
-      prose-ul:text-gray-300 prose-ol:text-gray-300
-      prose-li:marker:text-gray-500
-      prose-blockquote:border-sky-500 prose-blockquote:text-gray-400
-    ">
+    <div class:list={[
+      "prose prose-invert prose-slate max-w-none",
+      "prose-headings:text-white prose-headings:font-bold",
+      "prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4",
+      "prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3",
+      "prose-p:text-gray-300 prose-p:leading-relaxed",
+      "prose-a:text-sky-400 prose-a:no-underline hover:prose-a:underline",
+      "prose-strong:text-white",
+      "prose-code:text-sky-300 prose-code:bg-slate-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none",
+      "prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700",
+      "prose-img:rounded-lg prose-img:mx-auto",
+      "prose-ul:text-gray-300 prose-ol:text-gray-300",
+      "prose-li:marker:text-gray-500",
+      "prose-blockquote:border-sky-500 prose-blockquote:text-gray-400",
+      isRelay && "prose-a:text-indigo-400 hover:prose-a:text-indigo-300"
+    ]}>
       <Content />
     </div>
+
+    {/* Relay post footer CTA */}
+    {isRelay && post.data.appStoreUrl && (
+      <div class="mt-12 p-6 rounded-xl bg-gradient-to-r from-indigo-900/50 to-purple-900/50 border border-indigo-500/30 text-center">
+        <h3 class="text-xl font-bold text-white mb-2">Ready to try {post.data.appName}?</h3>
+        <p class="text-gray-300 mb-4">Download now and see what it can do for you.</p>
+        <a
+          href={post.data.appStoreUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold hover:from-indigo-600 hover:to-purple-600 transition-all"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <span>Download on App Store</span>
+        </a>
+      </div>
+    )}
   </article>
 </PageLayout>

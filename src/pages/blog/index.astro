@@ -21,32 +21,54 @@ const meta = {
 
   <div class="space-y-6">
     {
-      posts.map((post) => (
-        <article class="group">
-          <a href={`/blog/${post.slug}`} class="block">
-            <div class="p-4 rounded-lg border border-slate-800 bg-slate-900/40 hover:bg-slate-800/60 transition-colors">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
-                <h2 class="text-xl font-semibold text-white group-hover:text-sky-400 transition-colors">
-                  {post.data.title}
-                </h2>
-                <span class="text-sm text-gray-500 shrink-0">
-                  <FormattedDate date={post.data.pubDate} />
-                </span>
-              </div>
-              <p class="text-gray-400 text-sm mb-3">{post.data.description}</p>
-              {post.data.tags && post.data.tags.length > 0 && (
-                <div class="flex flex-wrap gap-2">
-                  {post.data.tags.map((tag: string) => (
-                    <span class="px-2 py-1 text-xs rounded-md bg-slate-700 text-gray-300">
-                      {tag}
-                    </span>
-                  ))}
+      posts.map((post) => {
+        const isRelay = post.data.type === "relay";
+        return (
+          <article class="group">
+            <a href={`/blog/${post.slug}`} class="block">
+              <div class:list={[
+                "p-4 rounded-lg border transition-colors",
+                isRelay
+                  ? "border-indigo-500/30 bg-gradient-to-br from-slate-900/60 to-indigo-900/30 hover:from-slate-800/60 hover:to-indigo-800/30"
+                  : "border-slate-800 bg-slate-900/40 hover:bg-slate-800/60"
+              ]}>
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                  <div class="flex items-center gap-3">
+                    {isRelay && (
+                      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-medium">
+                        <span>🚀</span>
+                        <span>App</span>
+                      </span>
+                    )}
+                    <h2 class:list={[
+                      "text-xl font-semibold text-white transition-colors",
+                      isRelay ? "group-hover:text-indigo-400" : "group-hover:text-sky-400"
+                    ]}>
+                      {post.data.title}
+                    </h2>
+                  </div>
+                  <span class="text-sm text-gray-500 shrink-0">
+                    <FormattedDate date={post.data.pubDate} />
+                  </span>
                 </div>
-              )}
-            </div>
-          </a>
-        </article>
-      ))
+                <p class="text-gray-400 text-sm mb-3">{post.data.description}</p>
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-2">
+                    {post.data.tags.map((tag: string) => (
+                      <span class:list={[
+                        "px-2 py-1 text-xs rounded-md",
+                        isRelay ? "bg-indigo-900/50 text-indigo-300 border border-indigo-700/50" : "bg-slate-700 text-gray-300"
+                      ]}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </a>
+          </article>
+        );
+      })
     }
   </div>
 </PageLayout>
