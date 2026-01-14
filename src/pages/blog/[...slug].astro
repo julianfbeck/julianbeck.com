@@ -1,0 +1,83 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import PageLayout from "../../layouts/PageLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+
+const meta = {
+  title: `${post.data.title} - Julian Beck`,
+  description: post.data.description,
+  image: post.data.ogImage || post.data.heroImage,
+};
+---
+
+<PageLayout meta={meta}>
+  <article class="max-w-none">
+    <header class="mb-8">
+      <a
+        href="/blog"
+        class="text-sky-400 hover:text-sky-300 text-sm mb-4 inline-block"
+      >
+        ← Back to Blog
+      </a>
+      {post.data.heroImage && (
+        <img
+          src={post.data.heroImage}
+          alt={post.data.title}
+          class="w-full h-64 object-cover rounded-lg mb-6"
+        />
+      )}
+      <h1 class="text-3xl sm:text-4xl font-bold text-white mb-3">
+        {post.data.title}
+      </h1>
+      <div class="flex flex-wrap items-center gap-4 text-gray-400 text-sm mb-4">
+        {post.data.author && <span>By {post.data.author}</span>}
+        <span>
+          <FormattedDate date={post.data.pubDate} />
+        </span>
+        {post.data.updatedDate && (
+          <span class="italic">
+            (Updated: <FormattedDate date={post.data.updatedDate} />)
+          </span>
+        )}
+      </div>
+      {post.data.tags && post.data.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-4">
+          {post.data.tags.map((tag: string) => (
+            <span class="px-2 py-1 text-xs rounded-md bg-slate-700 text-gray-300">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <div class="prose prose-invert prose-slate max-w-none
+      prose-headings:text-white prose-headings:font-bold
+      prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
+      prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
+      prose-p:text-gray-300 prose-p:leading-relaxed
+      prose-a:text-sky-400 prose-a:no-underline hover:prose-a:underline
+      prose-strong:text-white
+      prose-code:text-sky-300 prose-code:bg-slate-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+      prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700
+      prose-img:rounded-lg prose-img:mx-auto
+      prose-ul:text-gray-300 prose-ol:text-gray-300
+      prose-li:marker:text-gray-500
+      prose-blockquote:border-sky-500 prose-blockquote:text-gray-400
+    ">
+      <Content />
+    </div>
+  </article>
+</PageLayout>
