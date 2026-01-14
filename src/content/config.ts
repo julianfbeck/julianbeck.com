@@ -5,6 +5,7 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    author: z.string().optional(),
     // Transform string to Date object
     pubDate: z
       .string()
@@ -15,6 +16,10 @@ const blog = defineCollection({
       .optional()
       .transform((str) => (str ? new Date(str) : undefined)),
     heroImage: z.string().optional(),
+    ogImage: z.string().optional(),
+    featured: z.boolean().optional().default(false),
+    draft: z.boolean().optional().default(false),
+    tags: z.array(z.string()).default(["others"]),
   }),
 });
 
