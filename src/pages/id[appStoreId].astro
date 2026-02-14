@@ -1,0 +1,74 @@
+---
+const { appStoreId } = Astro.params;
+
+const isValidAppStoreId = typeof appStoreId === "string" && /^\d+$/.test(appStoreId);
+
+if (!isValidAppStoreId) {
+  Astro.response.status = 404;
+}
+
+const appStoreUrl = isValidAppStoreId
+  ? `https://apps.apple.com/app/id${appStoreId}?pt=120183609&ct=juli-sh-id-redirect&mt=8`
+  : "https://apps.apple.com";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecting to App Store…</title>
+    <meta name="robots" content="noindex" />
+    {isValidAppStoreId && <meta http-equiv="refresh" content={`0;url=${appStoreUrl}`} />}
+  </head>
+  <body>
+    <p>Redirecting to the App Store…</p>
+
+    {isValidAppStoreId && (
+      <script is:inline define:vars={{ appStoreId, appStoreUrl }}>
+        const plausibleEndpoint = "https://plausible.home.juli.sh/api/event";
+
+        const trackPayload = JSON.stringify({
+          domain: "juli.sh",
+          name: "app_store_redirect",
+          url: `${window.location.origin}/id${appStoreId}`,
+          props: {
+            appStoreId,
+            destination: appStoreUrl,
+          },
+        });
+
+        const redirectToAppStore = () => {
+          window.location.replace(appStoreUrl);
+        };
+
+        let beaconSent = false;
+
+        if (navigator.sendBeacon) {
+          beaconSent = navigator.sendBeacon(
+            plausibleEndpoint,
+            new Blob([trackPayload], { type: "application/json" }),
+          );
+        }
+
+        if (!beaconSent) {
+          fetch(plausibleEndpoint, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: trackPayload,
+            keepalive: true,
+          })
+            .catch(() => {
+              // Ignore tracking errors and still redirect.
+            })
+            .finally(redirectToAppStore);
+
+          setTimeout(redirectToAppStore, 150);
+        } else {
+          redirectToAppStore();
+        }
+      </script>
+    )}
+  </body>
+</html>
