@@ -1,0 +1,84 @@
+---
+export function getStaticPaths() {
+  const appFiles = import.meta.glob("../content/app/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }) as Record<string, string>;
+
+  const appStoreIds = new Set<string>();
+
+  for (const fileContent of Object.values(appFiles)) {
+    const matches = fileContent.matchAll(/id(\d{6,})/g);
+    for (const match of matches) {
+      appStoreIds.add(match[1]);
+    }
+  }
+
+  return [...appStoreIds].map((appStoreId) => ({
+    params: { appStoreId },
+  }));
+}
+
+const { appStoreId } = Astro.params;
+const appStoreUrl = `https://apps.apple.com/app/id${appStoreId}?pt=120183609&ct=juli-sh-id-redirect&mt=8`;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecting to App Store…</title>
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0;url=${appStoreUrl}`} />
+  </head>
+  <body>
+    <p>Redirecting to the App Store…</p>
+
+    <script is:inline define:vars={{ appStoreId, appStoreUrl }}>
+      const plausibleEndpoint = "https://plausible.home.juli.sh/api/event";
+
+      const trackPayload = JSON.stringify({
+        domain: "juli.sh",
+        name: "app_store_redirect",
+        url: `${window.location.origin}/id${appStoreId}`,
+        props: {
+          appStoreId,
+          destination: appStoreUrl,
+        },
+      });
+
+      const redirectToAppStore = () => {
+        window.location.replace(appStoreUrl);
+      };
+
+      let beaconSent = false;
+
+      if (navigator.sendBeacon) {
+        beaconSent = navigator.sendBeacon(
+          plausibleEndpoint,
+          new Blob([trackPayload], { type: "application/json" }),
+        );
+      }
+
+      if (!beaconSent) {
+        fetch(plausibleEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: trackPayload,
+          keepalive: true,
+        })
+          .catch(() => {
+            // Ignore tracking errors and still redirect.
+          })
+          .finally(redirectToAppStore);
+
+        setTimeout(redirectToAppStore, 150);
+      } else {
+        redirectToAppStore();
+      }
+    </script>
+  </body>
+</html>
