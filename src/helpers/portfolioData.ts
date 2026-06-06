@@ -33,25 +33,30 @@ export interface PortfolioData {
   positions: CollectionEntry<"position">[];
   certifications: CollectionEntry<"certification">[];
   education: CollectionEntry<"education">[];
+  talks: CollectionEntry<"talk">[];
 }
 
 export async function getPortfolioData(): Promise<PortfolioData> {
-  const [apps, positions, certifications, education] = await Promise.all([
-    fetchApps(),
-    getCollection("position"),
-    getCollection("certification"),
-    getCollection("education"),
-  ]);
+  const [apps, positions, certifications, education, talks] =
+    await Promise.all([
+      fetchApps(),
+      getCollection("position"),
+      getCollection("certification"),
+      getCollection("education"),
+      getCollection("talk"),
+    ]);
 
   positions.sort(byFromDesc);
   certifications.sort(byFromDesc);
   education.sort(byFromDesc);
+  talks.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return {
     apps: apps.filter((app) => app.data.shownInPortfolio),
     positions,
     certifications,
     education,
+    talks,
   };
 }
 

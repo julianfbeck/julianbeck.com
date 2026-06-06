@@ -85,6 +85,22 @@ const certification = defineCollection({
   }),
 });
 
+const talk = defineCollection({
+  schema: z.object({
+    event: z.string(),
+    title: z.string(),
+    description: z.string(),
+    type: z.string(),
+    location: z.string(),
+    date: z
+      .string()
+      .or(z.date())
+      .transform((val) => new Date(val)),
+    url: z.string().optional(),
+    logo: z.string(),
+  }),
+});
+
 const redeem = defineCollection({
   schema: z.object({
     appName: z.string(),
@@ -92,4 +108,4 @@ const redeem = defineCollection({
   }),
 });
 
-export const collections = { blog, app, position, education, certification, redeem };
+export const collections = { blog, app, position, education, certification, talk, redeem };

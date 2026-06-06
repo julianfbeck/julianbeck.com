@@ -3,8 +3,16 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import PageLayout from "../layouts/PageLayout.astro";
 import { getPortfolioData } from "../helpers/portfolioData";
 
-const { apps, positions, certifications, education } = await getPortfolioData();
+const { apps, positions, certifications, education, talks } =
+  await getPortfolioData();
 const eyevo = apps.find((a) => a.slug === "eyevo-tcg-scanner");
+
+const formatTalkDate = (date: Date) =>
+  date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 
 const meta = {
   title: SITE_TITLE,
@@ -135,6 +143,43 @@ const meta = {
             </div>
             <span class="shrink-0 text-sm tabular-nums text-neutral-600">
               {p.data.from} – {p.data.to}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Meetups & Talks -->
+  <section class="mb-14">
+    <h2 class="mb-5 text-lg font-semibold text-white">Meetups & Talks</h2>
+    <div
+      class="divide-y divide-white/[0.06] rounded-2xl border border-white/[0.06] bg-[#121214]"
+    >
+      {
+        talks.map((t) => (
+          <a
+            href={t.data.url}
+            target="_blank"
+            rel="noopener"
+            class="flex items-center justify-between gap-4 px-5 py-4 transition-colors first:rounded-t-2xl last:rounded-b-2xl hover:bg-[#151517]"
+          >
+            <div class="flex min-w-0 items-center gap-3.5">
+              <img
+                src={t.data.logo}
+                alt={`${t.data.event} logo`}
+                class="h-9 w-9 shrink-0 rounded-lg bg-white object-contain p-0.5"
+                loading="lazy"
+              />
+              <div class="min-w-0">
+                <div class="font-medium text-white">{t.data.title}</div>
+                <div class="mt-0.5 truncate text-sm text-neutral-500">
+                  {t.data.type} · {t.data.event} · {t.data.location}
+                </div>
+              </div>
+            </div>
+            <span class="shrink-0 text-sm tabular-nums text-neutral-600">
+              {formatTalkDate(t.data.date)}
             </span>
           </a>
         ))
