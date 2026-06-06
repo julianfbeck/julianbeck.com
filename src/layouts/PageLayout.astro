@@ -6,17 +6,82 @@ import BaseLayout from "./BaseLayout.astro";
 
 export interface Props {
   meta: MetaProps;
+  /** Set to false to exclude the page from the Pagefind search index. */
+  searchable?: boolean;
 }
 
-const { meta } = Astro.props;
+const { meta, searchable = true } = Astro.props;
 ---
 
 <BaseLayout {meta}>
+  <slot name="head" slot="head" />
   <Header />
-  <main>
-    <div class="container mt-10">
+  <main
+    class="text-neutral-300"
+    data-pagefind-body={searchable ? true : undefined}
+  >
+    <div class="mx-auto mt-10 w-full max-w-3xl px-4 sm:px-6">
       <slot />
     </div>
   </main>
   <Footer />
 </BaseLayout>
+
+<script>
+  // Wrap code blocks in a figure with a language label + copy button.
+  function enhanceCodeBlocks() {
+    const blocks = document.querySelectorAll(".prose pre:not(.code-enhanced)");
+    for (const pre of blocks) {
+      pre.classList.add("code-enhanced");
+
+      const language =
+        pre.getAttribute("data-language") ||
+        pre.querySelector("code")?.className.match(/language-(\w+)/)?.[1] ||
+        "code";
+
+      const figure = document.createElement("figure");
+      figure.className = "code-figure";
+
+      const toolbar = document.createElement("div");
+      toolbar.className = "code-toolbar";
+
+      const label = document.createElement("span");
+      label.textContent = language;
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = "Copy";
+      button.addEventListener("click", async () => {
+        const code = pre.querySelector("code")?.innerText ?? pre.innerText;
+        let copied = false;
+        try {
+          await navigator.clipboard.writeText(code);
+          copied = true;
+        } catch {
+          // Fallback for browsers/contexts without clipboard API access
+          const textarea = document.createElement("textarea");
+          textarea.value = code;
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            copied = document.execCommand("copy");
+          } catch {
+            copied = false;
+          }
+          textarea.remove();
+        }
+        button.textContent = copied ? "Copied!" : "Failed";
+        setTimeout(() => (button.textContent = "Copy"), 2000);
+      });
+
+      toolbar.append(label, button);
+      pre.parentNode?.insertBefore(figure, pre);
+      figure.append(toolbar, pre);
+    }
+  }
+
+  enhanceCodeBlocks();
+  document.addEventListener("astro:page-load", enhanceCodeBlocks);
+</script>

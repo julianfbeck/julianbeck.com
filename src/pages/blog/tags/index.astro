@@ -1,0 +1,42 @@
+---
+import PageLayout from "../../../layouts/PageLayout.astro";
+import { getAllTags } from "../../../helpers/tags";
+
+const tags = await getAllTags();
+
+const meta = {
+  title: "Tags - Julian Beck",
+  description: "Browse blog posts by tag.",
+};
+---
+
+<PageLayout meta={meta} searchable={false}>
+  <section class="mb-10 mt-6">
+    <a
+      href="/blog"
+      class="mb-6 inline-block text-sm text-neutral-500 transition-colors hover:text-white"
+    >
+      ← Back to Blog
+    </a>
+    <h1 class="text-3xl font-semibold tracking-tight text-white">Tags</h1>
+    <p class="mt-3 max-w-xl leading-relaxed text-neutral-400">
+      Browse blog posts by topic.
+    </p>
+  </section>
+
+  <div class="flex flex-wrap gap-2">
+    {
+      tags.map(({ tag, slug, count }) => (
+        <a
+          href={`/blog/tags/${slug}`}
+          class="group flex items-center gap-2 rounded-full border border-white/[0.06] bg-[#121214] px-4 py-2 text-sm text-neutral-300 transition-colors hover:border-white/[0.12] hover:bg-[#151517] hover:text-white"
+        >
+          {tag}
+          <span class="text-xs tabular-nums text-neutral-600 transition-colors group-hover:text-neutral-400">
+            {count}
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</PageLayout>

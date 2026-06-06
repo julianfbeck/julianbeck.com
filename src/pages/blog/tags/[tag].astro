@@ -1,0 +1,79 @@
+---
+import PageLayout from "../../../layouts/PageLayout.astro";
+import FormattedDate from "../../../components/FormattedDate.astro";
+import { getAllTags, getPostsByTagSlug, slugifyTag } from "../../../helpers/tags";
+
+export async function getStaticPaths() {
+  const tags = await getAllTags();
+  return tags.map(({ tag, slug }) => ({
+    params: { tag: slug },
+    props: { tag },
+  }));
+}
+
+const { tag } = Astro.props;
+const { tag: tagSlug } = Astro.params;
+const posts = await getPostsByTagSlug(tagSlug!);
+
+const meta = {
+  title: `${tag} - Blog - Julian Beck`,
+  description: `Blog posts tagged with ${tag}.`,
+};
+---
+
+<PageLayout meta={meta} searchable={false}>
+  <section class="mb-10 mt-6">
+    <a
+      href="/blog/tags"
+      class="mb-6 inline-block text-sm text-neutral-500 transition-colors hover:text-white"
+    >
+      ← All tags
+    </a>
+    <h1 class="text-3xl font-semibold tracking-tight text-white">
+      {tag}
+    </h1>
+    <p class="mt-3 max-w-xl leading-relaxed text-neutral-400">
+      {posts.length} {posts.length === 1 ? "post" : "posts"} tagged with
+      <span class="text-neutral-300">{tag}</span>.
+    </p>
+  </section>
+
+  <div class="space-y-3">
+    {
+      posts.map((post) => (
+        <article class="group relative rounded-2xl border border-white/[0.06] bg-[#121214] p-5 transition-colors hover:border-white/[0.12] hover:bg-[#151517]">
+          <div class="mb-2 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+            <h2 class="font-medium text-white">
+              <a href={`/blog/${post.slug}`} class="after:absolute after:inset-0">
+                {post.data.title}
+              </a>
+            </h2>
+            <span class="shrink-0 text-sm tabular-nums text-neutral-600">
+              <FormattedDate date={post.data.pubDate} />
+            </span>
+          </div>
+          <p class="text-sm leading-relaxed text-neutral-500">
+            {post.data.description}
+          </p>
+          {post.data.tags && post.data.tags.length > 0 && (
+            <div class="mt-3 flex flex-wrap gap-1.5">
+              {post.data.tags.map((t: string) => (
+                <a
+                  href={`/blog/tags/${slugifyTag(t)}`}
+                  class:list={[
+                    "relative z-10 rounded-full border px-2.5 py-0.5 text-xs transition-colors",
+                    slugifyTag(t) === tagSlug
+                      ? "border-white/[0.2] bg-white/[0.08] text-white"
+                      : "border-white/[0.06] bg-white/[0.03] text-neutral-400 hover:border-white/[0.12] hover:text-white",
+                  ]}
+                >
+                  {t}
+                </a>
+              ))}
+            </div>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</PageLayout>

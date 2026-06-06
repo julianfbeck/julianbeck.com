@@ -10,6 +10,7 @@ const { meta } = Astro.props;
 <html lang="en" class="motion-safe:scroll-smooth 2xl:text-[20px]">
   <head>
     <MetaTags {...meta} />
+    <slot name="head" />
   </head>
   <body class="antialiased">
     <slot />

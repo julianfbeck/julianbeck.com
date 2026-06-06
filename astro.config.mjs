@@ -8,6 +8,12 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: "https://julianbeck.com",
 
+  markdown: {
+    shikiConfig: {
+      theme: "github-dark-default",
+    },
+  },
+
   integrations: [
     sitemap(),
     tailwind(),
