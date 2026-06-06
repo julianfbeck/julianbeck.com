@@ -1,53 +1,11 @@
 ---
-import { Project } from "../components/react/FrontProjects";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import { getCollection } from "astro:content";
-import { Position } from "../components/react/Positions";
 import PageLayout from "../layouts/PageLayout.astro";
-import { fetchApps } from "../helpers/apps";
+import { getPortfolioData } from "../helpers/portfolioData";
 
-const allPositions = await getCollection("position");
-const allEducation = await getCollection("education");
-const allCertifications = await getCollection("certification");
-const monthMap: { [key: string]: string } = {
-  Jan: "01",
-  Feb: "02",
-  Mar: "03",
-  Apr: "04",
-  May: "05",
-  Jun: "06",
-  Jul: "07",
-  Aug: "08",
-  Sep: "09",
-  Oct: "10",
-  Nov: "11",
-  Dec: "12",
-};
-
-const parseDateString = (dateStr: string): Date => {
-  const [month, year] = dateStr.split(" ");
-  return new Date(`${year}-${monthMap[month]}-01`);
-};
-
-const apps = await fetchApps();
+const { apps, positions, certifications, education } = await getPortfolioData();
 const eyevo = apps.find((a) => a.slug === "eyevo-tcg-scanner");
-allPositions.sort(
-  (a, b) =>
-    parseDateString(b.data.from).getTime() -
-    parseDateString(a.data.from).getTime()
-);
 
-allEducation.sort(
-  (a, b) =>
-    parseDateString(b.data.from).getTime() -
-    parseDateString(a.data.from).getTime()
-);
-
-allCertifications.sort(
-  (a, b) =>
-    parseDateString(b.data.from).getTime() -
-    parseDateString(a.data.from).getTime()
-);
 const meta = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
@@ -55,132 +13,221 @@ const meta = {
 ---
 
 <PageLayout meta={meta}>
-  <div class="flex items-center justify-between">
-    <h1 class="flex text-4xl font-bold text-white">Julian Beck</h1>
-  </div>
-  <span class="mb-5 font-medium text-gray-300 wh">
-    <!-- prettier-ignore -->
-          Cloud Platform Engineer @<spa
-      class="underline decoration-sky-500"
-      href="https://inovex.de/">{"inovex"}</spa
-    >. Interested in all stuff DevOps, Cloud, Golang as well as iOS-Development.
-  </span>
-  <!-- New release: compact Eyevo promo -->
-  <section class="mt-6 rounded-md border border-slate-800 bg-slate-900/60 p-3 sm:p-4">
-    <div class="flex items-center gap-3">
-      <img src={eyevo?.icon || "/eyevo/1.png"} alt="Eyevo icon" class="h-10 w-10 rounded-lg object-cover" loading="lazy" />
+  <!-- Hero -->
+  <section class="mb-10 mt-6">
+    <h1 class="text-3xl font-semibold tracking-tight text-white">
+      Julian Beck
+    </h1>
+    <p class="mt-3 max-w-xl leading-relaxed text-neutral-400">
+      Cloud Platform Engineer at <a
+        href="https://inovex.de/"
+        class="text-white underline decoration-neutral-700 underline-offset-4 transition-colors hover:decoration-neutral-400"
+        >inovex</a
+      >. Interested in all stuff DevOps, Cloud, Golang as well as
+      iOS-Development.
+    </p>
+  </section>
+
+  <!-- New release -->
+  <section
+    class="mb-14 rounded-2xl border border-white/[0.06] bg-[#121214] p-4"
+  >
+    <div class="flex items-center gap-3.5">
+      <img
+        src={eyevo?.icon || "/eyevo/1.png"}
+        alt="Eyevo icon"
+        class="h-11 w-11 rounded-xl object-cover"
+        loading="lazy"
+      />
       <div class="min-w-0">
-        <div class="text-xs uppercase tracking-wide text-slate-400">New release</div>
-        <div class="flex flex-wrap items-center gap-2">
-          <a href="/eyevo-tcg-scanner" class="text-white font-semibold hover:underline">Eyevo - Pokémon TCG Scanner</a>
-          <span class="text-slate-500">•</span>
-          <a href="https://eyevotcg.com/?utm_source=julianbeck.com&utm_medium=referral&utm_campaign=homepage-promo" target="_blank" rel="noopener" class="text-sky-400 hover:underline">eyevotcg.com</a>
-          <span class="text-slate-500">•</span>
-          <a href="https://apps.apple.com/app/id6748607064?pt=120183609&ct=julianbeck-homepage&mt=8" target="_blank" rel="noopener" class="text-sky-400 hover:underline">App Store</a>
+        <div
+          class="text-xs font-medium uppercase tracking-wide text-neutral-500"
+        >
+          New release
+        </div>
+        <div class="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1">
+          <a
+            href="/eyevo-tcg-scanner"
+            class="font-medium text-white hover:underline"
+            >Eyevo – Pokémon TCG Scanner</a
+          >
+          <span class="text-neutral-700">·</span>
+          <a
+            href="https://eyevotcg.com/?utm_source=julianbeck.com&utm_medium=referral&utm_campaign=homepage-promo"
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-neutral-400 transition-colors hover:text-white"
+            >eyevotcg.com</a
+          >
+          <span class="text-neutral-700">·</span>
+          <a
+            href="https://apps.apple.com/app/id6748607064?pt=120183609&ct=julianbeck-homepage&mt=8"
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-neutral-400 transition-colors hover:text-white"
+            >App Store</a
+          >
         </div>
       </div>
     </div>
   </section>
-  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Personal Projects</h2>
-  <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
-    {
-      apps
-        .filter((app) => app.data.shownInPortfolio)
-        .map((app) => (
-          <Project
-            description={app.description}
-            logo={app.icon}
-            tags={app.data.tags}
-            name={app.data.title}
-            url={app.slug}
-          />
+
+  <!-- Projects -->
+  <section class="mb-14">
+    <h2 class="mb-5 text-lg font-semibold text-white">Personal Projects</h2>
+    <div class="grid gap-3 sm:grid-cols-2">
+      {
+        apps.map((app) => (
+          <a
+            href={app.slug}
+            class="group rounded-2xl border border-white/[0.06] bg-[#121214] p-5 transition-colors hover:border-white/[0.12] hover:bg-[#151517]"
+          >
+            <div class="flex items-center gap-3">
+              <img
+                src={app.icon}
+                alt={app.data.title}
+                class="h-10 w-10 rounded-xl"
+                loading="lazy"
+              />
+              <div class="font-medium text-white">{app.data.title}</div>
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-neutral-500">
+              {app.data.description}
+            </p>
+          </a>
         ))
-    }
-  </div>
-  <!-- Button that shows see all my apps -->
-  <div class="flex justify-center items-center">
+      }
+    </div>
     <a
       href="/apps"
-      class="px-4 py-2 mt-4 text-xl font-bold text-white bg-slate-800 rounded-md hover:bg-blue-600"
+      class="mt-6 inline-block text-sm text-neutral-500 transition-colors hover:text-white"
+      >See all my apps →</a
     >
-      See all my apps ➔
-    </a>
-  </div>
-  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Work Experience</h2>
-  <div
-    class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
+  </section>
+
+  <!-- Experience -->
+  <section class="mb-14">
+    <h2 class="mb-5 text-lg font-semibold text-white">Work Experience</h2>
+    <div
+      class="divide-y divide-white/[0.06] rounded-2xl border border-white/[0.06] bg-[#121214]"
+    >
+      {
+        positions.map((p) => (
+          <a
+            href={p.data.url}
+            target="_blank"
+            rel="noopener"
+            class="flex items-center justify-between gap-4 px-5 py-4 transition-colors first:rounded-t-2xl last:rounded-b-2xl hover:bg-[#151517]"
+          >
+            <div class="flex min-w-0 items-center gap-3.5">
+              <img
+                src={p.data.logo}
+                alt={`${p.data.company} logo`}
+                class="h-9 w-9 shrink-0 rounded-lg bg-white object-contain p-0.5"
+                loading="lazy"
+              />
+              <div class="min-w-0">
+                <div class="font-medium text-white">{p.data.position}</div>
+                <div class="mt-0.5 truncate text-sm text-neutral-500">
+                  {p.data.company} · {p.data.description}
+                </div>
+              </div>
+            </div>
+            <span class="shrink-0 text-sm tabular-nums text-neutral-600">
+              {p.data.from} – {p.data.to}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="mb-14">
+    <h2 class="mb-5 text-lg font-semibold text-white">Certifications</h2>
+    <div
+      class="divide-y divide-white/[0.06] rounded-2xl border border-white/[0.06] bg-[#121214]"
+    >
+      {
+        certifications.map((c) => (
+          <a
+            href={c.data.url}
+            target="_blank"
+            rel="noopener"
+            class="flex items-center justify-between gap-4 px-5 py-4 transition-colors first:rounded-t-2xl last:rounded-b-2xl hover:bg-[#151517]"
+          >
+            <div class="flex min-w-0 items-center gap-3.5">
+              <img
+                src={c.data.logo}
+                alt={`${c.data.company} logo`}
+                class="h-9 w-9 shrink-0 rounded-lg bg-white object-contain p-0.5"
+                loading="lazy"
+              />
+              <div class="min-w-0">
+                <div class="font-medium text-white">{c.data.position}</div>
+                <div class="mt-0.5 truncate text-sm text-neutral-500">
+                  {c.data.company}
+                </div>
+              </div>
+            </div>
+            <span class="shrink-0 text-sm tabular-nums text-neutral-600">
+              {c.data.from} – {c.data.to}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="mb-14">
+    <h2 class="mb-5 text-lg font-semibold text-white">Education</h2>
+    <div
+      class="divide-y divide-white/[0.06] rounded-2xl border border-white/[0.06] bg-[#121214]"
+    >
+      {
+        education.map((e) => (
+          <a
+            href={e.data.url}
+            target="_blank"
+            rel="noopener"
+            class="flex items-center justify-between gap-4 px-5 py-4 transition-colors first:rounded-t-2xl last:rounded-b-2xl hover:bg-[#151517]"
+          >
+            <div class="flex min-w-0 items-center gap-3.5">
+              <img
+                src={e.data.logo}
+                alt={`${e.data.company} logo`}
+                class="h-9 w-9 shrink-0 rounded-lg bg-white object-contain p-0.5"
+                loading="lazy"
+              />
+              <div class="min-w-0">
+                <div class="font-medium text-white">{e.data.position}</div>
+                <div class="mt-0.5 truncate text-sm text-neutral-500">
+                  {e.data.company} · {e.data.description}
+                </div>
+              </div>
+            </div>
+            <span class="shrink-0 text-sm tabular-nums text-neutral-600">
+              {e.data.from} – {e.data.to}
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section
+    class="rounded-2xl border border-white/[0.06] bg-[#121214] p-6 text-center"
   >
-    <table class="w-full">
-      <tbody class="border-cyan-50">
-        {
-          allPositions.map((position) => (
-            <Position
-              company={position.data.company}
-              position={position.data.position}
-              description={position.data.description}
-              url={position.data.url}
-              from={position.data.from}
-              to={position.data.to}
-              logo={position.data.logo}
-            />
-          ))
-        }
-      </tbody>
-    </table>
-  </div>
-  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Certifications</h2>
-  <div
-    class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
-  >
-    <table class="w-full">
-      <tbody class="">
-        {
-          allCertifications.map((certification) => (
-            <Position
-              company={certification.data.company}
-              position={certification.data.position}
-              description={certification.data.description}
-              url={certification.data.url}
-              from={certification.data.from}
-              to={certification.data.to}
-              logo={certification.data.logo}
-            />
-          ))
-        }
-      </tbody>
-    </table>
-  </div>
-  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Education</h2>
-  <div
-    class="inline-block w-full max-w-full overflow-hidden align-middle rounded-md shadow-md shadow-zinc-600"
-  >
-    <table class="w-full">
-      <tbody class="">
-        {
-          allEducation.map((education) => (
-            <Position
-              company={education.data.company}
-              position={education.data.position}
-              description={education.data.description}
-              url={education.data.url}
-              from={education.data.from}
-              to={education.data.to}
-              logo={education.data.logo}
-            />
-          ))
-        }
-      </tbody>
-    </table>
-  </div>
-  <h2 class="mt-8 mb-3 text-2xl font-bold text-white">Contact</h2>
-  <div class="text-base text-gray-100">
-    If you are interested in contacting me, drop me a short email:{" "}
+    <h2 class="text-lg font-semibold text-white">Contact</h2>
+    <p class="mt-2 text-neutral-400">
+      If you are interested in contacting me, drop me a short email.
+    </p>
     <a
-      target="_blank"
-      class="underline decoration-sky-500"
       href="mailto:mail@julianbeck.com"
+      class="mt-4 inline-block rounded-full bg-white px-5 py-2 text-sm font-medium text-black transition-colors hover:bg-neutral-200"
+      >mail@julianbeck.com</a
     >
-      <b>mail@julianbeck.com</b>
-    </a>
-  </div>
+  </section>
 </PageLayout>

@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "../../layouts/PageLayout.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
+import { slugifyTag } from "../../helpers/tags";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -23,11 +24,11 @@ const meta = {
 ---
 
 <PageLayout meta={meta}>
-  <article class="max-w-none">
-    <header class="mb-8">
+  <article class="mx-auto mt-6 max-w-2xl">
+    <header class="mb-12">
       <a
         href="/blog"
-        class="text-sky-400 hover:text-sky-300 text-sm mb-4 inline-block"
+        class="mb-6 inline-block text-sm text-neutral-500 transition-colors hover:text-white"
       >
         ← Back to Blog
       </a>
@@ -35,49 +36,53 @@ const meta = {
         <img
           src={post.data.heroImage}
           alt={post.data.title}
-          class="w-full h-64 object-cover rounded-lg mb-6"
+          class="mb-8 h-64 w-full rounded-2xl border border-white/[0.06] object-cover"
         />
       )}
-      <h1 class="text-3xl sm:text-4xl font-bold text-white mb-3">
-        {post.data.title}
-      </h1>
-      <div class="flex flex-wrap items-center gap-4 text-gray-400 text-sm mb-4">
-        {post.data.author && <span>By {post.data.author}</span>}
-        <span>
-          <FormattedDate date={post.data.pubDate} />
-        </span>
+      <div class="mb-4 flex flex-wrap items-center gap-3 text-sm text-neutral-500">
+        <FormattedDate date={post.data.pubDate} />
         {post.data.updatedDate && (
           <span class="italic">
             (Updated: <FormattedDate date={post.data.updatedDate} />)
           </span>
         )}
+        {post.data.author && <span>· {post.data.author}</span>}
       </div>
+      <h1
+        class="text-3xl font-semibold leading-tight tracking-tight text-white"
+      >
+        {post.data.title}
+      </h1>
       {post.data.tags && post.data.tags.length > 0 && (
-        <div class="flex flex-wrap gap-2 mb-4">
+        <div class="mt-5 flex flex-wrap gap-1.5">
           {post.data.tags.map((tag: string) => (
-            <span class="px-2 py-1 text-xs rounded-md bg-slate-700 text-gray-300">
+            <a
+              href={`/blog/tags/${slugifyTag(tag)}`}
+              class="rounded-full border border-white/[0.06] bg-white/[0.03] px-2.5 py-0.5 text-xs text-neutral-400 transition-colors hover:border-white/[0.12] hover:text-white"
+            >
               {tag}
-            </span>
+            </a>
           ))}
         </div>
       )}
     </header>
 
-    <div class="prose prose-invert prose-slate max-w-none
-      prose-headings:text-white prose-headings:font-bold
-      prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4
-      prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
-      prose-p:text-gray-300 prose-p:leading-relaxed
-      prose-a:text-sky-400 prose-a:no-underline hover:prose-a:underline
+    <div
+      class="blog-prose prose prose-invert max-w-none
+      prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-white
+      prose-h2:mt-10 prose-h2:text-xl
+      prose-h3:mt-8 prose-h3:text-lg
+      prose-p:leading-relaxed prose-p:text-neutral-400
+      prose-a:text-white prose-a:underline prose-a:decoration-neutral-700 prose-a:underline-offset-4 hover:prose-a:decoration-neutral-400
       prose-strong:text-white
-      prose-code:text-sky-300 prose-code:bg-slate-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-      prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700
-      prose-img:rounded-lg prose-img:mx-auto
-      prose-ul:text-gray-300 prose-ol:text-gray-300
-      prose-li:marker:text-gray-500
-      prose-blockquote:border-sky-500 prose-blockquote:text-gray-400
-    ">
+      prose-code:before:content-none prose-code:after:content-none
+      prose-img:rounded-xl
+      prose-ul:text-neutral-400 prose-ol:text-neutral-400
+      prose-li:marker:text-neutral-600
+      prose-blockquote:border-white/[0.12] prose-blockquote:text-neutral-500"
+    >
       <Content />
     </div>
   </article>
 </PageLayout>
+

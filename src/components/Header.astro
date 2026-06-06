@@ -12,16 +12,14 @@ const currentPath = pathname.slice(1).replace(/\.\w+$/, "");
   }
 </style>
 <header
-  class="sticky top-0 z-40 flex-none mx-auto w-full bg-slate-950 md:bg-slate-950/90 md:backdrop-blur-sm border-b-0"
+  class="sticky top-0 z-40 mx-auto w-full flex-none border-b border-white/[0.06] bg-[#0a0a0a] md:bg-[#0a0a0a]/90 md:backdrop-blur-sm"
 >
   <div
-    class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4"
+    class="mx-auto w-full max-w-3xl px-4 py-3 sm:px-6 md:flex md:items-center md:justify-between"
   >
     <div class="flex justify-between">
       <a class="flex items-center" href="/">
-        <span
-          class="self-center ml-2 text-2xl font-extrabold whitespace-nowrap text-white"
-        >
+        <span class="self-center whitespace-nowrap font-semibold text-white">
           Julian Beck
         </span>
       </a>
@@ -30,17 +28,34 @@ const currentPath = pathname.slice(1).replace(/\.\w+$/, "");
       </div>
     </div>
     <nav
-      class="items-center w-full md:w-auto hidden md:flex text-slate-200 h-screen md:h-auto"
+      class="hidden h-screen w-full items-center bg-[#0a0a0a] text-neutral-300 md:flex md:h-auto md:w-auto md:bg-transparent"
       aria-label="Main navigation"
       id="menu"
     >
       <ul
-        class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto collapsed text-xl md:text-base"
+        class="collapsed flex w-full flex-col pt-8 text-xl md:w-auto md:flex-row md:items-center md:gap-0.5 md:self-center md:rounded-full md:border md:border-white/[0.06] md:bg-[#121214] md:px-1.5 md:py-1 md:pt-1 md:text-sm"
       >
         <HeaderLink href="/apps">Apps</HeaderLink>
         <HeaderLink href="/redeem">Redeem</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
         <HeaderLink href="/about">About</HeaderLink>
+        <HeaderLink href="/search" aria-label="Search">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-4 w-4"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span class="ml-2 md:hidden">Search</span>
+        </HeaderLink>
         <HeaderLink href="/contact" class="md:hidden">Contact</HeaderLink>
       </ul>
     </nav>
