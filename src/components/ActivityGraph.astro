@@ -1,0 +1,70 @@
+---
+import type { ContributionData } from "../helpers/contributions";
+
+export interface Props {
+  data: ContributionData;
+  user: string;
+}
+const { data, user } = Astro.props;
+
+const relativeLastCommit = (dateStr: string | null): string => {
+  if (!dateStr) return "a while ago";
+  const days = Math.max(
+    0,
+    Math.round((Date.now() - new Date(dateStr).getTime()) / 86_400_000)
+  );
+  if (days === 0) return "today";
+  if (days === 1) return "yesterday";
+  if (days < 7) return `${days} days ago`;
+  if (days < 30) return `${Math.round(days / 7)} weeks ago`;
+  return `${Math.round(days / 30)} months ago`;
+};
+
+const levelClass = [
+  "bg-white/[0.04]",
+  "bg-accent/25",
+  "bg-accent/45",
+  "bg-accent/70",
+  "bg-accent",
+];
+---
+
+<a
+  href={`https://github.com/${user}`}
+  target="_blank"
+  rel="noopener"
+  class="block rounded-2xl border border-white/[0.06] bg-[#121214] p-5 transition-colors hover:border-white/[0.12]"
+>
+  <div class="mb-4 font-mono text-xs text-neutral-500">
+    <div>
+      <span class="text-accent">&gt;</span> LAST COMMIT: {
+        relativeLastCommit(data.lastDate)
+      }
+    </div>
+    <div class="mt-1 text-neutral-400">
+      <span class="text-accent">&gt;</span> {
+        data.total.toLocaleString("en-US")
+      } COMMITS — PAST YEAR
+    </div>
+  </div>
+  <div class="flex gap-[3px] overflow-hidden" aria-hidden="true">
+    {
+      data.weeks.map((week) => (
+        <div class="flex shrink-0 flex-col gap-[3px]">
+          {week.map((day) => (
+            <div
+              class:list={[
+                "h-[9px] w-[9px] rounded-[2px]",
+                day.level < 0 ? "bg-transparent" : levelClass[day.level],
+              ]}
+              title={day.date ? `${day.date}: ${day.count}` : undefined}
+            />
+          ))}
+        </div>
+      ))
+    }
+  </div>
+  <span class="sr-only">
+    GitHub contributions: {data.total} in the past year
+  </span>
+</a>

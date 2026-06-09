@@ -1,11 +1,20 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import PageLayout from "../layouts/PageLayout.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import ActivityGraph from "../components/ActivityGraph.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 import { getPortfolioData } from "../helpers/portfolioData";
+import { getBlogPosts } from "../helpers/tags";
+import { getContributions } from "../helpers/contributions";
+
+const GITHUB_USER = "julianfbeck";
 
 const { apps, positions, certifications, education, talks } =
   await getPortfolioData();
 const eyevo = apps.find((a) => a.slug === "eyevo-tcg-scanner");
+const posts = (await getBlogPosts()).slice(0, 5);
+const contributions = await getContributions(GITHUB_USER);
 
 const formatTalkDate = (date: Date) =>
   date.toLocaleDateString("en-US", {
@@ -29,11 +38,25 @@ const meta = {
     <p class="mt-3 max-w-xl leading-relaxed text-neutral-400">
       Cloud Platform Engineer at <a
         href="https://inovex.de/"
-        class="text-white underline decoration-neutral-700 underline-offset-4 transition-colors hover:decoration-neutral-400"
+        class="text-white underline decoration-accent/50 underline-offset-4 transition-colors hover:decoration-accent"
         >inovex</a
       >. Interested in all stuff DevOps, Cloud, Golang as well as
       iOS-Development.
     </p>
+    <div class="mt-5 flex flex-wrap gap-2">
+      <a
+        href="/about"
+        class="inline-flex items-center gap-1.5 rounded-full border border-white/[0.06] bg-[#121214] px-4 py-1.5 text-sm text-neutral-300 transition-colors hover:border-white/[0.12] hover:text-white"
+      >
+        <span aria-hidden="true" class="text-accent">→</span> More about me
+      </a>
+      <a
+        href="mailto:mail@julianbeck.com"
+        class="inline-flex items-center gap-1.5 rounded-full border border-white/[0.06] bg-[#121214] px-4 py-1.5 text-sm text-neutral-300 transition-colors hover:border-white/[0.12] hover:text-white"
+      >
+        <span aria-hidden="true" class="text-accent">✉</span> mail@julianbeck.com
+      </a>
+    </div>
   </section>
 
   <!-- New release -->
@@ -49,7 +72,7 @@ const meta = {
       />
       <div class="min-w-0">
         <div
-          class="text-xs font-medium uppercase tracking-wide text-neutral-500"
+          class="text-xs font-medium uppercase tracking-wide text-accent"
         >
           New release
         </div>
@@ -82,7 +105,7 @@ const meta = {
 
   <!-- Projects -->
   <section class="mb-14">
-    <h2 class="mb-5 text-lg font-semibold text-white">Personal Projects</h2>
+    <SectionTitle title="projects" />
     <div class="grid gap-3 sm:grid-cols-2">
       {
         apps.map((app) => (
@@ -108,14 +131,43 @@ const meta = {
     </div>
     <a
       href="/apps"
-      class="mt-6 inline-block text-sm text-neutral-500 transition-colors hover:text-white"
+      class="mt-6 inline-block text-sm text-neutral-500 transition-colors hover:text-accent"
       >See all my apps →</a
+    >
+  </section>
+
+  <!-- Posts -->
+  <section class="mb-14">
+    <SectionTitle title="posts" />
+    <ul class="space-y-1">
+      {
+        posts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}`}
+              class="group flex items-baseline gap-5 rounded-lg px-2 py-1.5 -mx-2 transition-colors hover:bg-white/[0.03]"
+            >
+              <span class="w-24 shrink-0 text-sm tabular-nums text-neutral-600">
+                <FormattedDate date={post.data.pubDate} />
+              </span>
+              <span class="text-[15px] text-neutral-300 transition-colors group-hover:text-white">
+                {post.data.title}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <a
+      href="/blog"
+      class="mt-5 inline-block text-sm text-neutral-500 transition-colors hover:text-accent"
+      >All posts →</a
     >
   </section>
 
   <!-- Experience -->
   <section class="mb-14">
-    <h2 class="mb-5 text-lg font-semibold text-white">Work Experience</h2>
+    <SectionTitle title="work" />
     <div
       class="divide-y divide-white/[0.06] rounded-2xl border border-white/[0.06] bg-[#121214]"
     >
@@ -152,7 +204,7 @@ const meta = {
 
   <!-- Meetups & Talks -->
   <section class="mb-14">
-    <h2 class="mb-5 text-lg font-semibold text-white">Meetups & Talks</h2>
+    <SectionTitle title="talks" />
     <div
       class="divide-y divide-white/[0.06] rounded-2xl border border-white/[0.06] bg-[#121214]"
     >
@@ -189,7 +241,7 @@ const meta = {
 
   <!-- Certifications -->
   <section class="mb-14">
-    <h2 class="mb-5 text-lg font-semibold text-white">Certifications</h2>
+    <SectionTitle title="certifications" />
     <div
       class="divide-y divide-white/[0.06] rounded-2xl border border-white/[0.06] bg-[#121214]"
     >
@@ -226,7 +278,7 @@ const meta = {
 
   <!-- Education -->
   <section class="mb-14">
-    <h2 class="mb-5 text-lg font-semibold text-white">Education</h2>
+    <SectionTitle title="education" />
     <div
       class="divide-y divide-white/[0.06] rounded-2xl border border-white/[0.06] bg-[#121214]"
     >
@@ -261,18 +313,29 @@ const meta = {
     </div>
   </section>
 
+  {
+    contributions && (
+      <section class="mb-14">
+        <SectionTitle title="activity" />
+        <ActivityGraph data={contributions} user={GITHUB_USER} />
+      </section>
+    )
+  }
+
   <!-- Contact -->
-  <section
-    class="rounded-2xl border border-white/[0.06] bg-[#121214] p-6 text-center"
-  >
-    <h2 class="text-lg font-semibold text-white">Contact</h2>
-    <p class="mt-2 text-neutral-400">
-      If you are interested in contacting me, drop me a short email.
-    </p>
-    <a
-      href="mailto:mail@julianbeck.com"
-      class="mt-4 inline-block rounded-full bg-white px-5 py-2 text-sm font-medium text-black transition-colors hover:bg-neutral-200"
-      >mail@julianbeck.com</a
+  <section>
+    <SectionTitle title="contact" />
+    <div
+      class="rounded-2xl border border-white/[0.06] bg-[#121214] p-6 text-center"
     >
+      <p class="text-neutral-400">
+        If you are interested in contacting me, drop me a short email.
+      </p>
+      <a
+        href="mailto:mail@julianbeck.com"
+        class="mt-4 inline-block rounded-full bg-white px-5 py-2 text-sm font-medium text-black transition-colors hover:bg-neutral-200"
+        >mail@julianbeck.com</a
+      >
+    </div>
   </section>
 </PageLayout>

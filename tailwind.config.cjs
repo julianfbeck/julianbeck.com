@@ -16,6 +16,14 @@ module.exports = {
       lg: "1024px",
       xl: "1024px",
     },
+    extend: {
+      colors: {
+        accent: {
+          DEFAULT: "#fb923c",
+          bright: "#fdba74",
+        },
+      },
+    },
   },
   variants: {
     filter: ["hover", "group-hover"],

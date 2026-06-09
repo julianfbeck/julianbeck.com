@@ -1,33 +1,38 @@
 ---
-const today = new Date();
+const year = new Date().getFullYear();
 ---
 
 <footer class="mt-16 border-t border-white/[0.06]" data-pagefind-ignore="all">
   <div
-    class="mx-auto flex max-w-3xl items-center justify-center gap-2 px-6 py-8 text-sm text-neutral-500"
+    class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-6 py-8 text-sm text-neutral-500"
   >
-    <a
-      target="_blank"
-      href="https://github.com/julianfbeck"
-      class="transition-colors hover:text-white">GitHub</a
-    >
-    <span class="text-neutral-700">·</span>
-    <a
-      target="_blank"
-      href="https://www.linkedin.com/in/julian-beck/"
-      class="transition-colors hover:text-white">LinkedIn</a
-    >
-    <span class="text-neutral-700">·</span>
-    <a
-      target="_blank"
-      href="https://twitter.com/julianfbeck"
-      class="transition-colors hover:text-white">Twitter</a
-    >
-    <span class="text-neutral-700">·</span>
-    <a
-      target="_blank"
-      href="https://blog.julianbeck.com"
-      class="transition-colors hover:text-white">Blog</a
-    >
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+      <a
+        href="mailto:mail@julianbeck.com"
+        class="transition-colors hover:text-white">Email</a
+      >
+      <a
+        target="_blank"
+        href="https://github.com/julianfbeck"
+        class="transition-colors hover:text-white">GitHub</a
+      >
+      <a
+        target="_blank"
+        href="https://www.linkedin.com/in/julian-beck/"
+        class="transition-colors hover:text-white">LinkedIn</a
+      >
+      <a
+        target="_blank"
+        href="https://twitter.com/julianfbeck"
+        class="transition-colors hover:text-white">Twitter</a
+      >
+      <a
+        target="_blank"
+        href="https://blog.julianbeck.com"
+        class="transition-colors hover:text-white">Blog</a
+      >
+      <a href="/rss.xml" class="transition-colors hover:text-white">RSS</a>
+    </div>
+    <span class="text-neutral-600">© {year}</span>
   </div>
 </footer>

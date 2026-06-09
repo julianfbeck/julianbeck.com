@@ -38,7 +38,7 @@ type AppInfo = {
   supportedDevices: string[];
 };
 export const proseCSS =
-  "mx-auto mt-8 max-w-2xl prose prose-invert prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-white prose-h2:text-xl prose-h3:text-lg prose-p:leading-relaxed prose-p:text-neutral-400 prose-a:text-white prose-a:underline prose-a:decoration-neutral-700 prose-a:underline-offset-4 hover:prose-a:decoration-neutral-400 prose-strong:text-white prose-code:before:content-none prose-code:after:content-none prose-img:rounded-xl prose-ul:text-neutral-400 prose-ol:text-neutral-400 prose-li:marker:text-neutral-600 prose-blockquote:border-white/[0.12] prose-blockquote:text-neutral-500 break-words";
+  "mx-auto mt-8 max-w-2xl prose prose-invert prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-white prose-h2:text-xl prose-h3:text-lg prose-p:leading-relaxed prose-p:text-neutral-400 prose-a:text-white prose-a:underline prose-a:decoration-accent/50 prose-a:underline-offset-4 hover:prose-a:decoration-accent prose-strong:text-white prose-code:before:content-none prose-code:after:content-none prose-img:rounded-xl prose-ul:text-neutral-400 prose-ol:text-neutral-400 prose-li:marker:text-neutral-600 prose-blockquote:border-white/[0.12] prose-blockquote:text-neutral-500 break-words";
 
 const normalizeApps = async (app: CollectionEntry<"app">) => {
   const appDetails = await getAppDetails(app);  const screenshots = [];
