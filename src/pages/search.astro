@@ -65,6 +65,12 @@ const meta = {
   <style is:global>
     .pagefind-ui {
       --pagefind-ui-font: "DM Sans Variable", sans-serif;
+      --pagefind-ui-primary: #fb923c;
+      --pagefind-ui-text: #e5e5e5;
+      --pagefind-ui-background: #121214;
+      --pagefind-ui-border: rgba(255, 255, 255, 0.06);
+      --pagefind-ui-tag: rgba(255, 255, 255, 0.03);
+      --pagefind-ui-border-width: 1px;
     }
 
     .pagefind-ui__form::before {
@@ -87,8 +93,9 @@ const meta = {
     }
 
     .pagefind-ui__search-input:focus {
-      outline: 1px solid rgba(251, 146, 60, 0.5);
-      outline-offset: 0;
+      outline: none;
+      border-color: rgba(251, 146, 60, 0.5);
+      box-shadow: 0 0 0 1px rgba(251, 146, 60, 0.5);
     }
 
     .pagefind-ui__search-clear {
